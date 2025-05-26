@@ -1,6 +1,6 @@
 ﻿using basketball_calendar.Models;
 
-namespace basketball_calendar.Views;
+namespace basketball_calendar.Forms;
 
 public partial class EventForm : Form
 {

@@ -1,4 +1,4 @@
-﻿namespace basketball_calendar.Views;
+﻿namespace basketball_calendar.Forms;
 
 partial class EventForm
 {

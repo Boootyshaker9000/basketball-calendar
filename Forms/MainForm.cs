@@ -1,7 +1,7 @@
 ﻿using basketball_calendar.Models;
 using basketball_calendar.Services;
 
-namespace basketball_calendar.Views;
+namespace basketball_calendar.Forms;
 
 public partial class MainForm : Form
 {
@@ -10,21 +10,27 @@ public partial class MainForm : Form
 
     public MainForm()
     {
+        AllEvents = new();
         InitializeComponent();
     }
 
     private void MainForm_Load(object sender, EventArgs eventArgs)
     {
-        // Inicializace repository s pevnou cestou k JSON souboru
         Repository = new EventRepository("events.json");
+        AllEvents = Repository.LoadEvents() ?? new List<Event>();
 
-        // Načtení všech událostí
-        AllEvents = Repository.LoadEvents();
+        var allTags = AllEvents
+            .Where(ev => ev != null)
+            .SelectMany(ev => ev.Tags ?? Enumerable.Empty<string>())
+            .Distinct()
+            .OrderBy(t => t)
+            .ToList();
+        allTags.Insert(0, "Všechny");
+        ComboBoxFilter.DataSource = allTags;
 
-        // Naplnění seznamu událostí pro dnešní datum
-        RefreshEventList(MonthCalendar.SelectionStart);
-        
-        //ReminderTimer.Start();
+        MonthCalendar.SelectionStart = DateTime.Today;
+        RefreshEventList(DateTime.Today);
+        ReminderTimer.Start();
     }
 
     /// <summary>
@@ -32,14 +38,12 @@ public partial class MainForm : Form
     /// </summary>
     private void RefreshEventList(DateTime dateTime)
     {
-        // Filtrování událostí podle data
-        var eventsForDate = AllEvents
-            .Where(@event => @event.Start.Date == dateTime.Date)
-            .OrderBy(@event => @event.Start)
+        var filtered = AllEvents
+            .Where(ev => ev.Start.Date == dateTime.Date)
+            .OrderBy(ev => ev.Start)
             .ToList();
 
-        // Zobrazení v listBox
-        ListBoxEvents.DataSource = eventsForDate;
+        ListBoxEvents.DataSource = filtered;
         ListBoxEvents.DisplayMember = nameof(Event.Title);
     }
 

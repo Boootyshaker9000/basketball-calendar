@@ -1,11 +1,14 @@
-﻿namespace basketball_calendar.Views;
+﻿using System.Windows.Forms.VisualStyles;
+using Timer = System.Windows.Forms.Timer;
+
+namespace basketball_calendar.Forms;
 
 public partial class MainForm
 {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.IContainer components;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -28,6 +31,7 @@ public partial class MainForm
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.MonthCalendar = new System.Windows.Forms.MonthCalendar();
             this.ListBoxEvents = new System.Windows.Forms.ListBox();
             this.ButtonAdd = new System.Windows.Forms.Button();
@@ -56,7 +60,7 @@ public partial class MainForm
             // ButtonAdd
             // 
             this.ButtonAdd.Location = new System.Drawing.Point(260, 365);
-            this.ButtonAdd.Name = "buttonAdd";
+            this.ButtonAdd.Name = "ButtonAdd";
             this.ButtonAdd.Size = new System.Drawing.Size(90, 30);
             this.ButtonAdd.TabIndex = 2;
             this.ButtonAdd.Text = "Přidat";
@@ -66,7 +70,7 @@ public partial class MainForm
             // ButtonEdit
             // 
             this.ButtonEdit.Location = new System.Drawing.Point(370, 365);
-            this.ButtonEdit.Name = "buttonEdit";
+            this.ButtonEdit.Name = "ButtonEdit";
             this.ButtonEdit.Size = new System.Drawing.Size(90, 30);
             this.ButtonEdit.TabIndex = 3;
             this.ButtonEdit.Text = "Upravit";
@@ -76,7 +80,7 @@ public partial class MainForm
             // ButtonDelete
             // 
             this.ButtonDelete.Location = new System.Drawing.Point(470, 365);
-            this.ButtonDelete.Name = "buttonDelete";
+            this.ButtonDelete.Name = "ButtonDelete";
             this.ButtonDelete.Size = new System.Drawing.Size(90, 30);
             this.ButtonDelete.TabIndex = 4;
             this.ButtonDelete.Text = "Smazat";
@@ -100,19 +104,22 @@ public partial class MainForm
             //
             // NotifyIcon
             //
-            /*this.ReminderTimer = new System.Windows.Forms.Timer(this.components);
-            this.ReminderTimer.Interval = 60000; // 60_000 ms = 1 minuta
+            this.ReminderTimer = new System.Windows.Forms.Timer(this.components);
+            this.ReminderTimer.Interval = 60000;
             this.ReminderTimer.Tick += ReminderTimer_Tick;
-            this.ReminderTimer.Start();*/
+            this.ReminderTimer.Start();
         }
 
         #endregion
 
-        private System.Windows.Forms.MonthCalendar MonthCalendar { get; set; }
-        private System.Windows.Forms.ListBox ListBoxEvents { get; set; }
-        private System.Windows.Forms.Button ButtonAdd { get; set; }
-        private System.Windows.Forms.Button ButtonEdit { get; set; }
-        private System.Windows.Forms.Button ButtonDelete { get; set; }
-        private System.Windows.Forms.NotifyIcon NotifyIcon { get; set; }
-        //private System.Windows.Forms.Timer ReminderTimer { get; set; }
+        private System.ComponentModel.IContainer Components { get; set; }
+        private MonthCalendar MonthCalendar { get; set; }
+        private ListBox ListBoxEvents { get; set; }
+        private Button ButtonAdd { get; set; }
+        private Button ButtonEdit { get; set; }
+        private Button ButtonDelete { get; set; }
+        private NotifyIcon NotifyIcon { get; set; }
+        private Timer ReminderTimer { get; set; }
+        private Label LabelFilter { get; set; }
+        private ComboBox ComboBoxFilter { get; set; }
 }
