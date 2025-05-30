@@ -167,6 +167,7 @@ partial class EventForm
         // 
         this.ButtonOK.Text = "OK";
         this.ButtonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+        this.ButtonOK.Click += new System.EventHandler(this.ButtonOkOnClick);
         this.ButtonOK.AutoSize = true;
         // 
         // ButtonCancel

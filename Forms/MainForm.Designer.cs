@@ -129,7 +129,7 @@ public partial class MainForm
             //
             this.ReminderTimer = new System.Windows.Forms.Timer(this.Components);
             this.ReminderTimer.Interval = 60000;
-            this.ReminderTimer.Tick += ReminderTimer_Tick;
+            this.ReminderTimer.Tick += ReminderTimerOnTick;
             this.ReminderTimer.Start();
         }
 

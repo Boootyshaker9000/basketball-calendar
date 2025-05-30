@@ -1,4 +1,7 @@
-﻿namespace basketball_calendar.Forms;
+﻿using System.Text.Json;
+using basketball_calendar.Services;
+
+namespace basketball_calendar.Forms;
 
 /// <summary>
 /// Formulář pro výběr barevného motivu podle NBA týmu.
@@ -15,7 +18,7 @@ public partial class SettingsForm : Form
     /// </summary>
     public Color SelectedSecondary { get; private set; }
 
-    private static readonly Dictionary<string, (Color primary, Color secondary)> TeamThemes =
+    public static readonly Dictionary<string, (Color primary, Color secondary)> TeamThemes =
         new()
     {
         { "Los Angeles Lakers", (Color.FromArgb(85, 37, 130), Color.FromArgb(253, 185, 39)) },
@@ -49,10 +52,13 @@ public partial class SettingsForm : Form
         {
             SelectedPrimary = colors.primary;
             SelectedSecondary = colors.secondary;
-        }
-        else
-        {
-            MessageBox.Show("Vyberte tým.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            
+            var settings = new UserSettings {
+                TeamName = ComboTeams.SelectedItem as string,
+                PrimaryColorArgb = PanelPrimary.BackColor.ToArgb(),
+                SecondaryColorArgb = PanelSecondary.BackColor.ToArgb()
+            };
+            File.WriteAllText("settings.json", JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true }));
         }
     }
 }

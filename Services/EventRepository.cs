@@ -84,16 +84,13 @@ public class EventRepository
     /// </summary>
     public void UpdateEvent(Event updatedEvent)
     {
+
         var events = LoadEvents();
-        var index = events.FindIndex(e => e.Id == updatedEvent.Id);
+        var index = events.FindIndex(ev => ev != null && ev.Id == updatedEvent.Id);
         if (index >= 0)
         {
             events[index] = updatedEvent;
             SaveEvents(events);
-        }
-        else
-        {
-            throw new KeyNotFoundException("Událost s tímto Id nebyla nalezena.");
         }
     }
 
@@ -103,14 +100,10 @@ public class EventRepository
     public void DeleteEvent(Guid id)
     {
         var events = LoadEvents();
-        var removed = events.RemoveAll(e => e.Id == id);
+        var removed = events.RemoveAll(@event => @event != null && @event.Id == id);
         if (removed > 0)
         {
             SaveEvents(events);
-        }
-        else
-        {
-            throw new KeyNotFoundException("Událost s tímto Id nebyla nalezena.");
         }
     }
 }

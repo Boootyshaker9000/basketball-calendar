@@ -33,7 +33,7 @@ public class Event
     /// <summary>
     /// Štítky nebo typy události (např. "zápas", "trénink").
     /// </summary>
-    public List<string?> Tags { get; set; }
+    public List<string> Tags { get; set; }
 
     /// <summary>
     /// Posunutí času upozornění před začátkem události (volitelné).

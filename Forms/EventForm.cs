@@ -71,13 +71,13 @@ public partial class EventForm : Form
         Event.ReminderOffset = reminderMinutes > 0 ? TimeSpan.FromMinutes(reminderMinutes) : (TimeSpan?)null;
         Event.ReminderSent = false;
 
-        DialogResult = DialogResult.OK;
-        Close();
+        //DialogResult = DialogResult.OK;
+        //Close();
     }
 
-    private void ButtonCancelOnClick(object sender, EventArgs eventArgs)
+    /*private void ButtonCancelOnClick(object sender, EventArgs eventArgs)
     {
-        DialogResult = DialogResult.Cancel;
-        Close();
-    }
+        //DialogResult = DialogResult.Cancel;
+        //Close();
+    }*/
 }

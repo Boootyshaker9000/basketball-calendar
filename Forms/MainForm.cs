@@ -1,4 +1,5 @@
-﻿using basketball_calendar.Models;
+﻿using System.Text.Json;
+using basketball_calendar.Models;
 using basketball_calendar.Services;
 
 namespace basketball_calendar.Forms;
@@ -18,14 +19,14 @@ public partial class MainForm : Form
     private void MainForm_Load(object sender, EventArgs eventArgs)
     {
         AllEvents = Repository.LoadEvents()
-            .Where(ev => ev != null)
+            .Where(@event => @event != null)
             .ToList();
 
         var allTags = AllEvents
-            .Where(ev => ev != null)
-            .SelectMany(ev => ev.Tags)  
+            .Where(@event => @event != null)
+            .SelectMany(@event => @event.Tags)  
             .Distinct()
-            .OrderBy(t => t)
+            .OrderBy(time => time)
             .ToList();
         allTags.Insert(0, "Všechny");
         ComboBoxFilter.DataSource = allTags;
@@ -33,6 +34,26 @@ public partial class MainForm : Form
         MonthCalendar.SelectionStart = DateTime.Today;
         RefreshEventList(DateTime.Today);
         ReminderTimer.Start();
+        
+        var json = File.ReadAllText("settings.json");
+
+        UserSettings? settings = null;
+        try
+        {
+            settings = JsonSerializer.Deserialize<UserSettings>(json);
+        }
+        catch (JsonException)
+        {
+            // ignored
+        }
+
+        if (settings != null)
+        {
+            if (settings.TeamName != null && SettingsForm.TeamThemes.TryGetValue(settings.TeamName, out var colors))
+            {
+                ApplyTheme(Color.FromArgb(settings.SecondaryColorArgb), Color.FromArgb(settings.PrimaryColorArgb));
+            }
+        }
     }
 
     /// <summary>
@@ -119,51 +140,58 @@ public partial class MainForm : Form
         }
     }
     
-    private void ReminderTimer_Tick(object sender, EventArgs eventArgs)
+    private void ReminderTimerOnTick(object sender, EventArgs eventArgs)
     {
         var now = DateTime.Now;
         var toRemind = AllEvents
-            .Where(ev => ev != null && !ev.ReminderSent 
-                         && ev.ReminderOffset.HasValue
-                         && now >= ev.Start - ev.ReminderOffset.Value)
+            .Where(@event => @event != null && !@event.ReminderSent 
+                         && @event.ReminderOffset.HasValue
+                         && now >= @event.Start - @event.ReminderOffset.Value)
             .ToList();
-        foreach (var ev in toRemind)
+        foreach (var @event in toRemind)
         {
-            NotifyIcon.BalloonTipText = $"{ev.Title} začíná v {ev.Start:HH:mm}";
+            NotifyIcon.BalloonTipText = $"{@event.Title} začíná v {@event.Start:HH:mm}";
             NotifyIcon.ShowBalloonTip(5000);
-            ev.ReminderSent = true;
-            Repository.UpdateEvent(ev);
+            @event.ReminderSent = true;
+            Repository.UpdateEvent(@event);
         }
         if (toRemind.Any())
             AllEvents = Repository.LoadEvents();
     }
-    
+
+    private void ApplyTheme(Color foreground, Color background)
+    {
+        BackColor = background;
+        ForeColor = foreground;
+
+        MonthCalendar.BackColor = background;
+        MonthCalendar.ForeColor = foreground;
+        MonthCalendar.TitleBackColor = background;
+        MonthCalendar.TitleForeColor = foreground;
+            
+        ListBoxEvents.BackColor = background;
+        ListBoxEvents.ForeColor = foreground;
+
+        LabelFilter.ForeColor = foreground;
+        ComboBoxFilter.BackColor = background;
+        ComboBoxFilter.ForeColor = foreground;
+
+        foreach (Control control in new Control[] { ButtonAdd, ButtonEdit, ButtonDelete, ButtonSettings })
+        {
+            if (control is Button button)
+            {
+                button.BackColor = BackColor;
+                button.ForeColor = ForeColor;
+            }
+        }
+    }
+
     private void ButtonSettingsOnClick(object sender, EventArgs eventsArgs)
     {
         using var form = new SettingsForm();
         if (form.ShowDialog() == DialogResult.OK)
         {
-            BackColor = form.SelectedPrimary;
-            ForeColor = form.SelectedSecondary;
-
-            MonthCalendar.BackColor = BackColor;
-            MonthCalendar.ForeColor = ForeColor;
-
-            ListBoxEvents.BackColor = BackColor;
-            ListBoxEvents.ForeColor = ForeColor;
-
-            LabelFilter.ForeColor = ForeColor;
-            ComboBoxFilter.BackColor = BackColor;
-            ComboBoxFilter.ForeColor = ForeColor;
-
-            foreach (Control control in new Control[] { ButtonAdd, ButtonEdit, ButtonDelete, ButtonSettings })
-            {
-                if (control is Button button)
-                {
-                    button.BackColor = BackColor;
-                    button.ForeColor = ForeColor;
-                }
-            }
+            ApplyTheme(form.SelectedSecondary, form.SelectedPrimary);
         }
     }
 }
