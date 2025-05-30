@@ -4,7 +4,10 @@ partial class SettingsForm
     {
         private System.ComponentModel.IContainer Components;
         private System.Windows.Forms.ComboBox ComboTeams;
-        private System.Windows.Forms.Panel PanelPreview;
+        private System.Windows.Forms.Label LabelPrimary;
+        private System.Windows.Forms.Panel PanelPrimary;
+        private System.Windows.Forms.Label LabelSecondary;
+        private System.Windows.Forms.Panel PanelSecondary;
         private System.Windows.Forms.Button ButtonOk;
         private System.Windows.Forms.Button ButtonCancel;
 
@@ -27,7 +30,10 @@ partial class SettingsForm
         {
             this.Components = new System.ComponentModel.Container();
             this.ComboTeams = new System.Windows.Forms.ComboBox();
-            this.PanelPreview = new System.Windows.Forms.Panel();
+            this.PanelPrimary = new System.Windows.Forms.Panel();
+            this.LabelPrimary = new System.Windows.Forms.Label();
+            this.PanelSecondary = new System.Windows.Forms.Panel();
+            this.LabelSecondary = new System.Windows.Forms.Label();
             this.ButtonOk = new System.Windows.Forms.Button();
             this.ButtonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -42,12 +48,39 @@ partial class SettingsForm
             this.ComboTeams.TabIndex = 0;
             this.ComboTeams.SelectedIndexChanged += new System.EventHandler(this.ComboTeams_SelectedIndexChanged);
             // 
-            // PanelPreview
+            // PanelPrimary
             // 
-            this.PanelPreview.Location = new System.Drawing.Point(20, 60);
-            this.PanelPreview.Name = "PanelPreview";
-            this.PanelPreview.Size = new System.Drawing.Size(340, 50);
-            this.PanelPreview.TabIndex = 1;
+            this.LabelPrimary.AutoSize = true;
+            this.LabelPrimary.Location = new System.Drawing.Point(20, 60);
+            this.LabelPrimary.Name = "LabelPrimary";
+            this.LabelPrimary.Size = new System.Drawing.Size(94, 17);
+            this.LabelPrimary.TabIndex = 1;
+            this.LabelPrimary.Text = "Primary color:";
+            // 
+            // PanelPrimary
+            // 
+            this.PanelPrimary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelPrimary.Location = new System.Drawing.Point(150, 55);
+            this.PanelPrimary.Name = "panelPrimary";
+            this.PanelPrimary.Size = new System.Drawing.Size(50, 25);
+            this.PanelPrimary.TabIndex = 2;
+            // 
+            // LabelSecondary
+            // 
+            this.LabelSecondary.AutoSize = true;
+            this.LabelSecondary.Location = new System.Drawing.Point(20, 100);
+            this.LabelSecondary.Name = "labelSecondary";
+            this.LabelSecondary.Size = new System.Drawing.Size(120, 17);
+            this.LabelSecondary.TabIndex = 3;
+            this.LabelSecondary.Text = "Sekundární barva:";
+            // 
+            // PanelSecondary
+            // 
+            this.PanelSecondary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelSecondary.Location = new System.Drawing.Point(150, 95);
+            this.PanelSecondary.Name = "panelSecondary";
+            this.PanelSecondary.Size = new System.Drawing.Size(50, 25);
+            this.PanelSecondary.TabIndex = 4;
             // 
             // ButtonOk
             // 
@@ -55,7 +88,7 @@ partial class SettingsForm
             this.ButtonOk.Location = new System.Drawing.Point(200, 130);
             this.ButtonOk.Name = "ButtonOk";
             this.ButtonOk.Size = new System.Drawing.Size(75, 30);
-            this.ButtonOk.TabIndex = 2;
+            this.ButtonOk.TabIndex = 5;
             this.ButtonOk.Text = "OK";
             this.ButtonOk.UseVisualStyleBackColor = true;
             this.ButtonOk.Click += new System.EventHandler(this.ButtonOkOnClick);
@@ -66,7 +99,7 @@ partial class SettingsForm
             this.ButtonCancel.Location = new System.Drawing.Point(285, 130);
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(75, 30);
-            this.ButtonCancel.TabIndex = 3;
+            this.ButtonCancel.TabIndex = 6;
             this.ButtonCancel.Text = "Cancel";
             this.ButtonCancel.UseVisualStyleBackColor = true;
             // 
@@ -77,7 +110,10 @@ partial class SettingsForm
             this.ClientSize = new System.Drawing.Size(384, 181);
             this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.ButtonOk);
-            this.Controls.Add(this.PanelPreview);
+            this.Controls.Add(this.PanelPrimary);
+            this.Controls.Add(this.LabelPrimary);
+            this.Controls.Add(this.PanelSecondary);
+            this.Controls.Add(this.LabelSecondary);
             this.Controls.Add(this.ComboTeams);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;

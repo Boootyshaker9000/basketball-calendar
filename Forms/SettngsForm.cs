@@ -38,8 +38,8 @@ public partial class SettingsForm : Form
     {
         if (ComboTeams.SelectedItem is string team && TeamThemes.TryGetValue(team, out var colors))
         {
-            PanelPreview.BackColor = colors.primary;
-            PanelPreview.ForeColor = colors.secondary;
+            PanelPrimary.BackColor = colors.primary;
+            PanelSecondary.BackColor = colors.secondary;
         }
     }
 
