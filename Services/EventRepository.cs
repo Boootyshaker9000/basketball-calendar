@@ -9,8 +9,8 @@ namespace basketball_calendar.Services;
 /// </summary>
 public class EventRepository
 {
-    private readonly string _filePath;
-    private readonly JsonSerializerOptions _jsonOptions;
+    private string FilePath { get; set; }
+    private JsonSerializerOptions JsonOptions { get; set; }
 
     /// <summary>
     /// Konstruktor repository.
@@ -18,8 +18,8 @@ public class EventRepository
     /// <param name="filePath">Cesta k JSON souboru pro ukládání událostí.</param>
     public EventRepository(string filePath)
     {
-        _filePath = filePath;
-        _jsonOptions = new JsonSerializerOptions
+        FilePath = filePath;
+        JsonOptions = new JsonSerializerOptions
         {
             WriteIndented = true,
             Converters =
@@ -37,19 +37,18 @@ public class EventRepository
     {
         try
         {
-            if (!File.Exists(_filePath))
+            if (!File.Exists(FilePath))
                 return new List<Event>();
 
-            var json = File.ReadAllText(_filePath);
+            var json = File.ReadAllText(FilePath);
             if (string.IsNullOrWhiteSpace(json))
                 return new List<Event>();
 
-            return JsonSerializer.Deserialize<List<Event>>(json, _jsonOptions)
+            return JsonSerializer.Deserialize<List<Event>>(json, JsonOptions)
                    ?? new List<Event>();
         }
         catch (Exception ex)
         {
-            // TODO: případně logovat chybu
             throw new InvalidOperationException("Chyba při načítání událostí.", ex);
         }
     }
@@ -61,12 +60,11 @@ public class EventRepository
     {
         try
         {
-            var json = JsonSerializer.Serialize(events, _jsonOptions);
-            File.WriteAllText(_filePath, json);
+            var json = JsonSerializer.Serialize(events, JsonOptions);
+            File.WriteAllText(FilePath, json);
         }
         catch (Exception ex)
         {
-            // TODO: případně logovat chybu
             throw new InvalidOperationException("Chyba při ukládání událostí.", ex);
         }
     }

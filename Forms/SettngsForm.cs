@@ -29,12 +29,12 @@ public partial class SettingsForm : Form
     {
         InitializeComponent();
 
-        ComboTeams.Items.AddRange(TeamThemes.Keys.ToArray());
+        ComboTeams.Items.AddRange(TeamThemes.Keys.ToArray<object>());
         if (ComboTeams.Items.Count > 0)
             ComboTeams.SelectedIndex = 0;
     }
 
-    private void ComboTeams_SelectedIndexChanged(object sender, EventArgs e)
+    private void ComboTeams_SelectedIndexChanged(object sender, EventArgs eventsArgs)
     {
         if (ComboTeams.SelectedItem is string team && TeamThemes.TryGetValue(team, out var colors))
         {
@@ -43,14 +43,12 @@ public partial class SettingsForm : Form
         }
     }
 
-    private void buttonOK_Click(object sender, EventArgs e)
+    private void ButtonOkOnClick(object sender, EventArgs eventsArgs)
     {
         if (ComboTeams.SelectedItem is string team && TeamThemes.TryGetValue(team, out var colors))
         {
             SelectedPrimary = colors.primary;
             SelectedSecondary = colors.secondary;
-            DialogResult = DialogResult.OK;
-            Close();
         }
         else
         {

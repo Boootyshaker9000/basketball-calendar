@@ -58,7 +58,7 @@ partial class SettingsForm
             this.ButtonOk.TabIndex = 2;
             this.ButtonOk.Text = "OK";
             this.ButtonOk.UseVisualStyleBackColor = true;
-            this.ButtonOk.Click += new System.EventHandler(this.buttonOK_Click);
+            this.ButtonOk.Click += new System.EventHandler(this.ButtonOkOnClick);
             // 
             // ButtonCancel
             // 
@@ -67,7 +67,7 @@ partial class SettingsForm
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(75, 30);
             this.ButtonCancel.TabIndex = 3;
-            this.ButtonCancel.Text = "Storno";
+            this.ButtonCancel.Text = "Cancel";
             this.ButtonCancel.UseVisualStyleBackColor = true;
             // 
             // SettingsForm

@@ -2,30 +2,29 @@
 
 partial class EventForm
 {
-    private System.ComponentModel.IContainer components = null;
-    private System.Windows.Forms.Label labelTitle;
-    private System.Windows.Forms.TextBox textBoxTitle;
-    private System.Windows.Forms.Label labelDescription;
-    private System.Windows.Forms.RichTextBox richTextBoxDescription;
-    private System.Windows.Forms.Label labelStart;
-    private System.Windows.Forms.DateTimePicker dateTimePickerStart;
-    private System.Windows.Forms.Label labelEnd;
-    private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
-    private System.Windows.Forms.Label labelTags;
-    private System.Windows.Forms.CheckedListBox checkedListBoxTags;
-    private System.Windows.Forms.Label labelReminder;
-    private System.Windows.Forms.NumericUpDown numericUpDownReminder;
-    private System.Windows.Forms.Button buttonOK;
-    private System.Windows.Forms.Button buttonCancel;
+    private System.ComponentModel.IContainer Components;
+    private System.Windows.Forms.TableLayoutPanel TableLayout;
+    private System.Windows.Forms.Label LabelTitle;
+    private System.Windows.Forms.TextBox TextBoxTitle;
+    private System.Windows.Forms.Label LabelDescription;
+    private System.Windows.Forms.RichTextBox RichTextBoxDescription;
+    private System.Windows.Forms.Label LabelStart;
+    private System.Windows.Forms.DateTimePicker DateTimePickerStart;
+    private System.Windows.Forms.Label LabelEnd;
+    private System.Windows.Forms.DateTimePicker DateTimePickerEnd;
+    private System.Windows.Forms.Label LabelTags;
+    private System.Windows.Forms.CheckedListBox CheckedListBoxTags;
+    private System.Windows.Forms.Label LabelReminder;
+    private System.Windows.Forms.NumericUpDown NumericUpDownReminder;
+    private System.Windows.Forms.FlowLayoutPanel ButtonPanel;
+    private System.Windows.Forms.Button ButtonOK;
+    private System.Windows.Forms.Button ButtonCancel;
 
-    /// <summary>
-    /// Clean up any resources being used.
-    /// </summary>
     protected override void Dispose(bool disposing)
     {
-        if (disposing && (components != null))
+        if (disposing && (Components != null))
         {
-            components.Dispose();
+            Components.Dispose();
         }
         base.Dispose(disposing);
     }
@@ -34,185 +33,167 @@ partial class EventForm
 
     private void InitializeComponent()
     {
-        this.labelTitle = new System.Windows.Forms.Label();
-        this.textBoxTitle = new System.Windows.Forms.TextBox();
-        this.labelDescription = new System.Windows.Forms.Label();
-        this.richTextBoxDescription = new System.Windows.Forms.RichTextBox();
-        this.labelStart = new System.Windows.Forms.Label();
-        this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
-        this.labelEnd = new System.Windows.Forms.Label();
-        this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
-        this.labelTags = new System.Windows.Forms.Label();
-        this.checkedListBoxTags = new System.Windows.Forms.CheckedListBox();
-        this.labelReminder = new System.Windows.Forms.Label();
-        this.numericUpDownReminder = new System.Windows.Forms.NumericUpDown();
-        this.buttonOK = new System.Windows.Forms.Button();
-        this.buttonCancel = new System.Windows.Forms.Button();
-        ((System.ComponentModel.ISupportInitialize)(this.numericUpDownReminder)).BeginInit();
+        this.Components = new System.ComponentModel.Container();
+        this.TableLayout = new System.Windows.Forms.TableLayoutPanel();
+        this.LabelTitle = new System.Windows.Forms.Label();
+        this.TextBoxTitle = new System.Windows.Forms.TextBox();
+        this.LabelDescription = new System.Windows.Forms.Label();
+        this.RichTextBoxDescription = new System.Windows.Forms.RichTextBox();
+        this.LabelStart = new System.Windows.Forms.Label();
+        this.DateTimePickerStart = new System.Windows.Forms.DateTimePicker();
+        this.LabelEnd = new System.Windows.Forms.Label();
+        this.DateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+        this.LabelTags = new System.Windows.Forms.Label();
+        this.CheckedListBoxTags = new System.Windows.Forms.CheckedListBox();
+        this.LabelReminder = new System.Windows.Forms.Label();
+        this.NumericUpDownReminder = new System.Windows.Forms.NumericUpDown();
+        this.ButtonPanel = new System.Windows.Forms.FlowLayoutPanel();
+        this.ButtonOK = new System.Windows.Forms.Button();
+        this.ButtonCancel = new System.Windows.Forms.Button();
+        ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownReminder)).BeginInit();
+        this.ButtonPanel.SuspendLayout();
         this.SuspendLayout();
         // 
-        // labelTitle
+        // TableLayout
         // 
-        this.labelTitle.AutoSize = true;
-        this.labelTitle.Location = new System.Drawing.Point(12, 15);
-        this.labelTitle.Name = "labelTitle";
-        this.labelTitle.Size = new System.Drawing.Size(38, 17);
-        this.labelTitle.TabIndex = 0;
-        this.labelTitle.Text = "Název";
+        this.TableLayout.ColumnCount = 2;
+        this.TableLayout.RowCount = 6;
+        this.TableLayout.Dock = System.Windows.Forms.DockStyle.Top;
+        this.TableLayout.AutoSize = true;
+        this.TableLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+        this.TableLayout.ColumnStyles.Clear();
+        this.TableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.AutoSize));
+        this.TableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        for (int i = 0; i < 6; i++)
+            this.TableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.AutoSize));
+        this.TableLayout.Controls.Add(this.LabelTitle, 0, 0);
+        this.TableLayout.Controls.Add(this.TextBoxTitle, 1, 0);
+        this.TableLayout.Controls.Add(this.LabelDescription, 0, 1);
+        this.TableLayout.Controls.Add(this.RichTextBoxDescription, 1, 1);
+        this.TableLayout.Controls.Add(this.LabelStart, 0, 2);
+        this.TableLayout.Controls.Add(this.DateTimePickerStart, 1, 2);
+        this.TableLayout.Controls.Add(this.LabelEnd, 0, 3);
+        this.TableLayout.Controls.Add(this.DateTimePickerEnd, 1, 3);
+        this.TableLayout.Controls.Add(this.LabelTags, 0, 4);
+        this.TableLayout.Controls.Add(this.CheckedListBoxTags, 1, 4);
+        this.TableLayout.Controls.Add(this.LabelReminder, 0, 5);
+        this.TableLayout.Controls.Add(this.NumericUpDownReminder, 1, 5);
         // 
-        // textBoxTitle
+        // LabelTitle
         // 
-        this.textBoxTitle.Location = new System.Drawing.Point(100, 12);
-        this.textBoxTitle.Name = "textBoxTitle";
-        this.textBoxTitle.Size = new System.Drawing.Size(300, 22);
-        this.textBoxTitle.TabIndex = 1;
+        this.LabelTitle.AutoSize = true;
+        this.LabelTitle.Text = "Název";
+        this.LabelTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
-        // labelDescription
+        // TextBoxTitle
         // 
-        this.labelDescription.AutoSize = true;
-        this.labelDescription.Location = new System.Drawing.Point(12, 50);
-        this.labelDescription.Name = "labelDescription";
-        this.labelDescription.Size = new System.Drawing.Size(63, 17);
-        this.labelDescription.TabIndex = 2;
-        this.labelDescription.Text = "Popis";
+        this.TextBoxTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+        this.TextBoxTitle.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
         // 
-        // richTextBoxDescription
+        // LabelDescription
         // 
-        this.richTextBoxDescription.Location = new System.Drawing.Point(100, 47);
-        this.richTextBoxDescription.Name = "richTextBoxDescription";
-        this.richTextBoxDescription.Size = new System.Drawing.Size(300, 100);
-        this.richTextBoxDescription.TabIndex = 3;
-        this.richTextBoxDescription.Text = "";
+        this.LabelDescription.AutoSize = true;
+        this.LabelDescription.Text = "Popis";
+        this.LabelDescription.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
-        // labelStart
+        // RichTextBoxDescription
         // 
-        this.labelStart.AutoSize = true;
-        this.labelStart.Location = new System.Drawing.Point(12, 160);
-        this.labelStart.Name = "labelStart";
-        this.labelStart.Size = new System.Drawing.Size(58, 17);
-        this.labelStart.TabIndex = 4;
-        this.labelStart.Text = "Začátek";
+        this.RichTextBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+        this.RichTextBoxDescription.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+        this.RichTextBoxDescription.Height = 100;
         // 
-        // dateTimePickerStart
+        // LabelStart
         // 
-        this.dateTimePickerStart.CustomFormat = "dd.MM.yyyy HH:mm";
-        this.dateTimePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-        this.dateTimePickerStart.Location = new System.Drawing.Point(100, 155);
-        this.dateTimePickerStart.Name = "dateTimePickerStart";
-        this.dateTimePickerStart.Size = new System.Drawing.Size(200, 22);
-        this.dateTimePickerStart.TabIndex = 5;
+        this.LabelStart.AutoSize = true;
+        this.LabelStart.Text = "Začátek";
+        this.LabelStart.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
-        // labelEnd
+        // DateTimePickerStart
         // 
-        this.labelEnd.AutoSize = true;
-        this.labelEnd.Location = new System.Drawing.Point(12, 195);
-        this.labelEnd.Name = "labelEnd";
-        this.labelEnd.Size = new System.Drawing.Size(56, 17);
-        this.labelEnd.TabIndex = 6;
-        this.labelEnd.Text = "Konec";
+        this.DateTimePickerStart.Dock = System.Windows.Forms.DockStyle.Left;
+        this.DateTimePickerStart.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+        this.DateTimePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+        this.DateTimePickerStart.CustomFormat = "dd.MM.yyyy HH:mm";
         // 
-        // dateTimePickerEnd
+        // LabelEnd
         // 
-        this.dateTimePickerEnd.CustomFormat = "dd.MM.yyyy HH:mm";
-        this.dateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-        this.dateTimePickerEnd.Location = new System.Drawing.Point(100, 190);
-        this.dateTimePickerEnd.Name = "dateTimePickerEnd";
-        this.dateTimePickerEnd.Size = new System.Drawing.Size(200, 22);
-        this.dateTimePickerEnd.TabIndex = 7;
+        this.LabelEnd.AutoSize = true;
+        this.LabelEnd.Text = "Konec";
+        this.LabelEnd.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
-        // labelTags
+        // DateTimePickerEnd
         // 
-        this.labelTags.AutoSize = true;
-        this.labelTags.Location = new System.Drawing.Point(12, 230);
-        this.labelTags.Name = "labelTags";
-        this.labelTags.Size = new System.Drawing.Size(44, 17);
-        this.labelTags.TabIndex = 8;
-        this.labelTags.Text = "Štítky";
-        //
-        // checkedListBoxTags
-        //
-        this.checkedListBoxTags = new System.Windows.Forms.CheckedListBox();
-        this.checkedListBoxTags.CheckOnClick = true;
-        this.checkedListBoxTags.FormattingEnabled = true;
-        this.checkedListBoxTags.Location = new System.Drawing.Point(100, 227);
-        this.checkedListBoxTags.Name = "checkedListBoxTags";
-        this.checkedListBoxTags.Size = new System.Drawing.Size(300, 80);
-        this.checkedListBoxTags.TabIndex = 9;
+        this.DateTimePickerEnd.Dock = System.Windows.Forms.DockStyle.Left;
+        this.DateTimePickerEnd.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+        this.DateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+        this.DateTimePickerEnd.CustomFormat = "dd.MM.yyyy HH:mm";
         // 
-        // labelReminder
+        // LabelTags
         // 
-        this.labelReminder.AutoSize = true;
-        this.labelReminder.Location = new System.Drawing.Point(12, 265);
-        this.labelReminder.Name = "labelReminder";
-        this.labelReminder.Size = new System.Drawing.Size(82, 17);
-        this.labelReminder.TabIndex = 10;
-        this.labelReminder.Text = "Upozornění";
+        this.LabelTags.AutoSize = true;
+        this.LabelTags.Text = "Štítky";
+        this.LabelTags.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
-        // numericUpDownReminder
+        // CheckedListBoxTags
         // 
-        this.numericUpDownReminder.Location = new System.Drawing.Point(100, 263);
-        this.numericUpDownReminder.Maximum = new decimal(new int[] {
-        1440,
-        0,
-        0,
-        0});
-        this.numericUpDownReminder.Name = "numericUpDownReminder";
-        this.numericUpDownReminder.Size = new System.Drawing.Size(80, 22);
-        this.numericUpDownReminder.TabIndex = 11;
-        this.numericUpDownReminder.Value = new decimal(new int[] {
-        30,
-        0,
-        0,
-        0});
+        this.CheckedListBoxTags.Dock = System.Windows.Forms.DockStyle.Fill;
+        this.CheckedListBoxTags.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+        this.CheckedListBoxTags.CheckOnClick = true;
+        this.CheckedListBoxTags.Height = 80;
         // 
-        // buttonOK
+        // LabelReminder
         // 
-        this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-        this.buttonOK.Location = new System.Drawing.Point(220, 305);
-        this.buttonOK.Name = "buttonOK";
-        this.buttonOK.Size = new System.Drawing.Size(90, 30);
-        this.buttonOK.TabIndex = 12;
-        this.buttonOK.Text = "OK";
-        this.buttonOK.UseVisualStyleBackColor = true;
+        this.LabelReminder.AutoSize = true;
+        this.LabelReminder.Text = "Upozornění";
+        this.LabelReminder.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
-        // buttonCancel
+        // NumericUpDownReminder
         // 
-        this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        this.buttonCancel.Location = new System.Drawing.Point(330, 305);
-        this.buttonCancel.Name = "buttonCancel";
-        this.buttonCancel.Size = new System.Drawing.Size(90, 30);
-        this.buttonCancel.TabIndex = 13;
-        this.buttonCancel.Text = "Zrušit";
-        this.buttonCancel.UseVisualStyleBackColor = true;
+        this.NumericUpDownReminder.Maximum = new decimal(new int[] {1440,0,0,0});
+        this.NumericUpDownReminder.Value = new decimal(new int[] {30,0,0,0});
+        this.NumericUpDownReminder.Dock = System.Windows.Forms.DockStyle.Left;
+        this.NumericUpDownReminder.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+        // 
+        // ButtonPanel
+        // 
+        this.ButtonPanel.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+        this.ButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+        this.ButtonPanel.AutoSize = false;
+        this.ButtonPanel.Height = 40;
+        this.ButtonPanel.Controls.Add(this.ButtonCancel);
+        this.ButtonPanel.Controls.Add(this.ButtonOK);
+        // 
+        // ButtonOK
+        // 
+        this.ButtonOK.Text = "OK";
+        this.ButtonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+        this.ButtonOK.AutoSize = true;
+        // 
+        // ButtonCancel
+        // 
+        this.ButtonCancel.Text = "Zrušit";
+        this.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        this.ButtonCancel.AutoSize = true;
         // 
         // EventForm
         // 
-        this.AcceptButton = this.buttonOK;
-        this.CancelButton = this.buttonCancel;
-        this.ClientSize = new System.Drawing.Size(420, 350);
-        this.Controls.Add(this.buttonCancel);
-        this.Controls.Add(this.buttonOK);
-        this.Controls.Add(this.numericUpDownReminder);
-        this.Controls.Add(this.labelReminder);
-        this.Controls.Add(this.checkedListBoxTags);
-        this.Controls.Add(this.labelTags);
-        this.Controls.Add(this.dateTimePickerEnd);
-        this.Controls.Add(this.labelEnd);
-        this.Controls.Add(this.dateTimePickerStart);
-        this.Controls.Add(this.labelStart);
-        this.Controls.Add(this.richTextBoxDescription);
-        this.Controls.Add(this.labelDescription);
-        this.Controls.Add(this.textBoxTitle);
-        this.Controls.Add(this.labelTitle);
+        this.AcceptButton = this.ButtonOK;
+        this.CancelButton = this.ButtonCancel;
+        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        this.AutoSize = false;
+        this.ClientSize = new System.Drawing.Size(500, 400);
+        this.Controls.Add(this.TableLayout);
+        this.Controls.Add(this.ButtonPanel);
         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
         this.MaximizeBox = false;
         this.MinimizeBox = false;
-        this.Name = "EventForm";
         this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
         this.Text = "Událost";
-        ((System.ComponentModel.ISupportInitialize)(this.numericUpDownReminder)).EndInit();
+        ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownReminder)).EndInit();
+        this.ButtonPanel.ResumeLayout(false);
+        this.ButtonPanel.PerformLayout();
         this.ResumeLayout(false);
-        this.PerformLayout();
     }
+
     #endregion
 }

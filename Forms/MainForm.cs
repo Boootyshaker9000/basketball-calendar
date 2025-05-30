@@ -5,23 +5,25 @@ namespace basketball_calendar.Forms;
 
 public partial class MainForm : Form
 {
-    private /*readonly*/ EventRepository Repository { get; set; }
+    private EventRepository Repository { get; set; }
     private List<Event> AllEvents { get; set; }
 
     public MainForm()
     {
+        Repository = new("events.json");
         AllEvents = new();
         InitializeComponent();
     }
 
     private void MainForm_Load(object sender, EventArgs eventArgs)
     {
-        Repository = new EventRepository("events.json");
-        AllEvents = Repository.LoadEvents() ?? new List<Event>();
+        AllEvents = Repository.LoadEvents()
+            .Where(ev => ev != null)
+            .ToList();
 
         var allTags = AllEvents
             .Where(ev => ev != null)
-            .SelectMany(ev => ev.Tags ?? Enumerable.Empty<string>())
+            .SelectMany(ev => ev.Tags)  
             .Distinct()
             .OrderBy(t => t)
             .ToList();
@@ -36,23 +38,24 @@ public partial class MainForm : Form
     /// <summary>
     /// Aktualizuje zobrazený seznam událostí podle vybraného data.
     /// </summary>
-    private void RefreshEventList(DateTime dateTime)
+    private void RefreshEventList(DateTime date)
     {
         var filtered = AllEvents
-            .Where(ev => ev.Start.Date == dateTime.Date)
+            .Where(ev => ev != null && ev.Start.Date == date.Date)
             .OrderBy(ev => ev.Start)
             .ToList();
-
+        
         ListBoxEvents.DataSource = filtered;
         ListBoxEvents.DisplayMember = nameof(Event.Title);
     }
 
-    private void monthCalendar_DateChanged(object sender, DateRangeEventArgs eventArgs)
+
+    private void MonthCalendarOnDateChanged(object sender, DateRangeEventArgs eventArgs)
     {
         RefreshEventList(eventArgs.Start);
     }
 
-    private void buttonAdd_Click(object sender, EventArgs eventArgs)
+    private void ButtonAddOnClick(object sender, EventArgs eventArgs)
     {
         using (var form = new EventForm())
         {
@@ -65,7 +68,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void buttonEdit_Click(object sender, EventArgs eventArgs)
+    private void ButtonEditOnClick(object sender, EventArgs eventArgs)
     {
         if (ListBoxEvents.SelectedItem is Event selectedEvent)
         {
@@ -81,7 +84,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void buttonDelete_Click(object sender, EventArgs eventArgs)
+    private void ButtonDeleteOnClick(object sender, EventArgs eventArgs)
     {
         if (ListBoxEvents.SelectedItem is Event selectedEvent)
         {
@@ -100,7 +103,7 @@ public partial class MainForm : Form
         }
     }
     
-    private void listBoxEvents_DoubleClick(object sender, EventArgs eventArgs)
+    private void ListBoxEventsOnDoubleClick(object sender, EventArgs eventArgs)
     {
         if (ListBoxEvents.SelectedItem is Event selectedEvent)
         {
@@ -120,7 +123,7 @@ public partial class MainForm : Form
     {
         var now = DateTime.Now;
         var toRemind = AllEvents
-            .Where(ev => !ev.ReminderSent 
+            .Where(ev => ev != null && !ev.ReminderSent 
                          && ev.ReminderOffset.HasValue
                          && now >= ev.Start - ev.ReminderOffset.Value)
             .ToList();
@@ -133,5 +136,34 @@ public partial class MainForm : Form
         }
         if (toRemind.Any())
             AllEvents = Repository.LoadEvents();
+    }
+    
+    private void ButtonSettingsOnClick(object sender, EventArgs eventsArgs)
+    {
+        using var form = new SettingsForm();
+        if (form.ShowDialog() == DialogResult.OK)
+        {
+            BackColor = form.SelectedPrimary;
+            ForeColor = form.SelectedSecondary;
+
+            MonthCalendar.BackColor = BackColor;
+            MonthCalendar.ForeColor = ForeColor;
+
+            ListBoxEvents.BackColor = BackColor;
+            ListBoxEvents.ForeColor = ForeColor;
+
+            LabelFilter.ForeColor = ForeColor;
+            ComboBoxFilter.BackColor = BackColor;
+            ComboBoxFilter.ForeColor = ForeColor;
+
+            foreach (Control control in new Control[] { ButtonAdd, ButtonEdit, ButtonDelete, ButtonSettings })
+            {
+                if (control is Button button)
+                {
+                    button.BackColor = BackColor;
+                    button.ForeColor = ForeColor;
+                }
+            }
+        }
     }
 }
