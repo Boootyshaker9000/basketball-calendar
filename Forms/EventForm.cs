@@ -5,22 +5,18 @@ namespace basketball_calendar.Forms;
 public partial class EventForm : Form
 {
     public Event Event { get; private set; }
-    private bool IsEditMode { get; set; }
+    private bool IsEditMode { get; }
 
     public EventForm()
     {
         InitializeComponent();
         IsEditMode = false;
         Text = "Nová událost";
-        object[] predefinedTags = ["Zápas NBA", "Zápas", "Trénink", "Streetball", "Soustředění"];
-        CheckedListBoxTags.Items.AddRange(predefinedTags);
+        PopulateTags();
     }
 
     public EventForm(Event existingEvent) : this()
     {
-        if (existingEvent == null)
-            throw new ArgumentNullException(nameof(existingEvent));
-
         IsEditMode = true;
         Event = existingEvent;
         Text = "Upravit událost";
@@ -29,15 +25,18 @@ public partial class EventForm : Form
         RichTextBoxDescription.Text = Event.Description;
         DateTimePickerStart.Value = Event.Start;
         DateTimePickerEnd.Value = Event.End;
-        CheckedListBoxTags.Text = string.Join(",", Event.Tags);
+        PanelTags.Text = string.Join(",", Event.Tag);
         NumericUpDownReminder.Value = Event.ReminderOffset.HasValue
             ? (decimal)Event.ReminderOffset.Value.TotalMinutes
             : NumericUpDownReminder.Minimum;
         
-        for (int i = 0; i < CheckedListBoxTags.Items.Count; i++)
+        foreach (RadioButton radioButton in PanelTags.Controls.OfType<RadioButton>())
         {
-            if (existingEvent.Tags.Contains(CheckedListBoxTags.Items[i].ToString()))
-                CheckedListBoxTags.SetItemChecked(i, true);
+            if (radioButton.Text == existingEvent.Tag)
+            {
+                radioButton.Checked = true;
+                break;
+            }
         }
     }
 
@@ -53,9 +52,15 @@ public partial class EventForm : Form
             MessageBox.Show("Konec události musí být po začátku.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
-
-        ButtonOk.DialogResult = DialogResult.OK;
-
+        var checkedRb = PanelTags.Controls.OfType<RadioButton>().FirstOrDefault(rb => rb.Checked);
+        
+        if (checkedRb == null)
+        {
+            MessageBox.Show("Vyberte prosím jeden štítek.", "Chyba",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        
         if (!IsEditMode)
         {
             Event = new Event();
@@ -65,9 +70,7 @@ public partial class EventForm : Form
         Event.Description = RichTextBoxDescription.Text.Trim();
         Event.Start = DateTimePickerStart.Value;
         Event.End = DateTimePickerEnd.Value;
-        Event.Tags = CheckedListBoxTags.CheckedItems
-            .OfType<string>()
-            .ToList();
+        Event.Tag = checkedRb.Text;
 
         var reminderMinutes = (int)NumericUpDownReminder.Value;
         Event.ReminderOffset = reminderMinutes > 0 ? TimeSpan.FromMinutes(reminderMinutes) : null;
@@ -80,6 +83,9 @@ public partial class EventForm : Form
         {
             Event.ReminderSent = false;
         }
+
+        DialogResult = DialogResult.OK;
+        Close();
     }
     
     /// <summary>
@@ -127,6 +133,21 @@ public partial class EventForm : Form
                 button.BackColor = backgroundColor;
                 button.ForeColor = foregroundColor;
             }
+        }
+    }
+    
+    private void PopulateTags()
+    {
+        var predefinedTags = new[] {"Zápas NBA", "Zápas", "Trénink", "Streetball", "Soustředění"};
+        foreach (var tag in predefinedTags)
+        {
+            var radioButton = new RadioButton
+            {
+                Text = tag,
+                AutoSize = true,
+                Margin = new Padding(3)
+            };
+            PanelTags.Controls.Add(radioButton);
         }
     }
 }

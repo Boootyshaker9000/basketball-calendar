@@ -16,7 +16,7 @@ partial class EventForm
     private System.Windows.Forms.Label LabelEnd { get; set; }
     private System.Windows.Forms.DateTimePicker DateTimePickerEnd { get; set; }
     private System.Windows.Forms.Label LabelTags { get; set; }
-    private System.Windows.Forms.CheckedListBox CheckedListBoxTags { get; set; }
+    private System.Windows.Forms.FlowLayoutPanel PanelTags { get; set; }
     private System.Windows.Forms.Label LabelReminder { get; set; }
     private System.Windows.Forms.Button ButtonOk { get; set; }
     private System.Windows.Forms.Button ButtonCancel { get; set; }
@@ -48,7 +48,7 @@ partial class EventForm
         this.LabelEnd = new System.Windows.Forms.Label();
         this.DateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
         this.LabelTags = new System.Windows.Forms.Label();
-        this.CheckedListBoxTags = new System.Windows.Forms.CheckedListBox();
+        this.PanelTags = new System.Windows.Forms.FlowLayoutPanel();
         this.LabelReminder = new System.Windows.Forms.Label();
         this.NumericUpDownReminder = new System.Windows.Forms.NumericUpDown();
         this.ButtonPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -79,7 +79,7 @@ partial class EventForm
         this.TableLayout.Controls.Add(this.LabelEnd, 0, 3);
         this.TableLayout.Controls.Add(this.DateTimePickerEnd, 1, 3);
         this.TableLayout.Controls.Add(this.LabelTags, 0, 4);
-        this.TableLayout.Controls.Add(this.CheckedListBoxTags, 1, 4);
+        this.TableLayout.Controls.Add(this.PanelTags, 1, 4);
         this.TableLayout.Controls.Add(this.LabelReminder, 0, 5);
         this.TableLayout.Controls.Add(this.NumericUpDownReminder, 1, 5);
         // 
@@ -138,17 +138,21 @@ partial class EventForm
         this.LabelTags.Text = "Štítky";
         this.LabelTags.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
-        // CheckedListBoxTags
+        // PanelTags
         // 
-        this.CheckedListBoxTags.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.CheckedListBoxTags.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
-        this.CheckedListBoxTags.CheckOnClick = true;
-        this.CheckedListBoxTags.Height = 80;
+        this.PanelTags.AutoSize = true;
+        this.PanelTags.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+        this.PanelTags.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+        this.PanelTags.WrapContents = false;
+        this.PanelTags.Location = new System.Drawing.Point(70, 227);
+        this.PanelTags.Name = "panelTags";
+        this.PanelTags.Size = new System.Drawing.Size(400, 20);
+        this.PanelTags.TabIndex = 9;
         // 
         // LabelReminder
         // 
         this.LabelReminder.AutoSize = true;
-        this.LabelReminder.Text = "Upozornění";
+        this.LabelReminder.Text = "Upozornění\ns minutovým předstihem";
         this.LabelReminder.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
         // NumericUpDownReminder
@@ -169,7 +173,7 @@ partial class EventForm
         // 
         // ButtonOk
         // 
-        this.ButtonOk.Text = "OK";
+        this.ButtonOk.Text = "Ok";
         this.ButtonOk.DialogResult = System.Windows.Forms.DialogResult.None;
         this.ButtonOk.Click += new System.EventHandler(this.ButtonOkOnClick);
         this.ButtonOk.AutoSize = true;

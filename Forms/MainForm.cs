@@ -11,7 +11,7 @@ public partial class MainForm : Form
 
     public MainForm()
     {
-        Repository = new("events.json");
+        Repository = new();
         AllEvents = Repository.LoadEvents();
         InitializeComponent();
     }
@@ -19,11 +19,11 @@ public partial class MainForm : Form
     private void MainForm_Load(object sender, EventArgs eventArgs)
     {
         var allTags = AllEvents
-            .SelectMany(@event => @event.Tags)  
+            .SelectMany(@event => @event.Tag)  
             .Distinct()
             .OrderBy(time => time)
             .ToList();
-        allTags.Insert(0, "Všechny");
+        //allTags.Insert(0, "Všechny");
         ComboBoxFilter.DataSource = allTags;
 
         MonthCalendar.SelectionStart = DateTime.Today;
@@ -77,6 +77,7 @@ public partial class MainForm : Form
         form.ApplyTheme(BackgroundColor, ForegroundColor);
         if (form.ShowDialog() == DialogResult.OK)
         {
+            Console.WriteLine("Spuštěno");
             Repository.AddEvent(form.Event);
             AllEvents = Repository.LoadEvents();
             RefreshEventList(MonthCalendar.SelectionStart);
@@ -119,19 +120,7 @@ public partial class MainForm : Form
     
     private void ListBoxEventsOnDoubleClick(object sender, EventArgs eventArgs)
     {
-        if (ListBoxEvents.SelectedItem is Event selectedEvent)
-        {
-            using (var form = new EventForm(selectedEvent))
-            {
-                form.ApplyTheme(ForegroundColor, BackgroundColor);
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    Repository.UpdateEvent(form.Event);
-                    AllEvents = Repository.LoadEvents();
-                    RefreshEventList(MonthCalendar.SelectionStart);
-                }
-            }
-        }
+        ButtonEditOnClick(sender, eventArgs);
     }
     
     private void ReminderTimerOnTick(object sender, EventArgs eventArgs)

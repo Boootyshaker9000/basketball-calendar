@@ -33,7 +33,7 @@ public class Event
     /// <summary>
     /// Štítky nebo typy události (např. "zápas", "trénink").
     /// </summary>
-    public List<string> Tags { get; set; }
+    public string Tag { get; set; }
 
     /// <summary>
     /// Posunutí času upozornění před začátkem události (volitelné).
@@ -51,7 +51,7 @@ public class Event
     public Event()
     {
         Id = Guid.NewGuid();
-        Tags = new List<string?>();
+        Tag = string.Empty;
         ReminderSent = false;
     }
 }
