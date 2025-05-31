@@ -47,12 +47,12 @@ public partial class EventForm : Form
         if (string.IsNullOrWhiteSpace(TextBoxTitle.Text))
         {
             MessageBox.Show("Název události je povinný.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
+            //return;
         }
         if (DateTimePickerEnd.Value <= DateTimePickerStart.Value)
         {
             MessageBox.Show("Konec události musí být po začátku.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
+            //return;
         }
 
         if (!IsEditMode)

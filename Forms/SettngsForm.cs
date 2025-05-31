@@ -61,4 +61,28 @@ public partial class SettingsForm : Form
             File.WriteAllText("settings.json", JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true }));
         }
     }
+
+    public void ApplyTheme(Color foreground, Color background)
+    {
+        BackColor = background;
+        ForeColor = foreground;
+
+        ComboTeams.BackColor = background;
+        ComboTeams.ForeColor = foreground;
+
+        LabelPrimary.BackColor = background;
+        LabelPrimary.ForeColor = foreground;
+        
+        LabelSecondary.BackColor = background;
+        LabelSecondary.ForeColor = foreground;
+
+        foreach (Control control in new Control[] { ButtonOk, ButtonCancel })
+        {
+            if (control is Button button)
+            {
+                button.BackColor = background;
+                button.ForeColor = foreground;
+            }
+        }
+    }
 }

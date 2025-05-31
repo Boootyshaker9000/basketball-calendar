@@ -194,6 +194,7 @@ public partial class MainForm : Form
     private void ButtonSettingsOnClick(object sender, EventArgs eventsArgs)
     {
         using var form = new SettingsForm();
+        form.ApplyTheme(ForegroundColor, BackgroundColor);
         if (form.ShowDialog() == DialogResult.OK)
         {
             ApplyTheme(form.SelectedSecondary, form.SelectedPrimary);
