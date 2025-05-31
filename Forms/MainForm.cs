@@ -18,13 +18,16 @@ public partial class MainForm : Form
 
     private void MainForm_Load(object sender, EventArgs eventArgs)
     {
-        var allTags = AllEvents
-            .SelectMany(@event => @event.Tag)  
-            .Distinct()
-            .OrderBy(time => time)
-            .ToList();
-        //allTags.Insert(0, "Všechny");
-        ComboBoxFilter.DataSource = allTags;
+        List<string> allTags = new List<string> { "All" };
+
+        allTags.AddRange(["NBA Game", "Game", "Practice", "Streetball", "Training Camp"]);
+
+        var distinctTags = allTags.Distinct().ToList();
+        var sortedTags = new List<string> { "All" };
+        sortedTags.AddRange(distinctTags.Where(t => t != "All").OrderBy(t => t));
+
+        ComboBoxFilter.DataSource = sortedTags;
+        ComboBoxFilter.SelectedIndexChanged += ComboBoxFilter_SelectedIndexChanged;
 
         MonthCalendar.SelectionStart = DateTime.Today;
         RefreshEventList(DateTime.Today);
@@ -52,7 +55,7 @@ public partial class MainForm : Form
     }
 
     /// <summary>
-    /// Aktualizuje zobrazený seznam událostí podle vybraného data.
+    /// Updates the displayed list of events based on the selected date and tag.
     /// </summary>
     private void RefreshEventList(DateTime date)
     {
@@ -60,6 +63,11 @@ public partial class MainForm : Form
             .Where(@event => @event.Start.Date == date.Date)
             .OrderBy(ev => ev.Start)
             .ToList();
+
+        if (ComboBoxFilter.SelectedItem is string selectedTag && selectedTag != "All")
+        {
+            filtered = filtered.Where(e => e.Tag == selectedTag).ToList();
+        }
         
         ListBoxEvents.DataSource = filtered;
         ListBoxEvents.DisplayMember = nameof(Event.Title);
@@ -104,8 +112,8 @@ public partial class MainForm : Form
         if (ListBoxEvents.SelectedItem is Event selectedEvent)
         {
             var result = MessageBox.Show(
-                $"Opravdu chcete smazat událost '{selectedEvent.Title}'?",
-                "Potvrzení smazání",
+                $"Are you sure you want to delete the event '{selectedEvent.Title}'?",
+                "Delete Confirmation",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
 
@@ -137,7 +145,7 @@ public partial class MainForm : Form
         
         foreach (var @event in toRemind)
         {
-            NotifyIcon.BalloonTipText = $"{@event.Title} začíná v {@event.Start:HH:mm}";
+            NotifyIcon.BalloonTipText = $"{@event.Title} starts at {@event.Start:HH:mm}";
             NotifyIcon.ShowBalloonTip(5000);
             
             @event.ReminderSent = true;
@@ -166,6 +174,7 @@ public partial class MainForm : Form
         ListBoxEvents.BackColor = BackgroundColor;
         ListBoxEvents.ForeColor = ForegroundColor;
 
+        LabelFilter.BackColor = BackgroundColor;
         LabelFilter.ForeColor = ForegroundColor;
         ComboBoxFilter.BackColor = BackgroundColor;
         ComboBoxFilter.ForeColor = ForegroundColor;
@@ -188,6 +197,11 @@ public partial class MainForm : Form
         {
             ApplyTheme(form.SelectedSecondary, form.SelectedPrimary);
         }
+    }
+
+    private void ComboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        RefreshEventList(MonthCalendar.SelectionStart);
     }
 
     private Color BackgroundColor { get; set; }

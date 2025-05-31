@@ -72,7 +72,7 @@ partial class SettingsForm
             this.LabelSecondary.Name = "LabelSecondary";
             this.LabelSecondary.Size = new System.Drawing.Size(120, 17);
             this.LabelSecondary.TabIndex = 3;
-            this.LabelSecondary.Text = "Sekundární barva:";
+            this.LabelSecondary.Text = "Secondary color:";
             // 
             // PanelSecondary
             // 
@@ -120,7 +120,7 @@ partial class SettingsForm
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Nastavení motivu";
+            this.Text = "Theme Settings";
             this.ResumeLayout(false);
         }
 

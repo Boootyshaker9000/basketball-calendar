@@ -4,17 +4,17 @@ using basketball_calendar.Services;
 namespace basketball_calendar.Forms;
 
 /// <summary>
-/// Formulář pro výběr barevného motivu podle NBA týmu.
+/// Form for selecting color theme based on NBA team.
 /// </summary>
 public partial class SettingsForm : Form
 {
     /// <summary>
-    /// Vybraný primární odstín.
+    /// Selected primary color.
     /// </summary>
     public Color SelectedPrimary { get; private set; }
 
     /// <summary>
-    /// Vybraný sekundární odstín.
+    /// Selected secondary color.
     /// </summary>
     public Color SelectedSecondary { get; private set; }
 

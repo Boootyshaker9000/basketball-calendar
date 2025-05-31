@@ -65,11 +65,22 @@ public partial class MainForm
             // LabelFilter
             //
             this.LabelFilter.AutoSize = true;
-            this.LabelFilter.Location = new System.Drawing.Point(12, 365);
+            this.LabelFilter.Location = new System.Drawing.Point(12, 195);
             this.LabelFilter.Name = "LabelFilter";
             this.LabelFilter.Size = new System.Drawing.Size(52, 17);
             this.LabelFilter.TabIndex = 5;
-            this.LabelFilter.Text = "Štítek:";
+            this.LabelFilter.Text = "Tag:";
+            this.Controls.Add(this.LabelFilter);
+            //
+            // ComboBoxFilter
+            //
+            this.ComboBoxFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxFilter.FormattingEnabled = true;
+            this.ComboBoxFilter.Location = new System.Drawing.Point(70, 192);
+            this.ComboBoxFilter.Name = "ComboBoxFilter";
+            this.ComboBoxFilter.Size = new System.Drawing.Size(150, 24);
+            this.ComboBoxFilter.TabIndex = 6;
+            this.Controls.Add(this.ComboBoxFilter);
             // 
             // ListBoxEvents
             // 
@@ -83,11 +94,11 @@ public partial class MainForm
             //
             // ButtonSettings
             //
-            this.ButtonSettings.Location = new System.Drawing.Point(12, 365);
+            this.ButtonSettings.Location = new System.Drawing.Point(120, 365);
             this.ButtonSettings.Name = "ButtonSettings";
             this.ButtonSettings.Size = new System.Drawing.Size(90, 30);
             this.ButtonSettings.TabIndex = 4;
-            this.ButtonSettings.Text = "Nastavení";
+            this.ButtonSettings.Text = "Settings";
             this.ButtonSettings.UseVisualStyleBackColor = true;
             this.ButtonSettings.Click += new System.EventHandler(this.ButtonSettingsOnClick);
             this.Controls.Add(this.ButtonSettings);
@@ -98,7 +109,7 @@ public partial class MainForm
             this.ButtonAdd.Name = "ButtonAdd";
             this.ButtonAdd.Size = new System.Drawing.Size(90, 30);
             this.ButtonAdd.TabIndex = 2;
-            this.ButtonAdd.Text = "Přidat";
+            this.ButtonAdd.Text = "Add";
             this.ButtonAdd.UseVisualStyleBackColor = true;
             this.ButtonAdd.Click += new System.EventHandler(this.ButtonAddOnClick);
             // 
@@ -108,7 +119,7 @@ public partial class MainForm
             this.ButtonEdit.Name = "ButtonEdit";
             this.ButtonEdit.Size = new System.Drawing.Size(90, 30);
             this.ButtonEdit.TabIndex = 3;
-            this.ButtonEdit.Text = "Upravit";
+            this.ButtonEdit.Text = "Edit";
             this.ButtonEdit.UseVisualStyleBackColor = true;
             this.ButtonEdit.Click += new System.EventHandler(this.ButtonEditOnClick);
             // 
@@ -118,7 +129,7 @@ public partial class MainForm
             this.ButtonDelete.Name = "ButtonDelete";
             this.ButtonDelete.Size = new System.Drawing.Size(90, 30);
             this.ButtonDelete.TabIndex = 4;
-            this.ButtonDelete.Text = "Smazat";
+            this.ButtonDelete.Text = "Delete";
             this.ButtonDelete.UseVisualStyleBackColor = true;
             this.ButtonDelete.Click += new System.EventHandler(this.ButtonDeleteOnClick);
             // 

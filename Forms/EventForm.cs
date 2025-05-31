@@ -11,7 +11,7 @@ public partial class EventForm : Form
     {
         InitializeComponent();
         IsEditMode = false;
-        Text = "Nová událost";
+        Text = "New Event";
         PopulateTags();
     }
 
@@ -19,7 +19,7 @@ public partial class EventForm : Form
     {
         IsEditMode = true;
         Event = existingEvent;
-        Text = "Upravit událost";
+        Text = "Edit Event";
 
         TextBoxTitle.Text = Event.Title;
         RichTextBoxDescription.Text = Event.Description;
@@ -44,19 +44,19 @@ public partial class EventForm : Form
     {
         if (string.IsNullOrWhiteSpace(TextBoxTitle.Text))
         {
-            MessageBox.Show("Název události je povinný.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Event title is required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
         if (DateTimePickerEnd.Value < DateTimePickerStart.Value)
         {
-            MessageBox.Show("Konec události musí být po začátku.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Event end time must be after start time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
         var checkedRb = PanelTags.Controls.OfType<RadioButton>().FirstOrDefault(rb => rb.Checked);
-        
+
         if (checkedRb == null)
         {
-            MessageBox.Show("Vyberte prosím jeden štítek.", "Chyba",
+            MessageBox.Show("Please select a tag.", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
@@ -89,10 +89,10 @@ public partial class EventForm : Form
     }
     
     /// <summary>
-    /// Aplikuje barevný motiv (primární/sekundární) na celé EventForm.
+    /// Applies color theme (primary/secondary) to the entire EventForm.
     /// </summary>
-    /// <param name="backgroundColor">Barva pozadí (primární)</param>
-    /// <param name="foregroundColor">Barva popředí (sekundární)</param>
+    /// <param name="backgroundColor">Background color (primary)</param>
+    /// <param name="foregroundColor">Foreground color (secondary)</param>
     public void ApplyTheme(Color backgroundColor, Color foregroundColor)
     {
         BackColor = backgroundColor;
@@ -138,14 +138,15 @@ public partial class EventForm : Form
     
     private void PopulateTags()
     {
-        var predefinedTags = new[] {"Zápas NBA", "Zápas", "Trénink", "Streetball", "Soustředění"};
+        var predefinedTags = new[] {"NBA Game", "Game", "Practice", "Streetball", "Training Camp"};
         foreach (var tag in predefinedTags)
         {
             var radioButton = new RadioButton
             {
                 Text = tag,
                 AutoSize = true,
-                Margin = new Padding(3)
+                Margin = new Padding(3),
+                UseVisualStyleBackColor = true
             };
             PanelTags.Controls.Add(radioButton);
         }

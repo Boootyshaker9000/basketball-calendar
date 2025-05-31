@@ -1,52 +1,52 @@
 ﻿namespace basketball_calendar.Models;
 
 /// <summary>
-/// Reprezentuje událost v kalendáři.
+/// Represents a calendar event.
 /// </summary>
 public class Event
 {
     /// <summary>
-    /// Jedinečný identifikátor události.
+    /// Unique identifier of the event.
     /// </summary>
     public Guid Id { get; set; }
 
     /// <summary>
-    /// Název události (např. "Zápas LA Lakers").
+    /// Event title (e.g. "LA Lakers Game").
     /// </summary>
     public string Title { get; set; }
 
     /// <summary>
-    /// Podrobný popis nebo poznámka k události.
+    /// Detailed description or note about the event.
     /// </summary>
     public string Description { get; set; }
 
     /// <summary>
-    /// Čas začátku události.
+    /// Event start time.
     /// </summary>
     public DateTime Start { get; set; }
 
     /// <summary>
-    /// Čas konce události.
+    /// Event end time.
     /// </summary>
     public DateTime End { get; set; }
 
     /// <summary>
-    /// Štítky nebo typy události (např. "zápas", "trénink").
+    /// Event tags or types (e.g. "game", "practice").
     /// </summary>
     public string Tag { get; set; }
 
     /// <summary>
-    /// Posunutí času upozornění před začátkem události (volitelné).
+    /// Reminder offset time before the event start (optional).
     /// </summary>
     public TimeSpan? ReminderOffset { get; set; }
 
     /// <summary>
-    /// Indikuje, zda již bylo upozornění odesláno.
+    /// Indicates whether the reminder has been sent.
     /// </summary>
     public bool ReminderSent { get; set; }
 
     /// <summary>
-    /// Výchozí konstruktor, inicializuje Id a kolekci štítků.
+    /// Default constructor, initializes Id and tags collection.
     /// </summary>
     public Event()
     {

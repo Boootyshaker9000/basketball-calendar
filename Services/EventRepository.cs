@@ -5,7 +5,7 @@ using basketball_calendar.Models;
 namespace basketball_calendar.Services;
 
 /// <summary>
-/// Spravuje ukládání a načítání událostí do/z JSON souboru.
+/// Manages saving and loading events to/from a JSON file.
 /// </summary>
 public class EventRepository
 {
@@ -13,7 +13,7 @@ public class EventRepository
     private JsonSerializerOptions JsonOptions { get; }
 
     /// <summary>
-    /// Konstruktor repository.
+    /// Repository constructor.
     /// </summary>
     public EventRepository()
     {
@@ -29,8 +29,8 @@ public class EventRepository
     }
 
     /// <summary>
-    /// Načte všechny události ze souboru.
-    /// Pokud soubor neexistuje nebo je prázdný, vrátí prázdný seznam.
+    /// Loads all events from the file.
+    /// If the file doesn't exist or is empty, returns an empty list.
     /// </summary>
     public List<Event> LoadEvents()
     {
@@ -57,19 +57,19 @@ public class EventRepository
         }
         catch (JsonException ex)
         {
-            Console.WriteLine($"Chyba při deserializaci JSON: {ex.Message}");
-            // Při chybě formátu JSON raději vrátíme prázdný seznam než chybný
+            Console.WriteLine($"Error deserializing JSON: {ex.Message}");
+            // When JSON format is invalid, return empty list instead of corrupted data
             return new List<Event>();
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Neočekávaná chyba při načítání událostí: {ex.Message}");
+            Console.WriteLine($"Unexpected error loading events: {ex.Message}");
             return new List<Event>();
         }
     }
 
     /// <summary>
-    /// Uloží všechny události do souboru.
+    /// Saves all events to the file.
     /// </summary>
     private void SaveEvents(List<Event> events)
     {
@@ -97,23 +97,23 @@ public class EventRepository
         }
         catch (UnauthorizedAccessException ex)
         {
-            Console.WriteLine($"Chyba přístupu při ukládání událostí: {ex.Message}");
-            throw new InvalidOperationException("Nedostatečná oprávnění pro zápis do souboru.", ex);
+            Console.WriteLine($"Access error when saving events: {ex.Message}");
+            throw new InvalidOperationException("Insufficient permissions to write to file.", ex);
         }
         catch (IOException ex)
         {
-            Console.WriteLine($"I/O chyba při ukládání událostí: {ex.Message}");
-            throw new InvalidOperationException("Soubor je používán jiným procesem nebo nelze vytvořit adresář.", ex);
+            Console.WriteLine($"I/O error when saving events: {ex.Message}");
+            throw new InvalidOperationException("File is being used by another process or directory cannot be created.", ex);
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Neočekávaná chyba při ukládání událostí: {ex.Message}");
-            throw new InvalidOperationException("Chyba při ukládání událostí.", ex);
+            Console.WriteLine($"Unexpected error when saving events: {ex.Message}");
+            throw new InvalidOperationException("Error saving events.", ex);
         }
     }
 
     /// <summary>
-    /// Přidá novou událost a uloží změny.
+    /// Adds a new event and saves changes.
     /// </summary>
     public void AddEvent(Event newEvent)
     {
@@ -123,25 +123,25 @@ public class EventRepository
     }
 
     /// <summary>
-    /// Aktualizuje existující událost a uloží změny.
+    /// Updates an existing event and saves changes.
     /// </summary>
     public void UpdateEvent(Event updatedEvent)
     {
         var events = LoadEvents();
 
-        Console.WriteLine($"Hledám událost s ID: {updatedEvent.Id}");
+        Console.WriteLine($"Looking for event with ID: {updatedEvent.Id}");
         bool found = false;
 
         for (int i = 0; i < events.Count; i++)
         {
-            Console.WriteLine($"Kontroluji událost {i}: ID={events[i].Id}, Název={events[i].Title}");
-            Console.WriteLine($"Porovnání: {events[i].Id == updatedEvent.Id}");
-            Console.WriteLine($"ToString porovnání: {events[i].Id.ToString() == updatedEvent.Id.ToString()}");
+            Console.WriteLine($"Checking event {i}: ID={events[i].Id}, Title={events[i].Title}");
+            Console.WriteLine($"Comparison: {events[i].Id == updatedEvent.Id}");
+            Console.WriteLine($"ToString comparison: {events[i].Id.ToString() == updatedEvent.Id.ToString()}");
 
-            // Porovnání podle řetězcového zápisu místo přímého porovnání objektů
+            // Compare using string representation instead of direct object comparison
             if (events[i].Id.ToString() == updatedEvent.Id.ToString())
             {
-                Console.WriteLine($"Nalezena shoda ID (podle ToString): {events[i].Id}");
+                Console.WriteLine($"ID match found (by ToString): {events[i].Id}");
                 events[i] = updatedEvent;
                 SaveEvents(events);
                 found = true;
@@ -151,12 +151,12 @@ public class EventRepository
 
         if (!found)
         {
-            Console.WriteLine("Žádná událost s odpovídajícím ID nebyla nalezena");
+            Console.WriteLine("No event with matching ID was found");
         }
     }
 
     /// <summary>
-    /// Odstraní událost podle Id a uloží změny.
+    /// Deletes an event by Id and saves changes.
     /// </summary>
     public void DeleteEvent(Guid id)
     {
@@ -171,7 +171,7 @@ public class EventRepository
         }
         else
         {
-            Console.WriteLine($"Událost s ID {id} nebyla nalezena při mazání");
+            Console.WriteLine($"Event with ID {id} was not found when deleting");
         }
     }
 }

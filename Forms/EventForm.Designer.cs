@@ -86,7 +86,7 @@ partial class EventForm
         // LabelTitle
         // 
         this.LabelTitle.AutoSize = true;
-        this.LabelTitle.Text = "Název";
+        this.LabelTitle.Text = "Title";
         this.LabelTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
         // TextBoxTitle
@@ -97,7 +97,7 @@ partial class EventForm
         // LabelDescription
         // 
         this.LabelDescription.AutoSize = true;
-        this.LabelDescription.Text = "Popis";
+        this.LabelDescription.Text = "Description";
         this.LabelDescription.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
         // RichTextBoxDescription
@@ -109,7 +109,7 @@ partial class EventForm
         // LabelStart
         // 
         this.LabelStart.AutoSize = true;
-        this.LabelStart.Text = "Začátek";
+        this.LabelStart.Text = "Start";
         this.LabelStart.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
         // DateTimePickerStart
@@ -117,12 +117,12 @@ partial class EventForm
         this.DateTimePickerStart.Dock = System.Windows.Forms.DockStyle.Left;
         this.DateTimePickerStart.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
         this.DateTimePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-        this.DateTimePickerStart.CustomFormat = "dd.MM.yyyy HH:mm";
+        this.DateTimePickerStart.CustomFormat = "MM/dd/yyyy HH:mm";
         // 
         // LabelEnd
         // 
         this.LabelEnd.AutoSize = true;
-        this.LabelEnd.Text = "Konec";
+        this.LabelEnd.Text = "End";
         this.LabelEnd.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
         // DateTimePickerEnd
@@ -130,12 +130,12 @@ partial class EventForm
         this.DateTimePickerEnd.Dock = System.Windows.Forms.DockStyle.Left;
         this.DateTimePickerEnd.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
         this.DateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-        this.DateTimePickerEnd.CustomFormat = "dd.MM.yyyy HH:mm";
+        this.DateTimePickerEnd.CustomFormat = "MM/dd/yyyy HH:mm";
         // 
         // LabelTags
         // 
         this.LabelTags.AutoSize = true;
-        this.LabelTags.Text = "Štítky";
+        this.LabelTags.Text = "Tags";
         this.LabelTags.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
         // PanelTags
@@ -152,7 +152,7 @@ partial class EventForm
         // LabelReminder
         // 
         this.LabelReminder.AutoSize = true;
-        this.LabelReminder.Text = "Upozornění\ns minutovým předstihem";
+        this.LabelReminder.Text = "Reminder\nminutes before";
         this.LabelReminder.Anchor = System.Windows.Forms.AnchorStyles.Left;
         // 
         // NumericUpDownReminder
@@ -180,7 +180,7 @@ partial class EventForm
         // 
         // ButtonCancel
         // 
-        this.ButtonCancel.Text = "Zrušit";
+        this.ButtonCancel.Text = "Cancel";
         this.ButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         this.ButtonCancel.AutoSize = true;
         // 
@@ -197,7 +197,7 @@ partial class EventForm
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-        this.Text = "Událost";
+        this.Text = "Event";
         ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownReminder)).EndInit();
         this.ButtonPanel.ResumeLayout(false);
         this.ButtonPanel.PerformLayout();
