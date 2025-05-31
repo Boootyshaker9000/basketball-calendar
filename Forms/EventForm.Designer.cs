@@ -2,23 +2,27 @@
 
 partial class EventForm
 {
-    private System.ComponentModel.IContainer Components;
-    private System.Windows.Forms.TableLayoutPanel TableLayout;
-    private System.Windows.Forms.Label LabelTitle;
-    private System.Windows.Forms.TextBox TextBoxTitle;
-    private System.Windows.Forms.Label LabelDescription;
-    private System.Windows.Forms.RichTextBox RichTextBoxDescription;
-    private System.Windows.Forms.Label LabelStart;
-    public System.Windows.Forms.DateTimePicker DateTimePickerStart;
-    private System.Windows.Forms.Label LabelEnd;
-    private System.Windows.Forms.DateTimePicker DateTimePickerEnd;
-    private System.Windows.Forms.Label LabelTags;
-    private System.Windows.Forms.CheckedListBox CheckedListBoxTags;
-    private System.Windows.Forms.Label LabelReminder;
-    public System.Windows.Forms.NumericUpDown NumericUpDownReminder;
-    public System.Windows.Forms.FlowLayoutPanel ButtonPanel;
-    private System.Windows.Forms.Button ButtonOK;
-    private System.Windows.Forms.Button ButtonCancel;
+    public System.Windows.Forms.DateTimePicker DateTimePickerStart { get; set; }
+    public System.Windows.Forms.NumericUpDown NumericUpDownReminder { get; set; }
+    public System.Windows.Forms.FlowLayoutPanel ButtonPanel { get; set; }
+    
+    private System.ComponentModel.IContainer Components { get; set; }
+    private System.Windows.Forms.TableLayoutPanel TableLayout { get; set; }
+    private System.Windows.Forms.Label LabelTitle { get; set; }
+    private System.Windows.Forms.TextBox TextBoxTitle { get; set; }
+    private System.Windows.Forms.Label LabelDescription { get; set; }
+    private System.Windows.Forms.RichTextBox RichTextBoxDescription { get; set; }
+    private System.Windows.Forms.Label LabelStart { get; set; }
+    private System.Windows.Forms.Label LabelEnd { get; set; }
+    private System.Windows.Forms.DateTimePicker DateTimePickerEnd { get; set; }
+    private System.Windows.Forms.Label LabelTags { get; set; }
+    private System.Windows.Forms.CheckedListBox CheckedListBoxTags { get; set; }
+    private System.Windows.Forms.Label LabelReminder { get; set; }
+    private System.Windows.Forms.Button ButtonOK { get; set; }
+    private System.Windows.Forms.Button ButtonCancel { get; set; }
+
+    private System.DateTime OriginalStart { get; set; }
+    private System.TimeSpan OriginalOffset { get; set; }
 
     protected override void Dispose(bool disposing)
     {

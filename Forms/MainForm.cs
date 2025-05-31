@@ -12,18 +12,13 @@ public partial class MainForm : Form
     public MainForm()
     {
         Repository = new("events.json");
-        AllEvents = new();
+        AllEvents = Repository.LoadEvents();
         InitializeComponent();
     }
 
     private void MainForm_Load(object sender, EventArgs eventArgs)
     {
-        AllEvents = Repository.LoadEvents()
-            .Where(@event => @event != null)
-            .ToList();
-
         var allTags = AllEvents
-            .Where(@event => @event != null)
             .SelectMany(@event => @event.Tags)  
             .Distinct()
             .OrderBy(time => time)
@@ -132,6 +127,7 @@ public partial class MainForm : Form
         {
             using (var form = new EventForm(selectedEvent))
             {
+                form.ApplyTheme(ForegroundColor, BackgroundColor);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     Repository.UpdateEvent(form.Event);
@@ -145,20 +141,28 @@ public partial class MainForm : Form
     private void ReminderTimerOnTick(object sender, EventArgs eventArgs)
     {
         var now = DateTime.Now;
+        AllEvents = Repository.LoadEvents();
         var toRemind = AllEvents
-            .Where(@event => @event != null && !@event.ReminderSent 
-                         && @event.ReminderOffset.HasValue
-                         && now >= @event.Start - @event.ReminderOffset.Value)
+            .Where(@event => !@event.ReminderSent 
+                                  && @event.ReminderOffset.HasValue 
+                                  && !@event.ReminderSent
+                                  && now >= @event.Start - @event.ReminderOffset.Value
+                                  && now <= @event.Start)
             .ToList();
+        
         foreach (var @event in toRemind)
         {
             NotifyIcon.BalloonTipText = $"{@event.Title} začíná v {@event.Start:HH:mm}";
             NotifyIcon.ShowBalloonTip(5000);
+            
             @event.ReminderSent = true;
             Repository.UpdateEvent(@event);
         }
+
         if (toRemind.Any())
+        {
             AllEvents = Repository.LoadEvents();
+        }
     }
 
     private void ApplyTheme(Color foreground, Color background)

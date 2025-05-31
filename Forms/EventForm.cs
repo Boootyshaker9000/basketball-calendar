@@ -12,9 +12,8 @@ public partial class EventForm : Form
         InitializeComponent();
         IsEditMode = false;
         Text = "Nová událost";
-        var predefinedTags = new[] { "Zápas NBA", "Zápas", "Trénink", "Streetball", "Soustředění" };
+        object[] predefinedTags = ["Zápas NBA", "Zápas", "Trénink", "Streetball", "Soustředění"];
         CheckedListBoxTags.Items.AddRange(predefinedTags);
-        //ApplyTheme(SettingsForm.SelectedSecondary, SettingsForm.SelectedPrimary);
     }
 
     public EventForm(Event existingEvent) : this()
@@ -47,12 +46,12 @@ public partial class EventForm : Form
         if (string.IsNullOrWhiteSpace(TextBoxTitle.Text))
         {
             MessageBox.Show("Název události je povinný.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //return;
+            return;
         }
         if (DateTimePickerEnd.Value < DateTimePickerStart.Value)
         {
             MessageBox.Show("Konec události musí být po začátku.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //return;
+            return;
         }
 
         if (!IsEditMode)
@@ -70,7 +69,15 @@ public partial class EventForm : Form
 
         var reminderMinutes = (int)NumericUpDownReminder.Value;
         Event.ReminderOffset = reminderMinutes > 0 ? TimeSpan.FromMinutes(reminderMinutes) : null;
-        Event.ReminderSent = false;
+        
+        if (IsEditMode && (Event.Start != OriginalStart || Event.ReminderOffset != OriginalOffset))
+        {
+            Event.ReminderSent = false;
+        }
+        else if (!IsEditMode)
+        {
+            Event.ReminderSent = false;
+        }
     }
     
     /// <summary>

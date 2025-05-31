@@ -8,7 +8,17 @@ public partial class MainForm
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer Components;
+        private System.ComponentModel.IContainer Components  { get; set; }
+        private MonthCalendar MonthCalendar { get; set; }
+        private ListBox ListBoxEvents { get; set; }
+        private Button ButtonAdd { get; set; }
+        private Button ButtonEdit { get; set; }
+        private Button ButtonDelete { get; set; }
+        private NotifyIcon NotifyIcon { get; set; }
+        private Timer ReminderTimer { get; set; }
+        private Label LabelFilter { get; set; }
+        private ComboBox ComboBoxFilter { get; set; }
+        private Button ButtonSettings { get; set; }
 
         /// <summary>
         /// Clean up any resources being used.
@@ -40,6 +50,8 @@ public partial class MainForm
             this.LabelFilter = new System.Windows.Forms.Label();
             this.ComboBoxFilter = new System.Windows.Forms.ComboBox();
             this.ButtonSettings = new System.Windows.Forms.Button();
+            this.NotifyIcon = new System.Windows.Forms.NotifyIcon(this.Components);
+            this.ReminderTimer = new System.Windows.Forms.Timer(this.Components);
             this.SuspendLayout();
             // 
             // MonthCalendar
@@ -124,25 +136,19 @@ public partial class MainForm
             this.Text = "Basketball Calendar";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
-            //
+            // 
             // NotifyIcon
-            //
-            this.ReminderTimer = new System.Windows.Forms.Timer(this.Components);
-            this.ReminderTimer.Interval = 60000;
-            this.ReminderTimer.Tick += ReminderTimerOnTick;
+            // 
+            this.NotifyIcon.Icon = System.Drawing.SystemIcons.Application;
+            this.NotifyIcon.Text = "Basketball Calendar";
+            this.NotifyIcon.Visible = true;
+            // 
+            // ReminderTimer
+            // 
+            this.ReminderTimer.Interval = 60_000;
+            this.ReminderTimer.Tick += new System.EventHandler(this.ReminderTimerOnTick);
             this.ReminderTimer.Start();
         }
 
         #endregion
-
-        private MonthCalendar MonthCalendar { get; set; }
-        private ListBox ListBoxEvents { get; set; }
-        private Button ButtonAdd { get; set; }
-        private Button ButtonEdit { get; set; }
-        private Button ButtonDelete { get; set; }
-        private NotifyIcon NotifyIcon { get; set; }
-        private Timer ReminderTimer { get; set; }
-        private Label LabelFilter { get; set; }
-        private ComboBox ComboBoxFilter { get; set; }
-        private Button ButtonSettings { get; set; }
 }

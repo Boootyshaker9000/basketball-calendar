@@ -2,14 +2,14 @@
 
 partial class SettingsForm
     {
-        private System.ComponentModel.IContainer Components;
-        private System.Windows.Forms.ComboBox ComboTeams;
-        private System.Windows.Forms.Label LabelPrimary;
-        private System.Windows.Forms.Panel PanelPrimary;
-        private System.Windows.Forms.Label LabelSecondary;
-        private System.Windows.Forms.Panel PanelSecondary;
-        private System.Windows.Forms.Button ButtonOk;
-        private System.Windows.Forms.Button ButtonCancel;
+        private System.ComponentModel.IContainer Components { get; set; }
+        private System.Windows.Forms.ComboBox ComboTeams { get; set; }
+        private System.Windows.Forms.Label LabelPrimary { get; set; }
+        private System.Windows.Forms.Panel PanelPrimary { get; set; }
+        private System.Windows.Forms.Label LabelSecondary { get; set; }
+        private System.Windows.Forms.Panel PanelSecondary { get; set; }
+        private System.Windows.Forms.Button ButtonOk { get; set; }
+        private System.Windows.Forms.Button ButtonCancel { get; set; }
 
         /// <summary>
         /// Clean up any resources being used.
@@ -61,7 +61,7 @@ partial class SettingsForm
             // 
             this.PanelPrimary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelPrimary.Location = new System.Drawing.Point(150, 55);
-            this.PanelPrimary.Name = "panelPrimary";
+            this.PanelPrimary.Name = "PanelPrimary";
             this.PanelPrimary.Size = new System.Drawing.Size(50, 25);
             this.PanelPrimary.TabIndex = 2;
             // 
@@ -69,7 +69,7 @@ partial class SettingsForm
             // 
             this.LabelSecondary.AutoSize = true;
             this.LabelSecondary.Location = new System.Drawing.Point(20, 100);
-            this.LabelSecondary.Name = "labelSecondary";
+            this.LabelSecondary.Name = "LabelSecondary";
             this.LabelSecondary.Size = new System.Drawing.Size(120, 17);
             this.LabelSecondary.TabIndex = 3;
             this.LabelSecondary.Text = "Sekundární barva:";
@@ -78,7 +78,7 @@ partial class SettingsForm
             // 
             this.PanelSecondary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelSecondary.Location = new System.Drawing.Point(150, 95);
-            this.PanelSecondary.Name = "panelSecondary";
+            this.PanelSecondary.Name = "PanelSecondary";
             this.PanelSecondary.Size = new System.Drawing.Size(50, 25);
             this.PanelSecondary.TabIndex = 4;
             // 

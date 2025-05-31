@@ -75,8 +75,11 @@ public class EventRepository
     public void AddEvent(Event newEvent)
     {
         var events = LoadEvents();
-        events.Add(newEvent);
-        SaveEvents(events);
+        if (newEvent != null)
+        {
+            events.Add(newEvent);
+            SaveEvents(events);
+        }
     }
 
     /// <summary>
@@ -86,7 +89,7 @@ public class EventRepository
     {
 
         var events = LoadEvents();
-        var index = events.FindIndex(ev => ev != null && ev.Id == updatedEvent.Id);
+        var index = events.FindIndex(ev => ev.Id == updatedEvent.Id);
         if (index >= 0)
         {
             events[index] = updatedEvent;
@@ -100,7 +103,7 @@ public class EventRepository
     public void DeleteEvent(Guid id)
     {
         var events = LoadEvents();
-        var removed = events.RemoveAll(@event => @event != null && @event.Id == id);
+        var removed = events.RemoveAll(@event => @event.Id == id);
         if (removed > 0)
         {
             SaveEvents(events);
