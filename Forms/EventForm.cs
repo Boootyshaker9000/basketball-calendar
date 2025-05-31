@@ -49,7 +49,7 @@ public partial class EventForm : Form
             MessageBox.Show("Název události je povinný.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //return;
         }
-        if (DateTimePickerEnd.Value <= DateTimePickerStart.Value)
+        if (DateTimePickerEnd.Value < DateTimePickerStart.Value)
         {
             MessageBox.Show("Konec události musí být po začátku.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //return;
@@ -69,7 +69,7 @@ public partial class EventForm : Form
             .ToList();
 
         var reminderMinutes = (int)NumericUpDownReminder.Value;
-        Event.ReminderOffset = reminderMinutes > 0 ? TimeSpan.FromMinutes(reminderMinutes) : (TimeSpan?)null;
+        Event.ReminderOffset = reminderMinutes > 0 ? TimeSpan.FromMinutes(reminderMinutes) : null;
         Event.ReminderSent = false;
     }
     
