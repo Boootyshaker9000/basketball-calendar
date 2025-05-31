@@ -14,6 +14,7 @@ public partial class EventForm : Form
         Text = "Nová událost";
         var predefinedTags = new[] { "Zápas NBA", "Zápas", "Trénink", "Streetball", "Soustředění" };
         CheckedListBoxTags.Items.AddRange(predefinedTags);
+        //ApplyTheme(SettingsForm.SelectedSecondary, SettingsForm.SelectedPrimary);
     }
 
     public EventForm(Event existingEvent) : this()
@@ -70,14 +71,53 @@ public partial class EventForm : Form
         var reminderMinutes = (int)NumericUpDownReminder.Value;
         Event.ReminderOffset = reminderMinutes > 0 ? TimeSpan.FromMinutes(reminderMinutes) : (TimeSpan?)null;
         Event.ReminderSent = false;
-
-        //DialogResult = DialogResult.OK;
-        //Close();
     }
-
-    /*private void ButtonCancelOnClick(object sender, EventArgs eventArgs)
+    
+    /// <summary>
+    /// Aplikuje barevný motiv (primární/sekundární) na celé EventForm.
+    /// </summary>
+    /// <param name="backgroundColor">Barva pozadí (primární)</param>
+    /// <param name="foregroundColor">Barva popředí (sekundární)</param>
+    public void ApplyTheme(Color backgroundColor, Color foregroundColor)
     {
-        //DialogResult = DialogResult.Cancel;
-        //Close();
-    }*/
+        BackColor = backgroundColor;
+        ForeColor = foregroundColor;
+
+        foreach (Control control in Controls)
+        {
+            control.BackColor = backgroundColor;
+            control.ForeColor = foregroundColor;
+
+            if (control is TableLayoutPanel tableLayoutPanel)
+            {
+                foreach (Control child in tableLayoutPanel.Controls)
+                {
+                    child.BackColor = backgroundColor;
+                    child.ForeColor = foregroundColor;
+
+                    if (child is RichTextBox richTextBox)
+                        richTextBox.BackColor = backgroundColor;
+                    if (child is CheckedListBox checkedListBox)
+                        checkedListBox.BackColor = backgroundColor;
+                }
+            }
+        }
+
+        DateTimePickerStart.CalendarForeColor = foregroundColor;
+        DateTimePickerStart.CalendarMonthBackground = backgroundColor;
+        DateTimePickerEnd.CalendarForeColor = foregroundColor;
+        DateTimePickerEnd.CalendarMonthBackground = backgroundColor;
+
+        NumericUpDownReminder.BackColor = backgroundColor;
+        NumericUpDownReminder.ForeColor = foregroundColor;
+
+        foreach (Control control in ButtonPanel.Controls)
+        {
+            if (control is Button button)
+            {
+                button.BackColor = backgroundColor;
+                button.ForeColor = foregroundColor;
+            }
+        }
+    }
 }

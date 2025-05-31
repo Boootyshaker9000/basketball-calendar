@@ -80,6 +80,7 @@ public partial class MainForm : Form
     {
         using (var form = new EventForm())
         {
+            form.ApplyTheme(BackgroundColor, ForegroundColor);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 Repository.AddEvent(form.Event);
@@ -95,6 +96,7 @@ public partial class MainForm : Form
         {
             using (var form = new EventForm(selectedEvent))
             {
+                form.ApplyTheme(BackgroundColor, ForegroundColor);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     Repository.UpdateEvent(form.Event);
@@ -161,30 +163,76 @@ public partial class MainForm : Form
 
     private void ApplyTheme(Color foreground, Color background)
     {
-        BackColor = background;
-        ForeColor = foreground;
+        BackgroundColor = background;
+        ForegroundColor = foreground;
+        
+        BackColor = BackgroundColor;
+        ForeColor = ForegroundColor;
 
-        MonthCalendar.BackColor = background;
-        MonthCalendar.ForeColor = foreground;
-        MonthCalendar.TitleBackColor = background;
-        MonthCalendar.TitleForeColor = foreground;
+        MonthCalendar.BackColor = BackgroundColor;
+        MonthCalendar.ForeColor = ForegroundColor;
+        MonthCalendar.TitleBackColor = BackgroundColor;
+        MonthCalendar.TitleForeColor = ForegroundColor;
             
-        ListBoxEvents.BackColor = background;
-        ListBoxEvents.ForeColor = foreground;
+        ListBoxEvents.BackColor = BackgroundColor;
+        ListBoxEvents.ForeColor = ForegroundColor;
 
-        LabelFilter.ForeColor = foreground;
-        ComboBoxFilter.BackColor = background;
-        ComboBoxFilter.ForeColor = foreground;
+        LabelFilter.ForeColor = ForegroundColor;
+        ComboBoxFilter.BackColor = BackgroundColor;
+        ComboBoxFilter.ForeColor = ForegroundColor;
 
         foreach (Control control in new Control[] { ButtonAdd, ButtonEdit, ButtonDelete, ButtonSettings })
         {
             if (control is Button button)
             {
-                button.BackColor = BackColor;
-                button.ForeColor = ForeColor;
+                button.BackColor = BackgroundColor;
+                button.ForeColor = ForegroundColor;
             }
         }
     }
+
+    /*private void ApplyThemeForEventForm(EventForm form, Color foreground, Color background)
+    {
+        form.BackColor = background;
+        form.ForeColor = foreground;
+
+        foreach (Control control in form.Controls)
+        {
+            control.BackColor = background;
+            control.ForeColor = foreground;
+
+            if (control is TableLayoutPanel tableLayoutPanel)
+            {
+                foreach (Control child in tableLayoutPanel.Controls)
+                {
+                    child.BackColor = background;
+                    child.ForeColor = foreground;
+
+                    if (child is RichTextBox rtb)
+                        rtb.BackColor = background;
+                    if (child is CheckedListBox clb)
+                        clb.BackColor = background;
+                }
+            }
+        }
+
+        form.DateTimePickerStart.CalendarForeColor = foreground;
+        form.DateTimePickerStart.CalendarMonthBackground = background;
+        form.DateTimePickerStart.CalendarForeColor = foreground;
+        form.DateTimePickerStart.CalendarMonthBackground = background;
+
+        form.NumericUpDownReminder.BackColor = background;
+        form.NumericUpDownReminder.ForeColor = foreground;
+
+        foreach (Control control in form.ButtonPanel.Controls)
+        {
+            if (control is Button button)
+            {
+                button.BackColor = background;
+                button.ForeColor = foreground;
+            }
+        }
+    }*/
 
     private void ButtonSettingsOnClick(object sender, EventArgs eventsArgs)
     {
@@ -194,4 +242,7 @@ public partial class MainForm : Form
             ApplyTheme(form.SelectedSecondary, form.SelectedPrimary);
         }
     }
+
+    private Color BackgroundColor { get; set; }
+    private Color ForegroundColor { get; set; }
 }

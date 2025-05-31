@@ -9,14 +9,14 @@ partial class EventForm
     private System.Windows.Forms.Label LabelDescription;
     private System.Windows.Forms.RichTextBox RichTextBoxDescription;
     private System.Windows.Forms.Label LabelStart;
-    private System.Windows.Forms.DateTimePicker DateTimePickerStart;
+    public System.Windows.Forms.DateTimePicker DateTimePickerStart;
     private System.Windows.Forms.Label LabelEnd;
     private System.Windows.Forms.DateTimePicker DateTimePickerEnd;
     private System.Windows.Forms.Label LabelTags;
     private System.Windows.Forms.CheckedListBox CheckedListBoxTags;
     private System.Windows.Forms.Label LabelReminder;
-    private System.Windows.Forms.NumericUpDown NumericUpDownReminder;
-    private System.Windows.Forms.FlowLayoutPanel ButtonPanel;
+    public System.Windows.Forms.NumericUpDown NumericUpDownReminder;
+    public System.Windows.Forms.FlowLayoutPanel ButtonPanel;
     private System.Windows.Forms.Button ButtonOK;
     private System.Windows.Forms.Button ButtonCancel;
 
