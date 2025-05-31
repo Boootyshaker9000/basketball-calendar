@@ -54,6 +54,8 @@ public partial class EventForm : Form
             return;
         }
 
+        ButtonOk.DialogResult = DialogResult.OK;
+
         if (!IsEditMode)
         {
             Event = new Event();

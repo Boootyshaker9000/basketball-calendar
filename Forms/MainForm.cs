@@ -6,7 +6,7 @@ namespace basketball_calendar.Forms;
 
 public partial class MainForm : Form
 {
-    private EventRepository Repository { get; set; }
+    private EventRepository Repository { get; }
     private List<Event> AllEvents { get; set; }
 
     public MainForm()
@@ -57,7 +57,7 @@ public partial class MainForm : Form
     private void RefreshEventList(DateTime date)
     {
         var filtered = AllEvents
-            .Where(ev => ev != null && ev.Start.Date == date.Date)
+            .Where(@event => @event.Start.Date == date.Date)
             .OrderBy(ev => ev.Start)
             .ToList();
         
@@ -73,15 +73,13 @@ public partial class MainForm : Form
 
     private void ButtonAddOnClick(object sender, EventArgs eventArgs)
     {
-        using (var form = new EventForm())
+        using var form = new EventForm();
+        form.ApplyTheme(BackgroundColor, ForegroundColor);
+        if (form.ShowDialog() == DialogResult.OK)
         {
-            form.ApplyTheme(BackgroundColor, ForegroundColor);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                Repository.AddEvent(form.Event);
-                AllEvents = Repository.LoadEvents();
-                RefreshEventList(MonthCalendar.SelectionStart);
-            }
+            Repository.AddEvent(form.Event);
+            AllEvents = Repository.LoadEvents();
+            RefreshEventList(MonthCalendar.SelectionStart);
         }
     }
 
@@ -89,15 +87,13 @@ public partial class MainForm : Form
     {
         if (ListBoxEvents.SelectedItem is Event selectedEvent)
         {
-            using (var form = new EventForm(selectedEvent))
+            using var form = new EventForm(selectedEvent);
+            form.ApplyTheme(BackgroundColor, ForegroundColor);
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                form.ApplyTheme(BackgroundColor, ForegroundColor);
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    Repository.UpdateEvent(form.Event);
-                    AllEvents = Repository.LoadEvents();
-                    RefreshEventList(MonthCalendar.SelectionStart);
-                }
+                Repository.UpdateEvent(form.Event);
+                AllEvents = Repository.LoadEvents();
+                RefreshEventList(MonthCalendar.SelectionStart);
             }
         }
     }

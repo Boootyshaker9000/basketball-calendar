@@ -18,7 +18,7 @@ partial class EventForm
     private System.Windows.Forms.Label LabelTags { get; set; }
     private System.Windows.Forms.CheckedListBox CheckedListBoxTags { get; set; }
     private System.Windows.Forms.Label LabelReminder { get; set; }
-    private System.Windows.Forms.Button ButtonOK { get; set; }
+    private System.Windows.Forms.Button ButtonOk { get; set; }
     private System.Windows.Forms.Button ButtonCancel { get; set; }
 
     private System.DateTime OriginalStart { get; set; }
@@ -52,7 +52,7 @@ partial class EventForm
         this.LabelReminder = new System.Windows.Forms.Label();
         this.NumericUpDownReminder = new System.Windows.Forms.NumericUpDown();
         this.ButtonPanel = new System.Windows.Forms.FlowLayoutPanel();
-        this.ButtonOK = new System.Windows.Forms.Button();
+        this.ButtonOk = new System.Windows.Forms.Button();
         this.ButtonCancel = new System.Windows.Forms.Button();
         ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownReminder)).BeginInit();
         this.ButtonPanel.SuspendLayout();
@@ -165,14 +165,14 @@ partial class EventForm
         this.ButtonPanel.AutoSize = false;
         this.ButtonPanel.Height = 40;
         this.ButtonPanel.Controls.Add(this.ButtonCancel);
-        this.ButtonPanel.Controls.Add(this.ButtonOK);
+        this.ButtonPanel.Controls.Add(this.ButtonOk);
         // 
-        // ButtonOK
+        // ButtonOk
         // 
-        this.ButtonOK.Text = "OK";
-        this.ButtonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-        this.ButtonOK.Click += new System.EventHandler(this.ButtonOkOnClick);
-        this.ButtonOK.AutoSize = true;
+        this.ButtonOk.Text = "OK";
+        this.ButtonOk.DialogResult = System.Windows.Forms.DialogResult.None;
+        this.ButtonOk.Click += new System.EventHandler(this.ButtonOkOnClick);
+        this.ButtonOk.AutoSize = true;
         // 
         // ButtonCancel
         // 
@@ -182,7 +182,7 @@ partial class EventForm
         // 
         // EventForm
         // 
-        this.AcceptButton = this.ButtonOK;
+        this.AcceptButton = this.ButtonOk;
         this.CancelButton = this.ButtonCancel;
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         this.AutoSize = false;
