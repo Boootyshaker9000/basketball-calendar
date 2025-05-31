@@ -191,49 +191,6 @@ public partial class MainForm : Form
         }
     }
 
-    /*private void ApplyThemeForEventForm(EventForm form, Color foreground, Color background)
-    {
-        form.BackColor = background;
-        form.ForeColor = foreground;
-
-        foreach (Control control in form.Controls)
-        {
-            control.BackColor = background;
-            control.ForeColor = foreground;
-
-            if (control is TableLayoutPanel tableLayoutPanel)
-            {
-                foreach (Control child in tableLayoutPanel.Controls)
-                {
-                    child.BackColor = background;
-                    child.ForeColor = foreground;
-
-                    if (child is RichTextBox rtb)
-                        rtb.BackColor = background;
-                    if (child is CheckedListBox clb)
-                        clb.BackColor = background;
-                }
-            }
-        }
-
-        form.DateTimePickerStart.CalendarForeColor = foreground;
-        form.DateTimePickerStart.CalendarMonthBackground = background;
-        form.DateTimePickerStart.CalendarForeColor = foreground;
-        form.DateTimePickerStart.CalendarMonthBackground = background;
-
-        form.NumericUpDownReminder.BackColor = background;
-        form.NumericUpDownReminder.ForeColor = foreground;
-
-        foreach (Control control in form.ButtonPanel.Controls)
-        {
-            if (control is Button button)
-            {
-                button.BackColor = background;
-                button.ForeColor = foreground;
-            }
-        }
-    }*/
-
     private void ButtonSettingsOnClick(object sender, EventArgs eventsArgs)
     {
         using var form = new SettingsForm();
