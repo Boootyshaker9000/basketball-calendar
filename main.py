@@ -1,43 +1,71 @@
-# This is a sample Python script.
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+from balldontlie import BalldontlieAPI
+from datetime import datetime, timedelta
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+app = Flask(__name__)
+CORS(app)  # Povolení CORS pro přístup z .NET aplikace
 
+api_key = "b6d32a45-8c63-47d3-ab00-2d91f01282eb"
+api = BalldontlieAPI(api_key=api_key)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+@app.route('/nba_games/<date>', methods=['GET'])
+def get_nba_games(date):
+    try:
+        search_date = datetime.strptime(date, "%Y-%m-%d")
+        response = api.nba.games.list(dates=[search_date.strftime("%Y-%m-%d")])
+        games = response.data
 
+        # Pokud nejsou nalezeny žádné zápasy pro dané datum, zkusíme vyhledat i historická data
+        if not games and search_date < datetime.now():
+            # Zkusíme najít nejbližší den v minulosti, kdy byly nějaké zápasy
+            test_date = search_date - timedelta(days=1)
+            while test_date >= (datetime.now() - timedelta(days=30)):
+                history_response = api.nba.games.list(dates=[test_date.strftime("%Y-%m-%d")])
+                if history_response.data:
+                    print(f"Nalezeny historické zápasy z {test_date.strftime('%Y-%m-%d')}")
+                    response = history_response
+                    games = response.data
+                    break
+                test_date -= timedelta(days=1)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-    from balldontlie import BalldontlieAPI
-    from datetime import datetime, timedelta
-
-    # Inicializace s vaším API klíčem
-    api_key = "b6d32a45-8c63-47d3-ab00-2d91f01282eb"
-    api = BalldontlieAPI(api_key=api_key)
-
-    # Použijeme aktuální datum místo budoucího
-    today = datetime.now()
-    # Můžeme jít o několik dní zpět, aby byla větší šance najít zápasy
-    search_date = (today - timedelta(days=7)).strftime("%Y-%m-%d")
-    
-    print(f"Hledám zápasy pro datum: {search_date}")
-    response = api.nba.games.list(dates=[search_date])
-    
-    games = response.data
-    
-    if not games:
-        print(f"Pro datum {search_date} nebyly nalezeny žádné zápasy.")
-    else:
-        print(f"\nNalezeno {len(games)} zápasů:")
+        game_list = []
         for game in games:
-            print(f"{game.home_team.full_name} vs {game.visitor_team.full_name}")
-            print(f"Status: {game.status}, Home Score: {game.home_team_score}, "
-                  f"Visitor Score: {game.visitor_team_score}")
-            print("-" * 50)
+            # Získáme skutečné datum a čas zápasu z API odpovědi
+            game_datetime = None
+            try:
+                if hasattr(game, 'date') and game.date:
+                    game_datetime = datetime.strptime(str(game.date), "%Y-%m-%dT%H:%M:%S.%fZ")
+            except ValueError:
+                # Fallback pokud datum nemá správný formát
+                game_datetime = search_date
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+            # Pokud se nepodařilo získat datum, použijeme vyhledávané datum
+            if not game_datetime:
+                game_datetime = search_date
+
+            # Vytvoříme objekt zápasu pro .NET aplikaci
+            game_list.append({
+                "Id": game.id,
+                "HomeTeam": game.home_team.full_name,
+                "AwayTeam": game.visitor_team.full_name,
+                "HomeScore": game.home_team_score,
+                "AwayScore": game.visitor_team_score,
+                "GameDate": game_datetime.strftime("%Y-%m-%d %H:%M"),
+                "Status": game.status
+            })
+
+        print(f"Pro datum {date} nalezeno {len(game_list)} zápasů")
+        return jsonify(game_list), 200
+    except Exception as exception:
+        print(f"Chyba při získávání dat: {exception}")
+        return jsonify({"error": str(exception)}), 500
+
+@app.route('/status', methods=['GET'])
+def status():
+    return jsonify({"status": "running"}), 200
+
+# Spustíme server s podporou pro přístup z .NET klienta
+if __name__ == '__main__':
+    print("Spouštění NBA API serveru na portu 5000...")
+    app.run(host='0.0.0.0', debug=True, port=5000)
