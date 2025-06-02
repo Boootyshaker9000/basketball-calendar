@@ -9,13 +9,16 @@ public partial class MainForm : Form
     private EventRepository Repository { get; }
     private List<Event> AllEvents { get; set; }
     private NbaGameService NbaService { get; }
-    private bool AreNbaResultsVisible { get; set; } = true;
+    private bool AreNbaResultsVisible { get; set; }
+    private Color BackgroundColor { get; set; }
+    private Color ForegroundColor { get; set; }
 
     public MainForm()
     {
         Repository = new();
         AllEvents = Repository.LoadEvents();
         NbaService = new NbaGameService("b6d32a45-8c63-47d3-ab00-2d91f01282eb");
+        AreNbaResultsVisible = true;
         InitializeComponent();
     }
 
@@ -71,7 +74,7 @@ public partial class MainForm : Form
 
         if (ComboBoxFilter.SelectedItem is string selectedTag && selectedTag != "All")
         {
-            filtered = filtered.Where(e => e.Tag == selectedTag).ToList();
+            filtered = filtered.Where(@event => @event.Tag == selectedTag).ToList();
         }
         
         ListBoxEvents.DataSource = filtered;
@@ -95,7 +98,6 @@ public partial class MainForm : Form
         form.ApplyTheme(BackgroundColor, ForegroundColor);
         if (form.ShowDialog() == DialogResult.OK)
         {
-            Console.WriteLine("Spuštěno");
             Repository.AddEvent(form.Event);
             AllEvents = Repository.LoadEvents();
             RefreshEventList(MonthCalendar.SelectionStart);
@@ -189,7 +191,6 @@ public partial class MainForm : Form
         ComboBoxFilter.BackColor = BackgroundColor;
         ComboBoxFilter.ForeColor = ForegroundColor;
 
-        // Nastavení barev pro NBA komponenty
         ListBoxNbaGames.BackColor = BackgroundColor;
         ListBoxNbaGames.ForeColor = ForegroundColor;
         LabelNbaGames.BackColor = BackgroundColor;
@@ -223,12 +224,12 @@ public partial class MainForm : Form
     /// <summary>
     /// Obsluhuje kliknutí na tlačítko pro skrytí/zobrazení NBA výsledků
     /// </summary>
-    private void ButtonToggleNbaOnClick(object sender, EventArgs e)
+    private void ButtonToggleNbaOnClick(object sender, EventArgs eventArgs)
     {
         AreNbaResultsVisible = !AreNbaResultsVisible;
 
         ListBoxNbaGames.Visible = AreNbaResultsVisible;
-        ButtonToggleNba.Text = AreNbaResultsVisible ? "Skrýt" : "Zobrazit";
+        ButtonToggleNba.Text = AreNbaResultsVisible ? "Hide" : "Show";
     }
 
     /// <summary>
@@ -245,8 +246,8 @@ public partial class MainForm : Form
     private async Task RefreshNbaGamesAsync(DateTime date)
     {
         ButtonRefreshNba.Enabled = false;
-        ButtonRefreshNba.Text = "Načítám...";
-        LabelNbaGames.Text = $"NBA výsledky ({date:dd.MM.yyyy}):";
+        ButtonRefreshNba.Text = "Loading...";
+        LabelNbaGames.Text = "NBA results:";
 
         try
         {
@@ -256,48 +257,23 @@ public partial class MainForm : Form
 
             if (games.Count == 0)
             {
-                // Pokud nejsou k dispozici žádné zápasy pro daný den, zobrazíme informační zprávu
-                var noGamesMessage = new List<NbaGame>
-                {
-                    new NbaGame { HomeTeam = "Pro tento den nejsou k dispozici žádné zápasy.", AwayTeam = "" }
-                };
-                ListBoxNbaGames.DataSource = noGamesMessage;
-                LabelNbaGames.Text = $"NBA výsledky ({date:dd.MM.yyyy}): Žádné zápasy";
-            }
-            else
-            {
-                ListBoxNbaGames.DataSource = games;
-
-                // Pokud se jedná o ukázková data, upozorníme uživatele
-                if (games.Count > 0 && games[0].Id < 100) // ID < 100 značí pravděpodobně ukázková data
-                {
-                    LabelNbaGames.Text = $"NBA výsledky ({date:dd.MM.yyyy}): Ukázková data";
-                }
-                else
-                {
-                    LabelNbaGames.Text = $"NBA výsledky ({date:dd.MM.yyyy}): Live data";
-                }
+                LabelNbaGames.Text = "NBA results: No matches";
             }
 
-            // Aplikace barev na listbox
             ListBoxNbaGames.BackColor = BackgroundColor;
             ListBoxNbaGames.ForeColor = ForegroundColor;
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
-            MessageBox.Show($"Chyba při načítání NBA výsledků: {ex.Message}", "E", 
+            MessageBox.Show($"Error while loading NBA games: {exception.Message}", "Error", 
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            // V případě chyby zobrazíme informaci
-            LabelNbaGames.Text = $"NBA výsledky ({date:dd.MM.yyyy}): Chyba načítání";
+            LabelNbaGames.Text = "NBA results: Error while loading";
         }
         finally
         {
             ButtonRefreshNba.Enabled = true;
-            ButtonRefreshNba.Text = "Obnovit";
+            ButtonRefreshNba.Text = "Refresh";
         }
     }
-
-    private Color BackgroundColor { get; set; }
-    private Color ForegroundColor { get; set; }
 }

@@ -167,7 +167,7 @@ public partial class MainForm
             this.ReminderTimer.Interval = 60_000;
             this.ReminderTimer.Tick += new System.EventHandler(this.ReminderTimerOnTick);
             this.ReminderTimer.Start();
-
+            //
             // ListBoxNbaGames
             //
             this.ListBoxNbaGames.FormattingEnabled = true;
@@ -177,7 +177,7 @@ public partial class MainForm
             this.ListBoxNbaGames.Size = new System.Drawing.Size(230, 100);
             this.ListBoxNbaGames.TabIndex = 7;
             this.Controls.Add(this.ListBoxNbaGames);
-
+            //
             // LabelNbaGames
             //
             this.LabelNbaGames.AutoSize = true;
@@ -185,27 +185,27 @@ public partial class MainForm
             this.LabelNbaGames.Name = "LabelNbaGames";
             this.LabelNbaGames.Size = new System.Drawing.Size(95, 17);
             this.LabelNbaGames.TabIndex = 8;
-            this.LabelNbaGames.Text = "NBA výsledky:";
+            this.LabelNbaGames.Text = "NBA results:";
             this.Controls.Add(this.LabelNbaGames);
-
+            //
             // ButtonToggleNba
             //
             this.ButtonToggleNba.Location = new System.Drawing.Point(130, 210);
             this.ButtonToggleNba.Name = "ButtonToggleNba";
             this.ButtonToggleNba.Size = new System.Drawing.Size(55, 23);
             this.ButtonToggleNba.TabIndex = 9;
-            this.ButtonToggleNba.Text = "Skrýt";
+            this.ButtonToggleNba.Text = "Hide";
             this.ButtonToggleNba.UseVisualStyleBackColor = true;
             this.ButtonToggleNba.Click += new System.EventHandler(this.ButtonToggleNbaOnClick);
             this.Controls.Add(this.ButtonToggleNba);
-
+            //
             // ButtonRefreshNba
             //
             this.ButtonRefreshNba.Location = new System.Drawing.Point(190, 210);
             this.ButtonRefreshNba.Name = "ButtonRefreshNba";
             this.ButtonRefreshNba.Size = new System.Drawing.Size(55, 23);
             this.ButtonRefreshNba.TabIndex = 10;
-            this.ButtonRefreshNba.Text = "Obnovit";
+            this.ButtonRefreshNba.Text = "Refresh";
             this.ButtonRefreshNba.UseVisualStyleBackColor = true;
             this.ButtonRefreshNba.Click += new System.EventHandler(this.ButtonRefreshNbaOnClick);
             this.Controls.Add(this.ButtonRefreshNba);

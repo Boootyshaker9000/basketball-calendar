@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("basketball-calendar")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c73204ce4a7cb60310ea7838947622b7ff054ee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+975621a7e58f49c5de8400fda5bf47ae81120205")]
 [assembly: System.Reflection.AssemblyProductAttribute("basketball-calendar")]
 [assembly: System.Reflection.AssemblyTitleAttribute("basketball-calendar")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
