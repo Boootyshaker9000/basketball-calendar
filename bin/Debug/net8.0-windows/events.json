@@ -10,16 +10,6 @@
     "ReminderSent": false
   },
   {
-    "Id": "61cc5716-093a-4128-9b1e-ee804dea6384",
-    "Title": "Tvrd\u00E1 hra z ulice",
-    "Description": "",
-    "Start": "2025-05-31T19:25:08.5984801+02:00",
-    "End": "2025-05-31T19:25:08.6070354+02:00",
-    "Tag": "Streetball",
-    "ReminderOffset": "00:30:00",
-    "ReminderSent": false
-  },
-  {
     "Id": "08b8b548-8671-428e-b38f-d36b3e6323e1",
     "Title": "Soust\u0159edko.",
     "Description": "",

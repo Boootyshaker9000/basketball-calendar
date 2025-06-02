@@ -7,8 +7,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b24cd57-3a1e-43a4-8962-04e315811779" name="Changes" comment="Kalendář nyní funguje v souladu s py skriptem.">
-      <change afterPath="$PROJECT_DIR$/Backend" afterDir="false" />
+    <list default="true" id="1b24cd57-3a1e-43a4-8962-04e315811779" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Backend" beforeDir="false" afterPath="$PROJECT_DIR$/Backend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/ref/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/ref/basketball-calendar.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/refint/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/refint/basketball-calendar.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +47,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7be4c5142ec3e67485d8a889e35f8b51f608dd4d2fb94cbd9688b37f764e5f7/Button.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a96e3d352c820588c15ddd8373c2183278ff879be09fe7c028e3bb3aabe13/Control.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Forms/MainForm.Designer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/NbaGame.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Services/NbaGameService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Forms/MainForm.Designer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/NbaGame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/NbaGameService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -49,22 +60,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.basketball-calendar.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49679488&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.basketball-calendar.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "XThreadsFramesViewSplitterKey": "0.49679488",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="basketball-calendar" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -124,6 +137,7 @@
       <workItem from="1748809131232" duration="2628000" />
       <workItem from="1748876755545" duration="3505000" />
       <workItem from="1748880567859" duration="2305000" />
+      <workItem from="1748899488419" duration="766000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -253,7 +267,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748882814964</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="2. Pokus o vrácení do funkčního stavu.">
+      <option name="closed" value="true" />
+      <created>1748899626490</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1748899626490</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Pls, nepokaz se.">
+      <option name="closed" value="true" />
+      <created>1748900205424</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1748900205424</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +320,9 @@
     <MESSAGE value="Zprovoznění úpravy a mazání událostí." />
     <MESSAGE value="Možnost filtrovat události podle štítku.&#10;Kód přeložen do angličtiny." />
     <MESSAGE value="Kalendář nyní funguje v souladu s py skriptem." />
-    <option name="LAST_COMMIT_MESSAGE" value="Kalendář nyní funguje v souladu s py skriptem." />
+    <MESSAGE value="2. Pokus o vrácení do funkčního stavu." />
+    <MESSAGE value="Pls, nepokaz se." />
+    <option name="LAST_COMMIT_MESSAGE" value="Pls, nepokaz se." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

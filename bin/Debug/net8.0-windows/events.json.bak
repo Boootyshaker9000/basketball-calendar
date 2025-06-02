@@ -58,15 +58,5 @@
     "Tag": "Game",
     "ReminderOffset": "00:30:00",
     "ReminderSent": false
-  },
-  {
-    "Id": "57a9675c-5851-4a6d-92ae-eeb6f4e31afa",
-    "Title": "sdg",
-    "Description": "",
-    "Start": "2025-06-06T21:39:33.134",
-    "End": "2025-06-07T21:39:33.143",
-    "Tag": "Practice",
-    "ReminderOffset": "00:30:00",
-    "ReminderSent": false
   }
 ]
