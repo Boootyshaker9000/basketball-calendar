@@ -197,6 +197,7 @@ partial class EventForm
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+        this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
         this.Text = "Event";
         ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownReminder)).EndInit();
         this.ButtonPanel.ResumeLayout(false);

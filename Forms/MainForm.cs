@@ -30,7 +30,7 @@ public partial class MainForm : Form
 
         var distinctTags = allTags.Distinct().ToList();
         var sortedTags = new List<string> { "All" };
-        sortedTags.AddRange(distinctTags.Where(tag => tag != "All").OrderBy(t => t));
+        sortedTags.AddRange(distinctTags.Where(tag => tag != "All").OrderBy(tag => tag));
 
         ComboBoxFilter.DataSource = sortedTags;
         ComboBoxFilter.SelectedIndexChanged += ComboBoxFilter_SelectedIndexChanged;
@@ -253,12 +253,7 @@ public partial class MainForm : Form
         {
             var games = await NbaService.GetGamesByDateAsync(date);
 
-            ListBoxNbaGames.DataSource = null;
-
-            if (games.Count == 0)
-            {
-                LabelNbaGames.Text = "NBA results:";
-            }
+            ListBoxNbaGames.DataSource = games;
 
             ListBoxNbaGames.BackColor = BackgroundColor;
             ListBoxNbaGames.ForeColor = ForegroundColor;

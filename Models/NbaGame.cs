@@ -45,7 +45,6 @@ public class NbaGame
     /// </summary>
     public override string ToString()
     {
-        // Zobrazíme formátovaný výsledek s časem a stavem zápasu
         return $"{GameDate:HH:mm} {HomeTeam} {HomeScore} - {AwayScore} {AwayTeam} ({Status})";
     }
 }

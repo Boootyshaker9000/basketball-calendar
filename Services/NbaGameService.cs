@@ -10,8 +10,6 @@ public class NbaGameService
 {
     private readonly HttpClient _httpClient;
     private const string PythonApiUrl = "http://localhost:5000/nba_games/";
-    private const string FallbackApiUrl = "https://api.balldontlie.io/v1/games";
-    private bool _usePythonApi = true;
 
     public NbaGameService(string apiKey)
     {
@@ -28,19 +26,7 @@ public class NbaGameService
     {
         try
         {
-            if (_usePythonApi)
-            {
-                try
-                {
-                    return await GetGamesFromPythonAsync(date);
-                }
-                catch (Exception)
-                {
-                    _usePythonApi = false;
-                }
-            }
-
-            return await GetGamesDirectlyFromApiAsync(date);
+            return await GetGamesFromPythonAsync(date);
         }
         catch (Exception)
         {
@@ -56,14 +42,14 @@ public class NbaGameService
         string formattedDate = date.ToString("yyyy-MM-dd");
         string url = $"{PythonApiUrl}{formattedDate}";
 
-        Console.WriteLine($"Volání Python API: {url}");
+        //Console.WriteLine($"Volání Python API: {url}");
 
         var response = await _httpClient.GetAsync(url);
 
-        if (!response.IsSuccessStatusCode)
+        /*if (!response.IsSuccessStatusCode)
         {
-            throw new Exception($"Python API vrátilo chybu: {response.StatusCode}");
-        }
+            //throw new Exception($"Python API vrátilo chybu: {response.StatusCode}");
+        }*/
 
         var content = await response.Content.ReadAsStringAsync();
         var games = JsonSerializer.Deserialize<List<NbaGame>>(content, new JsonSerializerOptions
@@ -74,6 +60,7 @@ public class NbaGameService
         return games;
     }
 
+    /*
     /// <summary>
     /// Získá výsledky NBA zápasů přímo z balldontlie API jako fallback řešení.
     /// </summary>
@@ -118,5 +105,5 @@ public class NbaGameService
         }
 
         return games;
-    }
+    }*/
 }

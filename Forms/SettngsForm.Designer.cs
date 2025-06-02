@@ -120,6 +120,7 @@ partial class SettingsForm
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Text = "Theme Settings";
             this.ResumeLayout(false);
         }

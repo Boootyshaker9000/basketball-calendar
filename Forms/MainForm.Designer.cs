@@ -146,6 +146,8 @@ public partial class MainForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(580, 410);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Controls.Add(this.ButtonDelete);
             this.Controls.Add(this.ButtonEdit);
             this.Controls.Add(this.ButtonAdd);
@@ -172,7 +174,7 @@ public partial class MainForm
             //
             this.ListBoxNbaGames.FormattingEnabled = true;
             this.ListBoxNbaGames.ItemHeight = 16;
-            this.ListBoxNbaGames.Location = new System.Drawing.Point(12, 230);
+            this.ListBoxNbaGames.Location = new System.Drawing.Point(8, 230);
             this.ListBoxNbaGames.Name = "ListBoxNbaGames";
             this.ListBoxNbaGames.Size = new System.Drawing.Size(230, 100);
             this.ListBoxNbaGames.TabIndex = 7;
@@ -181,7 +183,7 @@ public partial class MainForm
             // LabelNbaGames
             //
             this.LabelNbaGames.AutoSize = true;
-            this.LabelNbaGames.Location = new System.Drawing.Point(12, 210);
+            this.LabelNbaGames.Location = new System.Drawing.Point(8, 210);
             this.LabelNbaGames.Name = "LabelNbaGames";
             this.LabelNbaGames.Size = new System.Drawing.Size(95, 17);
             this.LabelNbaGames.TabIndex = 8;
@@ -190,7 +192,7 @@ public partial class MainForm
             //
             // ButtonToggleNba
             //
-            this.ButtonToggleNba.Location = new System.Drawing.Point(130, 210);
+            this.ButtonToggleNba.Location = new System.Drawing.Point(126, 210);
             this.ButtonToggleNba.Name = "ButtonToggleNba";
             this.ButtonToggleNba.Size = new System.Drawing.Size(55, 23);
             this.ButtonToggleNba.TabIndex = 9;
@@ -201,7 +203,7 @@ public partial class MainForm
             //
             // ButtonRefreshNba
             //
-            this.ButtonRefreshNba.Location = new System.Drawing.Point(190, 210);
+            this.ButtonRefreshNba.Location = new System.Drawing.Point(184, 210);
             this.ButtonRefreshNba.Name = "ButtonRefreshNba";
             this.ButtonRefreshNba.Size = new System.Drawing.Size(55, 23);
             this.ButtonRefreshNba.TabIndex = 10;
