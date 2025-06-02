@@ -8,18 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b24cd57-3a1e-43a4-8962-04e315811779" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.basketball-calendar/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.basketball-calendar/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms/EventForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/EventForm.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms/MainForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/MainForm.Designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Forms/MainForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/MainForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms/SettngsForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/SettngsForm.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/NbaGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/NbaGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/NbaGameService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/NbaGameService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfoInputs.cache" afterDir="false" />
@@ -149,7 +141,7 @@
       <workItem from="1748880567859" duration="2305000" />
       <workItem from="1748899488419" duration="1016000" />
       <workItem from="1748900574721" duration="6000" />
-      <workItem from="1748900632110" duration="3086000" />
+      <workItem from="1748900632110" duration="3344000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -335,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748900942261</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="5. Pokus o funkčnost zobrazení NBA výsledků.&#10;Proč je těch složek tolik?">
+      <option name="closed" value="true" />
+      <created>1748903881326</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1748903881326</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,7 +377,8 @@
     <MESSAGE value="Mega confuse." />
     <MESSAGE value="Mazání komentářů a výpisů." />
     <MESSAGE value="3. Pokus o funkční stav." />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="5. Pokus o funkčnost zobrazení NBA výsledků.&#10;Proč je těch složek tolik?" />
+    <option name="LAST_COMMIT_MESSAGE" value="5. Pokus o funkčnost zobrazení NBA výsledků.&#10;Proč je těch složek tolik?" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
