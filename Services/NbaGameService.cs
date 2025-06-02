@@ -42,10 +42,11 @@ namespace basketball_calendar.Services
                     catch (Exception ex)
                     {
                         Console.WriteLine($"Chyba Python API: {ex.Message}. Přepínám na přímé volání balldontlie.");
-                        _usePythonApi = false;
+                        _usePythonApi = false;  // Při chybě přepneme na přímé volání
                     }
                 }
 
+                // Fallback na přímé volání balldontlie API
                 return await GetGamesDirectlyFromApiAsync(date);
             }
             catch (Exception exception)

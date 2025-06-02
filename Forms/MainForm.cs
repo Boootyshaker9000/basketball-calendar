@@ -9,6 +9,7 @@ public partial class MainForm : Form
     private EventRepository Repository { get; }
     private List<Event> AllEvents { get; set; }
     private NbaGameService NbaService { get; }
+    private bool AreNbaResultsVisible { get; set; } = true;
 
     public MainForm()
     {
@@ -26,7 +27,7 @@ public partial class MainForm : Form
 
         var distinctTags = allTags.Distinct().ToList();
         var sortedTags = new List<string> { "All" };
-        sortedTags.AddRange(distinctTags.Where(t => t != "All").OrderBy(t => t));
+        sortedTags.AddRange(distinctTags.Where(tag => tag != "All").OrderBy(t => t));
 
         ComboBoxFilter.DataSource = sortedTags;
         ComboBoxFilter.SelectedIndexChanged += ComboBoxFilter_SelectedIndexChanged;
@@ -34,6 +35,8 @@ public partial class MainForm : Form
         MonthCalendar.SelectionStart = DateTime.Today;
         RefreshEventList(DateTime.Today);
         ReminderTimer.Start();
+
+        _ = RefreshNbaGamesAsync(DateTime.Today);
         
         var json = File.ReadAllText("settings.json");
 
@@ -59,24 +62,16 @@ public partial class MainForm : Form
     /// <summary>
     /// Updates the displayed list of events based on the selected date and tag.
     /// </summary>
-    private async void RefreshEventList(DateTime date)
+    private void RefreshEventList(DateTime date)
     {
         var filtered = AllEvents
             .Where(@event => @event.Start.Date == date.Date)
             .OrderBy(ev => ev.Start)
             .ToList();
 
-        if (ComboBoxFilter.SelectedItem is string selectedTag)
+        if (ComboBoxFilter.SelectedItem is string selectedTag && selectedTag != "All")
         {
-            if (selectedTag == "NBA Game")
-            {
-                await FetchAndDisplayNbaGames(date);
-                return;
-            }
-            else if (selectedTag != "All")
-            {
-                filtered = filtered.Where(e => e.Tag == selectedTag).ToList();
-            }
+            filtered = filtered.Where(e => e.Tag == selectedTag).ToList();
         }
         
         ListBoxEvents.DataSource = filtered;
@@ -87,6 +82,11 @@ public partial class MainForm : Form
     private void MonthCalendarOnDateChanged(object sender, DateRangeEventArgs eventArgs)
     {
         RefreshEventList(eventArgs.Start);
+
+        if (AreNbaResultsVisible)
+        {
+            _ = RefreshNbaGamesAsync(eventArgs.Start);
+        }
     }
 
     private void ButtonAddOnClick(object sender, EventArgs eventArgs)
@@ -189,7 +189,13 @@ public partial class MainForm : Form
         ComboBoxFilter.BackColor = BackgroundColor;
         ComboBoxFilter.ForeColor = ForegroundColor;
 
-        foreach (Control control in new Control[] { ButtonAdd, ButtonEdit, ButtonDelete, ButtonSettings })
+        // Nastavení barev pro NBA komponenty
+        ListBoxNbaGames.BackColor = BackgroundColor;
+        ListBoxNbaGames.ForeColor = ForegroundColor;
+        LabelNbaGames.BackColor = BackgroundColor;
+        LabelNbaGames.ForeColor = ForegroundColor;
+
+        foreach (Control control in new Control[] { ButtonAdd, ButtonEdit, ButtonDelete, ButtonSettings, ButtonToggleNba, ButtonRefreshNba })
         {
             if (control is Button button)
             {
@@ -215,40 +221,80 @@ public partial class MainForm : Form
     }
 
     /// <summary>
-    /// Získá a zobrazí zápasy NBA pro vybrané datum
+    /// Obsluhuje kliknutí na tlačítko pro skrytí/zobrazení NBA výsledků
     /// </summary>
-    private async Task FetchAndDisplayNbaGames(DateTime date)
+    private void ButtonToggleNbaOnClick(object sender, EventArgs e)
     {
+        AreNbaResultsVisible = !AreNbaResultsVisible;
+
+        ListBoxNbaGames.Visible = AreNbaResultsVisible;
+        ButtonToggleNba.Text = AreNbaResultsVisible ? "Skrýt" : "Zobrazit";
+    }
+
+    /// <summary>
+    /// Obsluhuje kliknutí na tlačítko pro obnovení NBA výsledků
+    /// </summary>
+    private async void ButtonRefreshNbaOnClick(object sender, EventArgs e)
+    {
+        await RefreshNbaGamesAsync(MonthCalendar.SelectionStart);
+    }
+
+    /// <summary>
+    /// Načte a zobrazí NBA výsledky z API pro vybrané datum
+    /// </summary>
+    private async Task RefreshNbaGamesAsync(DateTime date)
+    {
+        ButtonRefreshNba.Enabled = false;
+        ButtonRefreshNba.Text = "Načítám...";
+        LabelNbaGames.Text = $"NBA výsledky ({date:dd.MM.yyyy}):";
+
         try
         {
-            Cursor = Cursors.WaitCursor;
-            ListBoxEvents.Items.Clear();
-            ListBoxEvents.Items.Add("L...");
-
             var games = await NbaService.GetGamesByDateAsync(date);
+
+            ListBoxNbaGames.DataSource = null;
 
             if (games.Count == 0)
             {
-                ListBoxEvents.Items.Clear();
-                ListBoxEvents.Items.Add("Pro tento den nebyly nalezeny žádné NBA zápasy.");
-                return;
+                // Pokud nejsou k dispozici žádné zápasy pro daný den, zobrazíme informační zprávu
+                var noGamesMessage = new List<NbaGame>
+                {
+                    new NbaGame { HomeTeam = "Pro tento den nejsou k dispozici žádné zápasy.", AwayTeam = "" }
+                };
+                ListBoxNbaGames.DataSource = noGamesMessage;
+                LabelNbaGames.Text = $"NBA výsledky ({date:dd.MM.yyyy}): Žádné zápasy";
+            }
+            else
+            {
+                ListBoxNbaGames.DataSource = games;
+
+                // Pokud se jedná o ukázková data, upozorníme uživatele
+                if (games.Count > 0 && games[0].Id < 100) // ID < 100 značí pravděpodobně ukázková data
+                {
+                    LabelNbaGames.Text = $"NBA výsledky ({date:dd.MM.yyyy}): Ukázková data";
+                }
+                else
+                {
+                    LabelNbaGames.Text = $"NBA výsledky ({date:dd.MM.yyyy}): Live data";
+                }
             }
 
-            ListBoxEvents.DataSource = null;
-            ListBoxEvents.DisplayMember = null;
-            ListBoxEvents.DataSource = games;
-
-            Console.WriteLine($"Zobrazeno {games.Count} NBA zápasů pro datum {date.ToShortDateString()}");
+            // Aplikace barev na listbox
+            ListBoxNbaGames.BackColor = BackgroundColor;
+            ListBoxNbaGames.ForeColor = ForegroundColor;
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Chyba při načítání NBA zápasů: {ex.Message}", "Chyba", 
+            MessageBox.Show($"Chyba při načítání NBA výsledků: {ex.Message}", "E", 
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-            Console.WriteLine($"Chyba při načítání NBA zápasů: {ex.Message}");
+
+            // V případě chyby zobrazíme informaci
+            LabelNbaGames.Text = $"NBA výsledky ({date:dd.MM.yyyy}): Chyba načítání";
         }
         finally
         {
-            Cursor = Cursors.Default;
+            ButtonRefreshNba.Enabled = true;
+            ButtonRefreshNba.Text = "Obnovit";
         }
     }
 

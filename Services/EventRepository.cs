@@ -58,11 +58,12 @@ public class EventRepository
         catch (JsonException ex)
         {
             Console.WriteLine($"Error deserializing JSON: {ex.Message}");
+            // When JSON format is invalid, return empty list instead of corrupted data
             return new List<Event>();
         }
-        catch (Exception exception)
+        catch (Exception ex)
         {
-            Console.WriteLine($"Unexpected error loading events: {exception.Message}");
+            Console.WriteLine($"Unexpected error loading events: {ex.Message}");
             return new List<Event>();
         }
     }
@@ -74,8 +75,10 @@ public class EventRepository
     {
         try
         {
-            var eventsToSave = events;
+            // Zajistíme, že events není null
+            var eventsToSave = events ?? new List<Event>();
 
+            // Vytvoříme adresář, pokud neexistuje
             var directory = Path.GetDirectoryName(FilePath);
             if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
             {
@@ -84,6 +87,7 @@ public class EventRepository
 
             var json = JsonSerializer.Serialize(eventsToSave, JsonOptions);
 
+            // Vytvoříme záložní soubor před zápisem
             if (File.Exists(FilePath))
             {
                 File.Copy(FilePath, FilePath + ".bak", true);
@@ -134,6 +138,7 @@ public class EventRepository
             Console.WriteLine($"Comparison: {events[i].Id == updatedEvent.Id}");
             Console.WriteLine($"ToString comparison: {events[i].Id.ToString() == updatedEvent.Id.ToString()}");
 
+            // Compare using string representation instead of direct object comparison
             if (events[i].Id.ToString() == updatedEvent.Id.ToString())
             {
                 Console.WriteLine($"ID match found (by ToString): {events[i].Id}");
@@ -163,6 +168,10 @@ public class EventRepository
         {
             events.Remove(eventToRemove);
             SaveEvents(events);
+        }
+        else
+        {
+            Console.WriteLine($"Event with ID {id} was not found when deleting");
         }
     }
 }
