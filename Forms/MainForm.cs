@@ -258,6 +258,7 @@ public partial class MainForm : Form
             if (games.Count == 0)
             {
                 LabelNbaGames.Text = "NBA results:";
+                LabelNbaGames.Text = "NBA results: No matches";
             }
 
             ListBoxNbaGames.BackColor = BackgroundColor;
