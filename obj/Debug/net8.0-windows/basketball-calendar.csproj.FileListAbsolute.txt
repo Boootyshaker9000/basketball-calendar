@@ -1,0 +1,15 @@
+C:\___DATA\Skola\IT\C#\basketball-calendar\bin\Debug\net8.0-windows\basketball-calendar.exe
+C:\___DATA\Skola\IT\C#\basketball-calendar\bin\Debug\net8.0-windows\basketball-calendar.deps.json
+C:\___DATA\Skola\IT\C#\basketball-calendar\bin\Debug\net8.0-windows\basketball-calendar.runtimeconfig.json
+C:\___DATA\Skola\IT\C#\basketball-calendar\bin\Debug\net8.0-windows\basketball-calendar.dll
+C:\___DATA\Skola\IT\C#\basketball-calendar\bin\Debug\net8.0-windows\basketball-calendar.pdb
+C:\___DATA\Skola\IT\C#\basketball-calendar\obj\Debug\net8.0-windows\basketball-calendar.GeneratedMSBuildEditorConfig.editorconfig
+C:\___DATA\Skola\IT\C#\basketball-calendar\obj\Debug\net8.0-windows\basketball-calendar.AssemblyInfoInputs.cache
+C:\___DATA\Skola\IT\C#\basketball-calendar\obj\Debug\net8.0-windows\basketball-calendar.AssemblyInfo.cs
+C:\___DATA\Skola\IT\C#\basketball-calendar\obj\Debug\net8.0-windows\basketball-calendar.csproj.CoreCompileInputs.cache
+C:\___DATA\Skola\IT\C#\basketball-calendar\obj\Debug\net8.0-windows\basketball-calendar.dll
+C:\___DATA\Skola\IT\C#\basketball-calendar\obj\Debug\net8.0-windows\refint\basketball-calendar.dll
+C:\___DATA\Skola\IT\C#\basketball-calendar\obj\Debug\net8.0-windows\basketball-calendar.pdb
+C:\___DATA\Skola\IT\C#\basketball-calendar\obj\Debug\net8.0-windows\basketball-calendar.genruntimeconfig.cache
+C:\___DATA\Skola\IT\C#\basketball-calendar\obj\Debug\net8.0-windows\ref\basketball-calendar.dll
+C:\___DATA\Skola\IT\C#\basketball-calendar\obj\Debug\net8.0-windows\basketball-calendar.sourcelink.json

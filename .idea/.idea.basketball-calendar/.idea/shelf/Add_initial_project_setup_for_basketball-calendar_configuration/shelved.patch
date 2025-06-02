@@ -1,0 +1,25 @@
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+new file mode 100644
+--- /dev/null	(date 1748715127123)
++++ b/.idea/.name	(date 1748715127123)
+@@ -0,0 +1,1 @@
++basketball-calendar
+\ No newline at end of file
+Index: basketball-calendar.sln.DotSettings.user
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/basketball-calendar.sln.DotSettings.user b/basketball-calendar.sln.DotSettings.user
+new file mode 100644
+--- /dev/null	(date 1748715075737)
++++ b/basketball-calendar.sln.DotSettings.user	(date 1748715075737)
+@@ -0,0 +1,2 @@
++<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
++</wpf:ResourceDictionary>
+\ No newline at end of file

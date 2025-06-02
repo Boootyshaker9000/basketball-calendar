@@ -1,0 +1,72 @@
+[
+  {
+    "Id": "6ce52591-8a52-4a98-be05-6f6d79f2d8a7",
+    "Title": "Tr\u00E9nink",
+    "Description": "Spole\u010Dn\u00FD tr\u00E9nink na hale",
+    "Start": "2025-05-31T15:00:00",
+    "End": "2025-06-10T17:00:00",
+    "Tag": "",
+    "ReminderOffset": "00:30:00",
+    "ReminderSent": false
+  },
+  {
+    "Id": "61cc5716-093a-4128-9b1e-ee804dea6384",
+    "Title": "Tvrd\u00E1 hra z ulice",
+    "Description": "",
+    "Start": "2025-05-31T19:25:08.5984801+02:00",
+    "End": "2025-05-31T19:25:08.6070354+02:00",
+    "Tag": "Streetball",
+    "ReminderOffset": "00:30:00",
+    "ReminderSent": false
+  },
+  {
+    "Id": "08b8b548-8671-428e-b38f-d36b3e6323e1",
+    "Title": "Soust\u0159edko.",
+    "Description": "",
+    "Start": "2025-05-31T20:21:51.0230125+02:00",
+    "End": "2025-05-31T20:21:51.0316088+02:00",
+    "Tag": "Soust\u0159ed\u011Bn\u00ED",
+    "ReminderOffset": "00:30:00",
+    "ReminderSent": false
+  },
+  {
+    "Id": "b3656ce9-f2b7-4c59-b8ac-2015a5f6f5b9",
+    "Title": "fsd",
+    "Description": "",
+    "Start": "2025-06-02T21:38:18.3605319+02:00",
+    "End": "2025-06-02T21:38:18.3681244+02:00",
+    "Tag": "Practice",
+    "ReminderOffset": "00:30:00",
+    "ReminderSent": false
+  },
+  {
+    "Id": "449447e9-91c3-4f5a-83d2-a227d42891ee",
+    "Title": "fsh",
+    "Description": "",
+    "Start": "2025-06-02T21:38:59.9065768+02:00",
+    "End": "2025-06-02T21:38:59.9144108+02:00",
+    "Tag": "Training Camp",
+    "ReminderOffset": "00:30:00",
+    "ReminderSent": false
+  },
+  {
+    "Id": "a3f07e71-8c8f-404c-ae58-2840be9b7f4f",
+    "Title": "rrzh",
+    "Description": "",
+    "Start": "2025-06-02T21:39:12.662819+02:00",
+    "End": "2025-06-02T21:39:12.6704623+02:00",
+    "Tag": "Game",
+    "ReminderOffset": "00:30:00",
+    "ReminderSent": false
+  },
+  {
+    "Id": "57a9675c-5851-4a6d-92ae-eeb6f4e31afa",
+    "Title": "sdg",
+    "Description": "",
+    "Start": "2025-06-06T21:39:33.134",
+    "End": "2025-06-07T21:39:33.143",
+    "Tag": "Practice",
+    "ReminderOffset": "00:30:00",
+    "ReminderSent": false
+  }
+]
