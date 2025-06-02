@@ -52,7 +52,7 @@ public partial class EventForm : Form
             MessageBox.Show("Event end time must be after start time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
-        var checkedRb = PanelTags.Controls.OfType<RadioButton>().FirstOrDefault(radioButton => radioButton.Checked);
+        var checkedRb = PanelTags.Controls.OfType<RadioButton>().FirstOrDefault(rb => rb.Checked);
 
         if (checkedRb == null)
         {
@@ -89,7 +89,7 @@ public partial class EventForm : Form
     }
     
     /// <summary>
-    /// Applies a color theme (primary/secondary) to the entire EventForm.
+    /// Applies color theme (primary/secondary) to the entire EventForm.
     /// </summary>
     /// <param name="backgroundColor">Background color (primary)</param>
     /// <param name="foregroundColor">Foreground color (secondary)</param>
