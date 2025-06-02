@@ -235,7 +235,7 @@ public partial class MainForm : Form
     /// <summary>
     /// Obsluhuje kliknutí na tlačítko pro obnovení NBA výsledků
     /// </summary>
-    private async void ButtonRefreshNbaOnClick(object sender, EventArgs e)
+    private async void ButtonRefreshNbaOnClick(object sender, EventArgs eventArgs)
     {
         await RefreshNbaGamesAsync(MonthCalendar.SelectionStart);
     }
@@ -258,7 +258,6 @@ public partial class MainForm : Form
             if (games.Count == 0)
             {
                 LabelNbaGames.Text = "NBA results:";
-                LabelNbaGames.Text = "NBA results: No matches";
             }
 
             ListBoxNbaGames.BackColor = BackgroundColor;
