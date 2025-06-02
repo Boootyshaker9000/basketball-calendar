@@ -13,13 +13,11 @@ namespace basketball_calendar.Services
         private readonly HttpClient _httpClient;
         private const string PythonApiUrl = "http://localhost:5000/nba_games/";
         private const string FallbackApiUrl = "https://api.balldontlie.io/v1/games";
-        private readonly string _apiKey;
         private bool _usePythonApi = true;
 
         public NbaGameService(string apiKey)
         {
             _httpClient = new HttpClient();
-            _apiKey = apiKey;
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
         }
 
@@ -32,26 +30,22 @@ namespace basketball_calendar.Services
         {
             try
             {
-                // Zkusíme nejprve získat data z Python API
                 if (_usePythonApi)
                 {
                     try
                     {
                         return await GetGamesFromPythonAsync(date);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine($"Chyba Python API: {ex.Message}. Přepínám na přímé volání balldontlie.");
-                        _usePythonApi = false;  // Při chybě přepneme na přímé volání
+                        _usePythonApi = false;
                     }
                 }
 
-                // Fallback na přímé volání balldontlie API
                 return await GetGamesDirectlyFromApiAsync(date);
             }
-            catch (Exception exception)
+            catch (Exception)
             {
-                Console.WriteLine($"Chyba při získávání NBA výsledků: {exception.Message}");
                 return new List<NbaGame>();
             }
         }
@@ -90,18 +84,13 @@ namespace basketball_calendar.Services
             string formattedDate = date.ToString("yyyy-MM-dd");
             string url = $"{FallbackApiUrl}?dates[]={formattedDate}";
 
-            Console.WriteLine($"Volání přímého API: {url}");
-
-            // Volání API
             var response = await _httpClient.GetAsync(url);
 
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine($"Chyba API: {response.StatusCode}");
                 return new List<NbaGame>();
             }
 
-            // Zpracování odpovědi z API
             var responseContent = await response.Content.ReadAsStringAsync();
             using var doc = JsonDocument.Parse(responseContent);
 
