@@ -109,7 +109,7 @@ Data o NBA zápasech se získávají pomocí balldontlie API.
 
 ## 🚀 Spuštění
 
-Pro jednodušší spuštění použijte [release](https://github.com/Boootyshaker9000/basketball-calendar/releases/tag/c%23)
+Pro jednodušší spuštění použijte [release](https://github.com/Boootyshaker9000/basketball-calendar/releases/tag/c%23).  
 Projekt můžeš otevřít v [Visual Studio](https://visualstudio.microsoft.com/) nebo [JetBrains Rider](https://www.jetbrains.com/rider/). Při spuštění aplikace se otevře hlavní okno, odkud lze prohlížet a upravovat události.
 
 ## 📝 Licence
