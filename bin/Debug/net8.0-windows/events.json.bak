@@ -10,16 +10,6 @@
     "ReminderSent": false
   },
   {
-    "Id": "61cc5716-093a-4128-9b1e-ee804dea6384",
-    "Title": "Tvrd\u00E1 hra z ulice",
-    "Description": "",
-    "Start": "2025-05-31T19:25:08.5984801+02:00",
-    "End": "2025-05-31T19:25:08.6070354+02:00",
-    "Tag": "Streetball",
-    "ReminderOffset": "00:30:00",
-    "ReminderSent": false
-  },
-  {
     "Id": "08b8b548-8671-428e-b38f-d36b3e6323e1",
     "Title": "Soust\u0159edko.",
     "Description": "",
@@ -56,6 +46,16 @@
     "Start": "2025-06-02T21:39:12.662819+02:00",
     "End": "2025-06-02T21:39:12.6704623+02:00",
     "Tag": "Game",
+    "ReminderOffset": "00:30:00",
+    "ReminderSent": false
+  },
+  {
+    "Id": "91241af3-292e-4c32-a48b-741a618a3a96",
+    "Title": "fuck it we ball",
+    "Description": "",
+    "Start": "2025-06-04T06:00:45.779",
+    "End": "2025-06-06T17:04:45.79",
+    "Tag": "Streetball",
     "ReminderOffset": "00:30:00",
     "ReminderSent": false
   }

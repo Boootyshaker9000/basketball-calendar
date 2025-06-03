@@ -22,10 +22,35 @@ public partial class SettingsForm : Form
         new()
     {
         { "Los Angeles Lakers", (Color.FromArgb(85, 37, 130), Color.FromArgb(253, 185, 39)) },
-        { "Chicago Bulls", (Color.FromArgb(206, 17, 65), Color.Black) },
-        { "Golden State Warriors", (Color.FromArgb(29, 66, 138), Color.FromArgb(253, 185, 39)) },
-        { "Boston Celtics", (Color.FromArgb(0, 122, 51), Color.White) },
-        { "Miami Heat", (Color.FromArgb(152, 0, 46), Color.FromArgb(255, 184, 28)) }
+    { "Chicago Bulls", (Color.FromArgb(206, 17, 65), Color.Black) },
+    { "Golden State Warriors", (Color.FromArgb(29, 66, 138), Color.FromArgb(255, 199, 44)) },
+    { "Boston Celtics", (Color.FromArgb(0, 122, 51), Color.White) },
+    { "Miami Heat", (Color.FromArgb(152, 0, 46), Color.FromArgb(255, 184, 28)) },
+    { "Atlanta Hawks", (Color.FromArgb(200, 16, 46), Color.FromArgb(253, 185, 39)) },
+    { "Brooklyn Nets", (Color.Black, Color.White) },
+    { "Charlotte Hornets", (Color.FromArgb(29, 17, 96), Color.FromArgb(0, 120, 140)) },
+    { "Cleveland Cavaliers", (Color.FromArgb(134, 0, 56), Color.FromArgb(4, 30, 66)) },
+    { "Dallas Mavericks", (Color.FromArgb(0, 83, 188), Color.FromArgb(0, 40, 94)) },
+    { "Denver Nuggets", (Color.FromArgb(13, 34, 64), Color.FromArgb(255, 198, 39)) },
+    { "Detroit Pistons", (Color.FromArgb(200, 16, 46), Color.FromArgb(29, 66, 138)) },
+    { "Houston Rockets", (Color.FromArgb(206, 17, 65), Color.Black) },
+    { "Indiana Pacers", (Color.FromArgb(0, 45, 98), Color.FromArgb(255, 198, 39)) },
+    { "Los Angeles Clippers", (Color.FromArgb(200, 16, 46), Color.FromArgb(29, 66, 138)) },
+    { "Memphis Grizzlies", (Color.FromArgb(93, 118, 169), Color.FromArgb(18, 23, 63)) },
+    { "Milwaukee Bucks", (Color.FromArgb(0, 71, 27), Color.FromArgb(240, 235, 210)) },
+    { "Minnesota Timberwolves", (Color.FromArgb(12, 35, 64), Color.FromArgb(35, 97, 146)) },
+    { "New Orleans Pelicans", (Color.FromArgb(0, 22, 65), Color.FromArgb(227, 24, 55)) },
+    { "New York Knicks", (Color.FromArgb(0, 107, 182), Color.FromArgb(245, 132, 38)) },
+    { "Oklahoma City Thunder", (Color.FromArgb(0, 125, 195), Color.FromArgb(239, 59, 36)) },
+    { "Orlando Magic", (Color.FromArgb(0, 125, 197), Color.FromArgb(196, 206, 211)) },
+    { "Philadelphia 76ers", (Color.FromArgb(0, 107, 182), Color.FromArgb(237, 23, 76)) },
+    { "Phoenix Suns", (Color.FromArgb(29, 17, 96), Color.FromArgb(229, 95, 32)) },
+    { "Portland Trail Blazers", (Color.FromArgb(224, 58, 62), Color.Black) },
+    { "Sacramento Kings", (Color.FromArgb(91, 43, 130), Color.FromArgb(99, 113, 122)) },
+    { "San Antonio Spurs", (Color.FromArgb(196, 206, 211), Color.Black) },
+    { "Toronto Raptors", (Color.FromArgb(206, 17, 65), Color.Black) },
+    { "Utah Jazz", (Color.FromArgb(0, 43, 92), Color.FromArgb(0, 71, 27)) },
+    { "Washington Wizards", (Color.FromArgb(0, 43, 92), Color.FromArgb(227, 24, 55)) }
     };
 
     public SettingsForm()

@@ -17,12 +17,12 @@ public partial class MainForm : Form
     {
         Repository = new();
         AllEvents = Repository.LoadEvents();
-        NbaService = new NbaGameService("b6d32a45-8c63-47d3-ab00-2d91f01282eb");
+        NbaService = new NbaGameService();
         AreNbaResultsVisible = true;
         InitializeComponent();
     }
 
-    private void MainForm_Load(object sender, EventArgs eventArgs)
+    private async Task MainForm_Load(object sender, EventArgs eventArgs)
     {
         List<string> allTags = new List<string> { "All" };
 
@@ -39,9 +39,10 @@ public partial class MainForm : Form
         RefreshEventList(DateTime.Today);
         ReminderTimer.Start();
 
-        _ = RefreshNbaGamesAsync(DateTime.Today);
+        var games = await NbaService.GetGamesByDateAsync(DateTime.Today);
+        ListBoxNbaGames.DataSource = games;
         
-        var json = File.ReadAllText("settings.json");
+        var json = await File.ReadAllTextAsync("settings.json");
 
         UserSettings? settings = null;
         try
@@ -258,9 +259,14 @@ public partial class MainForm : Form
             ListBoxNbaGames.BackColor = BackgroundColor;
             ListBoxNbaGames.ForeColor = ForegroundColor;
         }
+        catch (HttpRequestException exception)
+        {
+            MessageBox.Show($"Too many requests. Please, try again later.: {exception.Message}", "Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
         catch (Exception exception)
         {
-            MessageBox.Show($"Error while loading NBA games: {exception.Message}", "Error", 
+            MessageBox.Show($"Error while loading NBA games: {exception.Message}", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             LabelNbaGames.Text = "NBA results: Error while loading";

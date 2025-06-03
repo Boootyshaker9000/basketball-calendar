@@ -1,109 +1,73 @@
 ﻿using System.Globalization;
+using System.Net.Http.Json;
 using System.Text.Json;
 using basketball_calendar.Models;
-
 namespace basketball_calendar.Services;
+
 /// <summary>
-/// Služba pro získávání dat o NBA zápasech z Python Flask serveru.
+/// Služba pro získávání dat o NBA zápasech z balldontlie API.
 /// </summary>
 public class NbaGameService
 {
-    private readonly HttpClient _httpClient;
-    private const string PythonApiUrl = "http://localhost:5000/nba_games/";
-
-    public NbaGameService(string apiKey)
+    private class Config
     {
+        public string api_key { get; set; }
+    }
+    
+    private readonly HttpClient _httpClient;
+    private const string ApiBaseUrl = "https://api.balldontlie.io/v1/games";
+
+    public NbaGameService()
+    {   
+        string apiKey = LoadConfig();
         _httpClient = new HttpClient();
         _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
     }
 
+    private string LoadConfig()
+    {
+        string json = File.ReadAllText("config.json");
+        Config config = JsonSerializer.Deserialize<Config>(json);
+        return config.api_key;
+    }
+
     /// <summary>
-    /// Získá výsledky NBA zápasů pro konkrétní datum.
+    /// Získá výsledky NBA zápasů pro zadané datum.
     /// </summary>
-    /// <param name="date">Datum, pro které chceme získat výsledky.</param>
-    /// <returns>Seznam NBA zápasů pro dané datum.</returns>
     public async Task<List<NbaGame>> GetGamesByDateAsync(DateTime date)
     {
-        try
-        {
-            return await GetGamesFromPythonAsync(date);
-        }
-        catch (Exception)
-        {
-            return new List<NbaGame>();
-        }
-    }
+        var formattedDate = date.ToString("yyyy-MM-dd");
+        var requestUrl = $"{ApiBaseUrl}?dates[]={formattedDate}&per_page=100";
 
-    /// <summary>
-    /// Získá výsledky NBA zápasů přímo z Python API.
-    /// </summary>
-    private async Task<List<NbaGame>> GetGamesFromPythonAsync(DateTime date)
-    {
-        string formattedDate = date.ToString("yyyy-MM-dd");
-        string url = $"{PythonApiUrl}{formattedDate}";
-
-        //Console.WriteLine($"Volání Python API: {url}");
-
-        var response = await _httpClient.GetAsync(url);
-
-        /*if (!response.IsSuccessStatusCode)
-        {
-            //throw new Exception($"Python API vrátilo chybu: {response.StatusCode}");
-        }*/
-
-        var content = await response.Content.ReadAsStringAsync();
-        var games = JsonSerializer.Deserialize<List<NbaGame>>(content, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        }) ?? new List<NbaGame>();
-
-        return games;
-    }
-
-    /*
-    /// <summary>
-    /// Získá výsledky NBA zápasů přímo z balldontlie API jako fallback řešení.
-    /// </summary>
-    private async Task<List<NbaGame>> GetGamesDirectlyFromApiAsync(DateTime date)
-    {
-        string formattedDate = date.ToString("yyyy-MM-dd");
-        string url = $"{FallbackApiUrl}?dates[]={formattedDate}";
-
-        var response = await _httpClient.GetAsync(url);
+        var response = await _httpClient.GetAsync(requestUrl);
 
         if (!response.IsSuccessStatusCode)
         {
-            return new List<NbaGame>();
+            throw new HttpRequestException($"Too many requests. Please, try again later.: {response.StatusCode}");
         }
 
-        var responseContent = await response.Content.ReadAsStringAsync();
-        using var doc = JsonDocument.Parse(responseContent);
+        var jsonString = await response.Content.ReadAsStringAsync();
+        var document = JsonDocument.Parse(jsonString);
+        var gamesJson = document.RootElement.GetProperty("data");
 
-        var gamesArray = doc.RootElement.GetProperty("data");
         var games = new List<NbaGame>();
 
-        foreach (var gameElement in gamesArray.EnumerateArray())
+        foreach (var gameJson in gamesJson.EnumerateArray())
         {
             var game = new NbaGame
             {
-                Id = gameElement.GetProperty("id").GetInt32(),
-                GameDate = gameElement.TryGetProperty("date", out var dateElement) ? 
-                           DateTime.Parse(dateElement.GetString() ?? DateTime.Now.ToString(), CultureInfo.InvariantCulture) : 
-                           DateTime.Now,
-                Status = gameElement.TryGetProperty("status", out var statusElement) ? 
-                         statusElement.GetString() ?? "" : 
-                         "",
-                HomeTeam = gameElement.GetProperty("home_team").GetProperty("full_name").GetString() ?? "",
-                AwayTeam = gameElement.GetProperty("visitor_team").GetProperty("full_name").GetString() ?? "",
-                HomeScore = gameElement.TryGetProperty("home_team_score", out var homeScoreElement) ? 
-                            homeScoreElement.GetInt32() : 0,
-                AwayScore = gameElement.TryGetProperty("visitor_team_score", out var awayScoreElement) ? 
-                             awayScoreElement.GetInt32() : 0
+                Id = gameJson.GetProperty("id").GetInt32(),
+                GameDate = DateTime.Parse(gameJson.GetProperty("date").GetString() ?? "", CultureInfo.InvariantCulture),
+                Status = gameJson.GetProperty("status").GetString() ?? "",
+                HomeTeam = gameJson.GetProperty("home_team").GetProperty("abbreviation").GetString() ?? "",
+                AwayTeam = gameJson.GetProperty("visitor_team").GetProperty("abbreviation").GetString() ?? "",
+                HomeScore = gameJson.GetProperty("home_team_score").GetInt32(),
+                AwayScore = gameJson.GetProperty("visitor_team_score").GetInt32()
             };
 
             games.Add(game);
         }
 
         return games;
-    }*/
+    }
 }

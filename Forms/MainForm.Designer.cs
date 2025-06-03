@@ -78,7 +78,6 @@ public partial class MainForm
             this.LabelFilter.Size = new System.Drawing.Size(52, 17);
             this.LabelFilter.TabIndex = 5;
             this.LabelFilter.Text = "Tag:";
-            this.Controls.Add(this.LabelFilter);
             //
             // ComboBoxFilter
             //
@@ -94,7 +93,7 @@ public partial class MainForm
             // 
             this.ListBoxEvents.FormattingEnabled = true;
             this.ListBoxEvents.ItemHeight = 16;
-            this.ListBoxEvents.Location = new System.Drawing.Point(260, 12);
+            this.ListBoxEvents.Location = new System.Drawing.Point(250, 12);
             this.ListBoxEvents.Name = "ListBoxEvents";
             this.ListBoxEvents.Size = new System.Drawing.Size(300, 340);
             this.ListBoxEvents.TabIndex = 1;
@@ -102,18 +101,17 @@ public partial class MainForm
             //
             // ButtonSettings
             //
-            this.ButtonSettings.Location = new System.Drawing.Point(120, 365);
+            this.ButtonSettings.Location = new System.Drawing.Point(75, 365);
             this.ButtonSettings.Name = "ButtonSettings";
             this.ButtonSettings.Size = new System.Drawing.Size(90, 30);
             this.ButtonSettings.TabIndex = 4;
             this.ButtonSettings.Text = "Settings";
             this.ButtonSettings.UseVisualStyleBackColor = true;
             this.ButtonSettings.Click += new System.EventHandler(this.ButtonSettingsOnClick);
-            this.Controls.Add(this.ButtonSettings);
             // 
             // ButtonAdd
             // 
-            this.ButtonAdd.Location = new System.Drawing.Point(260, 365);
+            this.ButtonAdd.Location = new System.Drawing.Point(250, 365);
             this.ButtonAdd.Name = "ButtonAdd";
             this.ButtonAdd.Size = new System.Drawing.Size(90, 30);
             this.ButtonAdd.TabIndex = 2;
@@ -123,7 +121,7 @@ public partial class MainForm
             // 
             // ButtonEdit
             // 
-            this.ButtonEdit.Location = new System.Drawing.Point(365, 365);
+            this.ButtonEdit.Location = new System.Drawing.Point(355, 365);
             this.ButtonEdit.Name = "ButtonEdit";
             this.ButtonEdit.Size = new System.Drawing.Size(90, 30);
             this.ButtonEdit.TabIndex = 3;
@@ -133,30 +131,13 @@ public partial class MainForm
             // 
             // ButtonDelete
             // 
-            this.ButtonDelete.Location = new System.Drawing.Point(470, 365);
+            this.ButtonDelete.Location = new System.Drawing.Point(460, 365);
             this.ButtonDelete.Name = "ButtonDelete";
             this.ButtonDelete.Size = new System.Drawing.Size(90, 30);
             this.ButtonDelete.TabIndex = 4;
             this.ButtonDelete.Text = "Delete";
             this.ButtonDelete.UseVisualStyleBackColor = true;
             this.ButtonDelete.Click += new System.EventHandler(this.ButtonDeleteOnClick);
-            // 
-            // MainForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 410);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Controls.Add(this.ButtonDelete);
-            this.Controls.Add(this.ButtonEdit);
-            this.Controls.Add(this.ButtonAdd);
-            this.Controls.Add(this.ListBoxEvents);
-            this.Controls.Add(this.MonthCalendar);
-            this.Name = "MainForm";
-            this.Text = "Basketball Calendar";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.ResumeLayout(false);
             // 
             // NotifyIcon
             // 
@@ -174,43 +155,62 @@ public partial class MainForm
             //
             this.ListBoxNbaGames.FormattingEnabled = true;
             this.ListBoxNbaGames.ItemHeight = 16;
-            this.ListBoxNbaGames.Location = new System.Drawing.Point(8, 230);
+            this.ListBoxNbaGames.Location = new System.Drawing.Point(8, 255);
             this.ListBoxNbaGames.Name = "ListBoxNbaGames";
-            this.ListBoxNbaGames.Size = new System.Drawing.Size(230, 100);
+            this.ListBoxNbaGames.Size = new System.Drawing.Size(220, 100);
             this.ListBoxNbaGames.TabIndex = 7;
-            this.Controls.Add(this.ListBoxNbaGames);
             //
             // LabelNbaGames
             //
             this.LabelNbaGames.AutoSize = true;
-            this.LabelNbaGames.Location = new System.Drawing.Point(8, 210);
+            this.LabelNbaGames.Location = new System.Drawing.Point(8, 235);
             this.LabelNbaGames.Name = "LabelNbaGames";
             this.LabelNbaGames.Size = new System.Drawing.Size(95, 17);
             this.LabelNbaGames.TabIndex = 8;
             this.LabelNbaGames.Text = "NBA results:";
-            this.Controls.Add(this.LabelNbaGames);
             //
             // ButtonToggleNba
             //
-            this.ButtonToggleNba.Location = new System.Drawing.Point(126, 210);
+            this.ButtonToggleNba.Location = new System.Drawing.Point(90, 235);
             this.ButtonToggleNba.Name = "ButtonToggleNba";
             this.ButtonToggleNba.Size = new System.Drawing.Size(55, 23);
             this.ButtonToggleNba.TabIndex = 9;
             this.ButtonToggleNba.Text = "Hide";
             this.ButtonToggleNba.UseVisualStyleBackColor = true;
             this.ButtonToggleNba.Click += new System.EventHandler(this.ButtonToggleNbaOnClick);
-            this.Controls.Add(this.ButtonToggleNba);
             //
             // ButtonRefreshNba
             //
-            this.ButtonRefreshNba.Location = new System.Drawing.Point(184, 210);
+            this.ButtonRefreshNba.Location = new System.Drawing.Point(148, 235);
             this.ButtonRefreshNba.Name = "ButtonRefreshNba";
-            this.ButtonRefreshNba.Size = new System.Drawing.Size(55, 23);
+            this.ButtonRefreshNba.Size = new System.Drawing.Size(80, 23);
             this.ButtonRefreshNba.TabIndex = 10;
             this.ButtonRefreshNba.Text = "Refresh";
             this.ButtonRefreshNba.UseVisualStyleBackColor = true;
             this.ButtonRefreshNba.Click += new System.EventHandler(this.ButtonRefreshNbaOnClick);
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(570, 410);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Controls.Add(this.LabelFilter);
+            this.Controls.Add(this.ButtonDelete);
+            this.Controls.Add(this.ButtonEdit);
+            this.Controls.Add(this.ButtonAdd);
+            this.Controls.Add(this.ButtonSettings);
+            this.Controls.Add(this.ListBoxEvents);
+            this.Controls.Add(this.MonthCalendar);
+            this.Controls.Add(this.ListBoxNbaGames);
+            this.Controls.Add(this.LabelNbaGames);
+            this.Controls.Add(this.ButtonToggleNba);
             this.Controls.Add(this.ButtonRefreshNba);
+            this.Name = "MainForm";
+            this.Text = "Basketball Calendar";
+            this.Load += async (sender, eventArgs) => await MainForm_Load(sender, eventArgs);
+            this.ResumeLayout(false);
         }
 
         #endregion
