@@ -102,6 +102,11 @@ new Dictionary<string, (Color Primary, Color Secondary)>
 
 Uživatelská nastavení se ukládají např. pomocí serializace nebo do konfiguračního souboru (není-li uvedeno jinak).
 
+## 🏀 Balldontlie API
+
+Data o NBA zápasech se získávají pomocí balldontlie API.  
+[Hlavní stránka](https://www.balldontlie.io) a [dokumentace](https://docs.balldontlie.io/#nba-api)
+
 ## 🚀 Spuštění
 
 Pro jednodušší spuštění použijte [release](https://github.com/Boootyshaker9000/basketball-calendar/releases/tag/c%23)
