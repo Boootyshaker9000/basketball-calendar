@@ -15,9 +15,12 @@ Desktopová aplikace pro Windows Forms sloužící ke správě basketbalového k
 ```
 basketball_calendar/
 ├── Forms/
+│   └── MainForm.cs
+│       └── MainForm.Designer.cs
 │   └── SettingsForm.cs
-│   └── SettingsForm.cs
-│   └── SettingsForm.cs
+│       └── SettingsForm.Designer.cs
+│   └── EventForm.cs
+│       └── EventForm.Designer.cs
 ├── Models/
 │   ├── Event.cs
 │   └── NbaGame.cs
