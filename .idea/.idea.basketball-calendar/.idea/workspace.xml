@@ -9,32 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1b24cd57-3a1e-43a4-8962-04e315811779" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.basketball-calendar/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.basketball-calendar/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms/EventForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/EventForm.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms/EventForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/EventForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms/MainForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/MainForm.Designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Forms/MainForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/MainForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms/SettngsForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/SettngsForm.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms/SettngsForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/SettngsForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Event.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Event.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/NbaGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/NbaGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/EventRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/EventRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/NbaGameService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/Vendor/NbaGameService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/UserSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/UserSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basketball-calendar.sln" beforeDir="false" afterPath="$PROJECT_DIR$/basketball-calendar.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/events.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/events.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/events.json.bak" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/events.json.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/ref/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/ref/basketball-calendar.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/refint/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/refint/basketball-calendar.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,25 +61,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.basketball-calendar.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "XThreadsFramesViewSplitterKey": "0.49679488",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.basketball-calendar.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49679488&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Project.basketball-calendar">
     <configuration name="basketball-calendar" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -193,7 +170,10 @@
       <workItem from="1748900574721" duration="6000" />
       <workItem from="1748900632110" duration="3513000" />
       <workItem from="1748956116725" duration="9681000" />
-      <workItem from="1748974185838" duration="4879000" />
+      <workItem from="1748974185838" duration="4918000" />
+      <workItem from="1748979371506" duration="415000" />
+      <workItem from="1748980463157" duration="925000" />
+      <workItem from="1748982968455" duration="101000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -419,7 +399,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748974481137</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Přidaná dokumentace.">
+      <option name="closed" value="true" />
+      <created>1748979276735</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1748979276735</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,7 +428,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="SettingsForm" />
     <MESSAGE value="Settings se nezobrazují dvakrát." />
     <MESSAGE value="Settings zobrazuje preview primární i sekundární barvy." />
     <MESSAGE value="Barvy se načítají při spuštění aplikace." />
@@ -465,7 +452,8 @@
     <MESSAGE value="Kód hotový. Přidat dokumentaci." />
     <MESSAGE value="Přidán config.json" />
     <MESSAGE value="Smazání eventů." />
-    <option name="LAST_COMMIT_MESSAGE" value="Smazání eventů." />
+    <MESSAGE value="Přidaná dokumentace." />
+    <option name="LAST_COMMIT_MESSAGE" value="Přidaná dokumentace." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -30,6 +30,25 @@ public partial class EventForm : Form
     }
 
     /// <summary>
+    /// Populates the tag selection panel with a set of predefined radio buttons representing different event tags.
+    /// </summary>
+    private void PopulateTags()
+    {
+        var predefinedTags = new[] { "NBA Game", "Game", "Practice", "Streetball", "Training Camp" };
+        foreach (var tag in predefinedTags)
+        {
+            var radioButton = new RadioButton
+            {
+                Text = tag,
+                AutoSize = true,
+                Margin = new Padding(3),
+                UseVisualStyleBackColor = true
+            };
+            PanelTags.Controls.Add(radioButton);
+        }
+    }
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="EventForm"/> class for editing an existing event.
     /// Populates all input controls with the values from <paramref name="existingEvent"/>.
     /// </summary>
@@ -158,25 +177,6 @@ public partial class EventForm : Form
                 button.BackColor = backgroundColor;
                 button.ForeColor = foregroundColor;
             }
-        }
-    }
-
-    /// <summary>
-    /// Populates the tag selection panel with a set of predefined radio buttons representing different event tags.
-    /// </summary>
-    private void PopulateTags()
-    {
-        var predefinedTags = new[] { "NBA Game", "Game", "Practice", "Streetball", "Training Camp" };
-        foreach (var tag in predefinedTags)
-        {
-            var radioButton = new RadioButton
-            {
-                Text = tag,
-                AutoSize = true,
-                Margin = new Padding(3),
-                UseVisualStyleBackColor = true
-            };
-            PanelTags.Controls.Add(radioButton);
         }
     }
 }

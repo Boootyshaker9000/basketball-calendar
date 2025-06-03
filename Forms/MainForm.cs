@@ -244,47 +244,6 @@ public partial class MainForm : Form
     }
 
     /// <summary>
-    /// Applies the specified foreground and background colors to the form and all relevant controls.
-    /// </summary>
-    /// <param name="foreground">The foreground color to apply.</param>
-    /// <param name="background">The background color to apply.</param>
-    private void ApplyTheme(Color foreground, Color background)
-    {
-        BackgroundColor = background;
-        ForegroundColor = foreground;
-        
-        BackColor = BackgroundColor;
-        ForeColor = ForegroundColor;
-
-        MonthCalendar.BackColor = BackgroundColor;
-        MonthCalendar.ForeColor = ForegroundColor;
-        MonthCalendar.TitleBackColor = BackgroundColor;
-        MonthCalendar.TitleForeColor = ForegroundColor;
-            
-        ListBoxEvents.BackColor = BackgroundColor;
-        ListBoxEvents.ForeColor = ForegroundColor;
-
-        LabelFilter.BackColor = BackgroundColor;
-        LabelFilter.ForeColor = ForegroundColor;
-        ComboBoxFilter.BackColor = BackgroundColor;
-        ComboBoxFilter.ForeColor = ForegroundColor;
-
-        ListBoxNbaGames.BackColor = BackgroundColor;
-        ListBoxNbaGames.ForeColor = ForegroundColor;
-        LabelNbaGames.BackColor = BackgroundColor;
-        LabelNbaGames.ForeColor = ForegroundColor;
-
-        foreach (Control control in new Control[] { ButtonAdd, ButtonEdit, ButtonDelete, ButtonSettings, ButtonToggleNba, ButtonRefreshNba })
-        {
-            if (control is Button button)
-            {
-                button.BackColor = BackgroundColor;
-                button.ForeColor = ForegroundColor;
-            }
-        }
-    }
-
-    /// <summary>
     /// Handles the Click event of the Settings button. Opens the settings form,
     /// applies the current theme, and if saved, applies the selected colors to this form.
     /// </summary>
@@ -372,6 +331,47 @@ public partial class MainForm : Form
         {
             ButtonRefreshNba.Enabled = true;
             ButtonRefreshNba.Text = "Refresh";
+        }
+    }
+
+    /// <summary>
+    /// Applies the specified foreground and background colors to the form and all relevant controls.
+    /// </summary>
+    /// <param name="foreground">The foreground color to apply.</param>
+    /// <param name="background">The background color to apply.</param>
+    private void ApplyTheme(Color foreground, Color background)
+    {
+        BackgroundColor = background;
+        ForegroundColor = foreground;
+        
+        BackColor = BackgroundColor;
+        ForeColor = ForegroundColor;
+
+        MonthCalendar.BackColor = BackgroundColor;
+        MonthCalendar.ForeColor = ForegroundColor;
+        MonthCalendar.TitleBackColor = BackgroundColor;
+        MonthCalendar.TitleForeColor = ForegroundColor;
+            
+        ListBoxEvents.BackColor = BackgroundColor;
+        ListBoxEvents.ForeColor = ForegroundColor;
+
+        LabelFilter.BackColor = BackgroundColor;
+        LabelFilter.ForeColor = ForegroundColor;
+        ComboBoxFilter.BackColor = BackgroundColor;
+        ComboBoxFilter.ForeColor = ForegroundColor;
+
+        ListBoxNbaGames.BackColor = BackgroundColor;
+        ListBoxNbaGames.ForeColor = ForegroundColor;
+        LabelNbaGames.BackColor = BackgroundColor;
+        LabelNbaGames.ForeColor = ForegroundColor;
+
+        foreach (Control control in new Control[] { ButtonAdd, ButtonEdit, ButtonDelete, ButtonSettings, ButtonToggleNba, ButtonRefreshNba })
+        {
+            if (control is Button button)
+            {
+                button.BackColor = BackgroundColor;
+                button.ForeColor = ForegroundColor;
+            }
         }
     }
 }
