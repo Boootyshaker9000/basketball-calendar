@@ -9,24 +9,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1b24cd57-3a1e-43a4-8962-04e315811779" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.basketball-calendar/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.basketball-calendar/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms/MainForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/MainForm.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms/MainForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/MainForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms/SettngsForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Forms/SettngsForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/NbaGameService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/NbaGameService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/basketball-calendar.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/events.json.bak" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/events.json.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0-windows/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0-windows/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/ref/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/ref/basketball-calendar.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/refint/basketball-calendar.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/refint/basketball-calendar.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +75,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -184,7 +168,8 @@
       <workItem from="1748899488419" duration="1016000" />
       <workItem from="1748900574721" duration="6000" />
       <workItem from="1748900632110" duration="3513000" />
-      <workItem from="1748956116725" duration="9497000" />
+      <workItem from="1748956116725" duration="9681000" />
+      <workItem from="1748974185838" duration="43000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -386,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748904199575</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Kód hotový. Přidat dokumentaci.">
+      <option name="closed" value="true" />
+      <created>1748967696019</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1748967696019</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -430,7 +423,8 @@
     <MESSAGE value="3. Pokus o funkční stav." />
     <MESSAGE value="5. Pokus o funkčnost zobrazení NBA výsledků.&#10;Proč je těch složek tolik?" />
     <MESSAGE value="6. Pokus. Schizo." />
-    <option name="LAST_COMMIT_MESSAGE" value="6. Pokus. Schizo." />
+    <MESSAGE value="Kód hotový. Přidat dokumentaci." />
+    <option name="LAST_COMMIT_MESSAGE" value="Kód hotový. Přidat dokumentaci." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
