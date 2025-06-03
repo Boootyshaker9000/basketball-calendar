@@ -7,11 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b24cd57-3a1e-43a4-8962-04e315811779" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.basketball-calendar/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.basketball-calendar/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0-windows/basketball-calendar.AssemblyInfoInputs.cache" afterDir="false" />
-    </list>
+    <list default="true" id="1b24cd57-3a1e-43a4-8962-04e315811779" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,7 +165,7 @@
       <workItem from="1748900574721" duration="6000" />
       <workItem from="1748900632110" duration="3513000" />
       <workItem from="1748956116725" duration="9681000" />
-      <workItem from="1748974185838" duration="43000" />
+      <workItem from="1748974185838" duration="168000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -379,7 +375,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748967696019</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Přidán config.json">
+      <option name="closed" value="true" />
+      <created>1748974353198</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1748974353198</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -424,7 +428,8 @@
     <MESSAGE value="5. Pokus o funkčnost zobrazení NBA výsledků.&#10;Proč je těch složek tolik?" />
     <MESSAGE value="6. Pokus. Schizo." />
     <MESSAGE value="Kód hotový. Přidat dokumentaci." />
-    <option name="LAST_COMMIT_MESSAGE" value="Kód hotový. Přidat dokumentaci." />
+    <MESSAGE value="Přidán config.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="Přidán config.json" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
