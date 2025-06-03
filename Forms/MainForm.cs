@@ -4,15 +4,46 @@ using basketball_calendar.Services;
 
 namespace basketball_calendar.Forms;
 
+/// <summary>
+/// The main form of the application, responsible for displaying and managing events
+/// and NBA game results, as well as applying user-selected themes.
+/// </summary>
 public partial class MainForm : Form
 {
+    /// <summary>
+    /// Repository for loading, adding, updating, and deleting events.
+    /// </summary>
     private EventRepository Repository { get; }
+
+    /// <summary>
+    /// All loaded events from the repository.
+    /// </summary>
     private List<Event> AllEvents { get; set; }
+
+    /// <summary>
+    /// Service for fetching NBA game results from an external API.
+    /// </summary>
     private NbaGameService NbaService { get; }
+
+    /// <summary>
+    /// Indicates whether NBA results are currently visible in the UI.
+    /// </summary>
     private bool AreNbaResultsVisible { get; set; }
+
+    /// <summary>
+    /// Currently applied background color for the form and its controls.
+    /// </summary>
     private Color BackgroundColor { get; set; }
+
+    /// <summary>
+    /// Currently applied foreground color for the form and its controls.
+    /// </summary>
     private Color ForegroundColor { get; set; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MainForm"/> class.
+    /// Loads events from the repository and initializes the NBA service.
+    /// </summary>
     public MainForm()
     {
         Repository = new();
@@ -22,6 +53,13 @@ public partial class MainForm : Form
         InitializeComponent();
     }
 
+    /// <summary>
+    /// Handles the Load event of the form. Populates the filter dropdown, initializes
+    /// the calendar selection, starts the reminder timer, loads today's NBA games,
+    /// and applies saved user settings (theme and team colors).
+    /// </summary>
+    /// <param name="sender">The source of the Load event.</param>
+    /// <param name="eventArgs">The <see cref="EventArgs"/> instance containing event data.</param>
     private async Task MainForm_Load(object sender, EventArgs eventArgs)
     {
         List<string> allTags = new List<string> { "All" };
@@ -64,8 +102,9 @@ public partial class MainForm : Form
     }
 
     /// <summary>
-    /// Updates the displayed list of events based on the selected date and tag.
+    /// Updates the displayed list of events based on the specified date and the currently selected tag filter.
     /// </summary>
+    /// <param name="date">The date for which to load and display events.</param>
     private void RefreshEventList(DateTime date)
     {
         var filtered = AllEvents
@@ -82,7 +121,12 @@ public partial class MainForm : Form
         ListBoxEvents.DisplayMember = nameof(Event.Title);
     }
 
-
+    /// <summary>
+    /// Handles the DateChanged event of the MonthCalendar. Refreshes the event list
+    /// and, if NBA results are visible, refreshes NBA game results for the new date.
+    /// </summary>
+    /// <param name="sender">The source of the DateChanged event.</param>
+    /// <param name="eventArgs">The <see cref="DateRangeEventArgs"/> instance containing event data.</param>
     private void MonthCalendarOnDateChanged(object sender, DateRangeEventArgs eventArgs)
     {
         RefreshEventList(eventArgs.Start);
@@ -93,6 +137,12 @@ public partial class MainForm : Form
         }
     }
 
+    /// <summary>
+    /// Handles the Click event of the Add button. Opens the event creation form,
+    /// applies the current theme, and if the new event is saved, reloads and refreshes the event list.
+    /// </summary>
+    /// <param name="sender">The source of the Click event.</param>
+    /// <param name="eventArgs">The <see cref="EventArgs"/> instance containing event data.</param>
     private void ButtonAddOnClick(object sender, EventArgs eventArgs)
     {
         using var form = new EventForm();
@@ -105,6 +155,12 @@ public partial class MainForm : Form
         }
     }
 
+    /// <summary>
+    /// Handles the Click event of the Edit button. If an event is selected, opens the event form
+    /// populated with the selected event's data, applies the current theme, and if saved, reloads and refreshes the event list.
+    /// </summary>
+    /// <param name="sender">The source of the Click event.</param>
+    /// <param name="eventArgs">The <see cref="EventArgs"/> instance containing event data.</param>
     private void ButtonEditOnClick(object sender, EventArgs eventArgs)
     {
         if (ListBoxEvents.SelectedItem is Event selectedEvent)
@@ -120,6 +176,12 @@ public partial class MainForm : Form
         }
     }
 
+    /// <summary>
+    /// Handles the Click event of the Delete button. If an event is selected, asks for confirmation,
+    /// then deletes the event, reloads, and refreshes the event list.
+    /// </summary>
+    /// <param name="sender">The source of the Click event.</param>
+    /// <param name="eventArgs">The <see cref="EventArgs"/> instance containing event data.</param>
     private void ButtonDeleteOnClick(object sender, EventArgs eventArgs)
     {
         if (ListBoxEvents.SelectedItem is Event selectedEvent)
@@ -138,20 +200,30 @@ public partial class MainForm : Form
             }
         }
     }
-    
+
+    /// <summary>
+    /// Handles the DoubleClick event of the ListBoxEvents. Invokes the edit logic for the selected event.
+    /// </summary>
+    /// <param name="sender">The source of the DoubleClick event.</param>
+    /// <param name="eventArgs">The <see cref="EventArgs"/> instance containing event data.</param>
     private void ListBoxEventsOnDoubleClick(object sender, EventArgs eventArgs)
     {
         ButtonEditOnClick(sender, eventArgs);
     }
-    
+
+    /// <summary>
+    /// Handles the Tick event of the ReminderTimer. Checks for events whose reminder time has arrived,
+    /// shows a notification balloon, marks them as reminded, and updates the repository.
+    /// </summary>
+    /// <param name="sender">The source of the Tick event.</param>
+    /// <param name="eventArgs">The <see cref="EventArgs"/> instance containing event data.</param>
     private void ReminderTimerOnTick(object sender, EventArgs eventArgs)
     {
         var now = DateTime.Now;
         AllEvents = Repository.LoadEvents();
         var toRemind = AllEvents
-            .Where(@event => !@event.ReminderSent 
-                                  && @event.ReminderOffset.HasValue 
-                                  && !@event.ReminderSent
+            .Where(@event => !@event.ReminderSent
+                                  && @event.ReminderOffset.HasValue
                                   && now >= @event.Start - @event.ReminderOffset.Value
                                   && now <= @event.Start)
             .ToList();
@@ -171,6 +243,11 @@ public partial class MainForm : Form
         }
     }
 
+    /// <summary>
+    /// Applies the specified foreground and background colors to the form and all relevant controls.
+    /// </summary>
+    /// <param name="foreground">The foreground color to apply.</param>
+    /// <param name="background">The background color to apply.</param>
     private void ApplyTheme(Color foreground, Color background)
     {
         BackgroundColor = background;
@@ -207,6 +284,12 @@ public partial class MainForm : Form
         }
     }
 
+    /// <summary>
+    /// Handles the Click event of the Settings button. Opens the settings form,
+    /// applies the current theme, and if saved, applies the selected colors to this form.
+    /// </summary>
+    /// <param name="sender">The source of the Click event.</param>
+    /// <param name="eventsArgs">The <see cref="EventArgs"/> instance containing event data.</param>
     private void ButtonSettingsOnClick(object sender, EventArgs eventsArgs)
     {
         using var form = new SettingsForm();
@@ -217,14 +300,23 @@ public partial class MainForm : Form
         }
     }
 
+    /// <summary>
+    /// Handles the SelectedIndexChanged event of the ComboBoxFilter.
+    /// Refreshes the event list for the currently selected date, applying the new tag filter.
+    /// </summary>
+    /// <param name="sender">The source of the SelectedIndexChanged event.</param>
+    /// <param name="e">The <see cref="EventArgs"/> instance containing event data.</param>
     private void ComboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
     {
         RefreshEventList(MonthCalendar.SelectionStart);
     }
 
     /// <summary>
-    /// Obsluhuje kliknutí na tlačítko pro skrytí/zobrazení NBA výsledků
+    /// Handles the Click event of the Toggle NBA button. Shows or hides the NBA results list
+    /// and updates the button text accordingly.
     /// </summary>
+    /// <param name="sender">The source of the Click event.</param>
+    /// <param name="eventArgs">The <see cref="EventArgs"/> instance containing event data.</param>
     private void ButtonToggleNbaOnClick(object sender, EventArgs eventArgs)
     {
         AreNbaResultsVisible = !AreNbaResultsVisible;
@@ -234,16 +326,21 @@ public partial class MainForm : Form
     }
 
     /// <summary>
-    /// Obsluhuje kliknutí na tlačítko pro obnovení NBA výsledků
+    /// Handles the Click event of the Refresh NBA button. Asynchronously reloads NBA game results for the selected date.
     /// </summary>
+    /// <param name="sender">The source of the Click event.</param>
+    /// <param name="eventArgs">The <see cref="EventArgs"/> instance containing event data.</param>
     private async void ButtonRefreshNbaOnClick(object sender, EventArgs eventArgs)
     {
         await RefreshNbaGamesAsync(MonthCalendar.SelectionStart);
     }
 
     /// <summary>
-    /// Načte a zobrazí NBA výsledky z API pro vybrané datum
+    /// Asynchronously loads and displays NBA game results from the external API for the given date.
+    /// Disables the Refresh button while loading and handles any errors that occur.
     /// </summary>
+    /// <param name="date">The date for which to fetch NBA games.</param>
+    /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
     private async Task RefreshNbaGamesAsync(DateTime date)
     {
         ButtonRefreshNba.Enabled = false;

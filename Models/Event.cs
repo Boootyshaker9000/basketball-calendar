@@ -1,7 +1,7 @@
 ﻿namespace basketball_calendar.Models;
 
 /// <summary>
-/// Represents a calendar event.
+/// Represents a calendar event with properties for title, description, timing, tag, and reminders.
 /// </summary>
 public class Event
 {
@@ -11,7 +11,7 @@ public class Event
     public Guid Id { get; set; }
 
     /// <summary>
-    /// Event title (e.g. "LA Lakers Game").
+    /// Event title (e.g., "LA Lakers Game").
     /// </summary>
     public string Title { get; set; }
 
@@ -31,26 +31,30 @@ public class Event
     public DateTime End { get; set; }
 
     /// <summary>
-    /// Event tags or types (e.g. "game", "practice").
+    /// Event tag or type (e.g., "game", "practice").
     /// </summary>
     public string Tag { get; set; }
 
     /// <summary>
-    /// Reminder offset time before the event start (optional).
+    /// Time span before the event start when a reminder should be triggered (optional).
     /// </summary>
     public TimeSpan? ReminderOffset { get; set; }
 
     /// <summary>
-    /// Indicates whether the reminder has been sent.
+    /// Indicates whether the reminder has already been sent.
     /// </summary>
     public bool ReminderSent { get; set; }
 
     /// <summary>
-    /// Default constructor, initializes Id and tags collection.
+    /// Initializes a new instance of the <see cref="Event"/> class.
+    /// Generates a new GUID for <see cref="Id"/>, initializes <see cref="Tag"/> as an empty string,
+    /// and sets <see cref="ReminderSent"/> to false.
     /// </summary>
     public Event()
     {
         Id = Guid.NewGuid();
+        Title = string.Empty;
+        Description = string.Empty;
         Tag = string.Empty;
         ReminderSent = false;
     }

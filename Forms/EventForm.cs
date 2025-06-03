@@ -2,11 +2,25 @@
 
 namespace basketball_calendar.Forms;
 
+/// <summary>
+/// Form used to create or edit an Event. Provides inputs for title, description, start/end times,
+/// tag selection, and reminder settings.
+/// </summary>
 public partial class EventForm : Form
 {
+    /// <summary>
+    /// Gets the <see cref="Event"/> instance being created or edited.
+    /// </summary>
     public Event Event { get; private set; }
+
+    /// <summary>
+    /// Indicates whether the form is in edit mode (true) or creation mode (false).
+    /// </summary>
     private bool IsEditMode { get; }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EventForm"/> class for creating a new event.
+    /// </summary>
     public EventForm()
     {
         InitializeComponent();
@@ -15,6 +29,11 @@ public partial class EventForm : Form
         PopulateTags();
     }
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="EventForm"/> class for editing an existing event.
+    /// Populates all input controls with the values from <paramref name="existingEvent"/>.
+    /// </summary>
+    /// <param name="existingEvent">The existing <see cref="Event"/> to edit.</param>
     public EventForm(Event existingEvent) : this()
     {
         IsEditMode = true;
@@ -29,7 +48,7 @@ public partial class EventForm : Form
         NumericUpDownReminder.Value = Event.ReminderOffset.HasValue
             ? (decimal)Event.ReminderOffset.Value.TotalMinutes
             : NumericUpDownReminder.Minimum;
-        
+
         foreach (RadioButton radioButton in PanelTags.Controls.OfType<RadioButton>())
         {
             if (radioButton.Text == existingEvent.Tag)
@@ -40,6 +59,12 @@ public partial class EventForm : Form
         }
     }
 
+    /// <summary>
+    /// Handles the click event of the OK button. Validates user input, constructs or updates the <see cref="Event"/>,
+    /// sets its properties from form controls, and marks the reminder flag appropriately.
+    /// </summary>
+    /// <param name="sender">The source of the click event.</param>
+    /// <param name="eventArgs">The <see cref="EventArgs"/> instance containing event data.</param>
     private void ButtonOkOnClick(object sender, EventArgs eventArgs)
     {
         if (string.IsNullOrWhiteSpace(TextBoxTitle.Text))
@@ -52,15 +77,15 @@ public partial class EventForm : Form
             MessageBox.Show("Event end time must be after start time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
-        var checkedRb = PanelTags.Controls.OfType<RadioButton>().FirstOrDefault(radioButton => radioButton.Checked);
 
+        var checkedRb = PanelTags.Controls.OfType<RadioButton>().FirstOrDefault(radioButton => radioButton.Checked);
         if (checkedRb == null)
         {
             MessageBox.Show("Please select a tag.", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        
+
         if (!IsEditMode)
         {
             Event = new Event();
@@ -74,7 +99,7 @@ public partial class EventForm : Form
 
         var reminderMinutes = (int)NumericUpDownReminder.Value;
         Event.ReminderOffset = reminderMinutes > 0 ? TimeSpan.FromMinutes(reminderMinutes) : null;
-        
+
         if (IsEditMode && (Event.Start != OriginalStart || Event.ReminderOffset != OriginalOffset))
         {
             Event.ReminderSent = false;
@@ -87,12 +112,12 @@ public partial class EventForm : Form
         DialogResult = DialogResult.OK;
         Close();
     }
-    
+
     /// <summary>
-    /// Applies a color theme (primary/secondary) to the entire EventForm.
+    /// Applies the specified color theme to all controls on the form, including background and foreground colors.
     /// </summary>
-    /// <param name="backgroundColor">Background color (primary)</param>
-    /// <param name="foregroundColor">Foreground color (secondary)</param>
+    /// <param name="backgroundColor">The background color to apply (primary).</param>
+    /// <param name="foregroundColor">The foreground color to apply (secondary).</param>
     public void ApplyTheme(Color backgroundColor, Color foregroundColor)
     {
         BackColor = backgroundColor;
@@ -135,10 +160,13 @@ public partial class EventForm : Form
             }
         }
     }
-    
+
+    /// <summary>
+    /// Populates the tag selection panel with a set of predefined radio buttons representing different event tags.
+    /// </summary>
     private void PopulateTags()
     {
-        var predefinedTags = new[] {"NBA Game", "Game", "Practice", "Streetball", "Training Camp"};
+        var predefinedTags = new[] { "NBA Game", "Game", "Practice", "Streetball", "Training Camp" };
         foreach (var tag in predefinedTags)
         {
             var radioButton = new RadioButton

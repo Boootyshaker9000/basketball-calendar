@@ -2,28 +2,107 @@
 
 partial class EventForm
 {
+    /// <summary>
+    /// Gets or sets the DateTimePicker control for selecting the event start date and time.
+    /// </summary>
     public System.Windows.Forms.DateTimePicker DateTimePickerStart { get; set; }
+
+    /// <summary>
+    /// Gets or sets the NumericUpDown control for specifying reminder minutes before the event.
+    /// </summary>
     public System.Windows.Forms.NumericUpDown NumericUpDownReminder { get; set; }
+
+    /// <summary>
+    /// Gets or sets the FlowLayoutPanel that contains the OK and Cancel buttons.
+    /// </summary>
     public System.Windows.Forms.FlowLayoutPanel ButtonPanel { get; set; }
     
+    /// <summary>
+    /// Container for designer-managed components.
+    /// </summary>
     private System.ComponentModel.IContainer Components { get; set; }
+
+    /// <summary>
+    /// Gets or sets the TableLayoutPanel that arranges form labels and input controls.
+    /// </summary>
     private System.Windows.Forms.TableLayoutPanel TableLayout { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Label control for the "Title" field.
+    /// </summary>
     private System.Windows.Forms.Label LabelTitle { get; set; }
+
+    /// <summary>
+    /// Gets or sets the TextBox control for entering the event title.
+    /// </summary>
     private System.Windows.Forms.TextBox TextBoxTitle { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Label control for the "Description" field.
+    /// </summary>
     private System.Windows.Forms.Label LabelDescription { get; set; }
+
+    /// <summary>
+    /// Gets or sets the RichTextBox control for entering the event description.
+    /// </summary>
     private System.Windows.Forms.RichTextBox RichTextBoxDescription { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Label control for the "Start" field.
+    /// </summary>
     private System.Windows.Forms.Label LabelStart { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Label control for the "End" field.
+    /// </summary>
     private System.Windows.Forms.Label LabelEnd { get; set; }
+
+    /// <summary>
+    /// Gets or sets the DateTimePicker control for selecting the event end date and time.
+    /// </summary>
     private System.Windows.Forms.DateTimePicker DateTimePickerEnd { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Label control for the "Tags" field.
+    /// </summary>
     private System.Windows.Forms.Label LabelTags { get; set; }
+
+    /// <summary>
+    /// Gets or sets the FlowLayoutPanel that contains RadioButton controls for tag selection.
+    /// </summary>
     private System.Windows.Forms.FlowLayoutPanel PanelTags { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Label control for the "Reminder" field.
+    /// </summary>
     private System.Windows.Forms.Label LabelReminder { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Button control for confirming the form (OK).
+    /// </summary>
     private System.Windows.Forms.Button ButtonOk { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Button control for cancelling the form (Cancel).
+    /// </summary>
     private System.Windows.Forms.Button ButtonCancel { get; set; }
 
+    /// <summary>
+    /// Stores the original start DateTime when editing an event, for tracking changes.
+    /// </summary>
     private System.DateTime OriginalStart { get; set; }
+
+    /// <summary>
+    /// Stores the original reminder TimeSpan when editing an event, for tracking changes.
+    /// </summary>
     private System.TimeSpan OriginalOffset { get; set; }
 
+    /// <summary>
+    /// Releases all resources used by the form.
+    /// </summary>
+    /// <param name="disposing">
+    /// true if managed resources should be disposed; otherwise, false.
+    /// </param>
     protected override void Dispose(bool disposing)
     {
         if (disposing && (Components != null))
@@ -35,6 +114,10 @@ partial class EventForm
 
     #region Windows Form Designer generated code
 
+    /// <summary>
+    /// Initializes and configures all controls on the form.
+    /// This method is required for Designer support—do not modify its contents directly.
+    /// </summary>
     private void InitializeComponent()
     {
         this.Components = new System.ComponentModel.Container();

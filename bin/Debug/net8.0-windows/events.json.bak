@@ -1,61 +1,11 @@
 [
   {
-    "Id": "6ce52591-8a52-4a98-be05-6f6d79f2d8a7",
-    "Title": "Tr\u00E9nink",
-    "Description": "Spole\u010Dn\u00FD tr\u00E9nink na hale",
-    "Start": "2025-05-31T15:00:00",
-    "End": "2025-06-10T17:00:00",
-    "Tag": "",
-    "ReminderOffset": "00:30:00",
-    "ReminderSent": false
-  },
-  {
-    "Id": "08b8b548-8671-428e-b38f-d36b3e6323e1",
-    "Title": "Soust\u0159edko.",
+    "Id": "582c98b4-9a02-451a-800c-c4c79fadad23",
+    "Title": "gf",
     "Description": "",
-    "Start": "2025-05-31T20:21:51.0230125+02:00",
-    "End": "2025-05-31T20:21:51.0316088+02:00",
-    "Tag": "Soust\u0159ed\u011Bn\u00ED",
-    "ReminderOffset": "00:30:00",
-    "ReminderSent": false
-  },
-  {
-    "Id": "b3656ce9-f2b7-4c59-b8ac-2015a5f6f5b9",
-    "Title": "fsd",
-    "Description": "",
-    "Start": "2025-06-02T21:38:18.3605319+02:00",
-    "End": "2025-06-02T21:38:18.3681244+02:00",
+    "Start": "2025-06-03T21:13:18.9165253+02:00",
+    "End": "2025-06-03T21:13:18.9275984+02:00",
     "Tag": "Practice",
-    "ReminderOffset": "00:30:00",
-    "ReminderSent": false
-  },
-  {
-    "Id": "449447e9-91c3-4f5a-83d2-a227d42891ee",
-    "Title": "fsh",
-    "Description": "",
-    "Start": "2025-06-02T21:38:59.9065768+02:00",
-    "End": "2025-06-02T21:38:59.9144108+02:00",
-    "Tag": "Training Camp",
-    "ReminderOffset": "00:30:00",
-    "ReminderSent": false
-  },
-  {
-    "Id": "a3f07e71-8c8f-404c-ae58-2840be9b7f4f",
-    "Title": "rrzh",
-    "Description": "",
-    "Start": "2025-06-02T21:39:12.662819+02:00",
-    "End": "2025-06-02T21:39:12.6704623+02:00",
-    "Tag": "Game",
-    "ReminderOffset": "00:30:00",
-    "ReminderSent": false
-  },
-  {
-    "Id": "91241af3-292e-4c32-a48b-741a618a3a96",
-    "Title": "fuck it we ball",
-    "Description": "",
-    "Start": "2025-06-04T06:00:45.779",
-    "End": "2025-06-06T17:04:45.79",
-    "Tag": "Streetball",
     "ReminderOffset": "00:30:00",
     "ReminderSent": false
   }
