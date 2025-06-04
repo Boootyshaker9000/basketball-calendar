@@ -105,7 +105,8 @@ Uživatelská nastavení se ukládají např. pomocí serializace nebo do konfig
 ## 🏀 Balldontlie API
 
 Data o NBA zápasech se získávají pomocí balldontlie API.  
-[Hlavní stránka](https://www.balldontlie.io) a [dokumentace](https://docs.balldontlie.io/#nba-api)
+[Hlavní stránka](https://www.balldontlie.io) a [dokumentace](https://docs.balldontlie.io/#nba-api)  
+Kliknete-li na datum, ve kterém se odehrál nebo se plánuje či momentálně hraje NBA zápas, zobrazí se jeho výsledek.
 
 ## 🚀 Spuštění
 
